@@ -1,0 +1,11 @@
+# Ignore everything
+*
+
+# But not these files...
+!*.bashrc
+!*.gitignore
+!*.xinitrc
+!*.config/awesome/*
+!*.config/terminator/config
+!*startup.sh
+!*wallpaper-change.sh
