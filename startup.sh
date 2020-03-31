@@ -4,6 +4,8 @@ dropbox &
 # f.lux type thing
 redshift &
 
+# screenshot tool
+flameshot &
 
 # enable window transparency
 picom -b
