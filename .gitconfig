@@ -10,3 +10,10 @@
 	leaderboard = shortlog -s -n
 	cam = !git add -A && git commit -m
 	apply-gitignore = !git ls-files -ci --exclude-standard -z | xargs -0r git rm --cached
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[pull]
+	rebase = true
