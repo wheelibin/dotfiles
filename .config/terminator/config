@@ -8,7 +8,7 @@
   title_font = Inconsolata 16
 [keybindings]
 [profiles]
-  [[default]]
+  [[Nord]]
     background_color = "#2e3440"
     cursor_color = "#D8DEE9"
     font = Inconsolata 11
@@ -16,6 +16,12 @@
     scrollback_infinite = True
     palette = "#3b4252:#bf616a:#a3be8c:#ebcb8b:#81a1c1:#b48ead:#88c0d0:#e5e9f0:#4c566a:#bf616a:#a3be8c:#ebcb8b:#81a1c1:#b48ead:#8fbcbb:#eceff4"
     use_system_font = False
+  [[default]]
+    background_color = "#292a2b"
+    cursor_color = "#f0eeee"
+    foreground_color = "#e6e6e6"
+    scrollback_infinite = True
+    palette = "#676b79:#ff2c6d:#19f9d8:#ffb86c:#45a9f9:#b084eb:#6fc1ff:#d3d7cf:#676b79:#ff9ac1:#19f9d8:#ffcc95:#45a9f9:#b084eb:#6fc1ff:#eeeeec"
 [layouts]
   [[default]]
     [[[child1]]]
