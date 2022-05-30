@@ -1,0 +1,21 @@
+[user]
+  email = wheelibin@gmail.com
+  name = wheelibin
+[alias]
+	aa = !git add -A && git status
+	co = checkout
+	st = status
+	cop = "!f() { git checkout $1 && git pull; }; f"
+	pp = "!f() { git pull && git push; }; f"
+	leaderboard = shortlog -s -n
+	cam = !git add -A && git commit -m
+  apply-gitignore = !git ls-files -ci --exclude-standard -z | xargs -0r git rm --cached
+  rbm = !git fetch && git rebase origin/master --ignore-date 
+  lg = !git log --oneline --graph
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[pull]
+	rebase = true
