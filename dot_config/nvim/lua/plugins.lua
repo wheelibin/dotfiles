@@ -138,6 +138,19 @@ return require('packer').startup(function(use)
     'ray-x/lsp_signature.nvim',
   }
 
+  use {
+    'folke/trouble.nvim',
+    requires = {
+      'kyazdani42/nvim-web-devicons'
+    },
+    config = function()
+      require('config/trouble')
+    end
+  }
+  
+  use {
+    'mg979/vim-visual-multi'
+  }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_installed then
