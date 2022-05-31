@@ -147,9 +147,16 @@ return require('packer').startup(function(use)
       require('config/trouble')
     end
   }
-  
+
   use {
     'mg979/vim-visual-multi'
+  }
+
+  use {
+    'akinsho/toggleterm.nvim',
+    config = function()
+      require('config/toggleterm')
+    end
   }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
