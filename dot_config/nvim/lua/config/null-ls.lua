@@ -18,7 +18,9 @@ null_ls.setup({
                     bufnr = bufnr,
                     filter = function(clients)
                       return vim.tbl_filter(
-                        function(filter_client) return filter_client.name == "null-ls" end,
+                        function(filter_client)
+                          return filter_client == "null-ls"
+                        end,
                         clients
                       )
                     end
