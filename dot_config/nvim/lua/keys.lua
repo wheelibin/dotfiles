@@ -18,6 +18,12 @@ map("n", "<M-S-j>", ":wincmd s<CR>")
 map("n", "<M-S-k>", ":wincmd s<CR>:wincmd k<CR>")
 map("n", "<M-S-l>", ":wincmd v<CR>")
 
+-- window resizing
+map("n", "<C-M-S-j>", ':resize +2<CR>')
+map("n", "<C-M-S-k>", ':resize -2<CR>')
+map("n", "<C-M-S-l>", ':vertical resize +2<CR>')
+map("n", "<C-M-S-h>", ':vertical resize -2<CR>')
+
 --- copy paste to system clipboard
 map("v", "<Leader>y", '"+y')
 map("n", "<Leader>p", '"+p')
