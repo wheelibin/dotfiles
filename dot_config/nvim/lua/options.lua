@@ -31,4 +31,8 @@ opt.signcolumn = 'yes'
 -- Set completeopt to have a better completion experience
 opt.completeopt = {'menu', 'menuone', 'noselect'}
 
+-- needed for colorizer
 opt.termguicolors = true
+
+-- enable the mouse in (a)ll modes
+opt.mouse = 'a'
