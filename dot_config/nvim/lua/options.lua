@@ -31,4 +31,4 @@ opt.signcolumn = 'yes'
 -- Set completeopt to have a better completion experience
 opt.completeopt = {'menu', 'menuone', 'noselect'}
 
-
+opt.termguicolors = true
