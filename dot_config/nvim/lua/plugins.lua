@@ -168,8 +168,22 @@ return require('packer').startup(function(use)
 
   use {
     'lukas-reineke/indent-blankline.nvim',
-    config = function() 
+    config = function()
       require('config/indent-blankline')
+    end
+  }
+
+  use {
+    'windwp/nvim-autopairs',
+    config = function()
+      require('config/nvim-autopairs')
+    end
+  }
+
+  use {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require('config/nvim-colorizer')
     end
   }
 
