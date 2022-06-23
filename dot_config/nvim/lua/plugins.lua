@@ -10,6 +10,20 @@ return require('packer').startup(function(use)
   -- packer itself
   use 'wbthomason/packer.nvim'
 
+  -- key mapping legend and discovery
+  use {
+    'mrjones2014/legendary.nvim',
+    config = function()
+      require('legendary').setup()
+    end
+  }
+
+  use {
+    'folke/which-key.nvim',
+    config = function()
+      require('which-key').setup()
+    end
+  }
   -- theme
   use {
     'shaunsingh/nord.nvim',
@@ -61,14 +75,10 @@ return require('packer').startup(function(use)
       require('config/telescope')
     end
   }
+  use {'stevearc/dressing.nvim'}
 
-  -- discover key bindings
-  use {
-    'folke/which-key.nvim',
-    config = function()
-      require('config/which-key')
-    end
-  }
+
+  
 
   -- some language configs for the built-in language server
   use {
@@ -121,7 +131,7 @@ return require('packer').startup(function(use)
   use {
     'petertriho/nvim-scrollbar',
     config = function()
-      require('config/nvim-scrollbar')
+      require('scrollbar').setup()
     end
   }
 
@@ -138,7 +148,7 @@ return require('packer').startup(function(use)
   use {
     'numToStr/Comment.nvim',
     config = function()
-      require('config/comment')
+      require('Comment').setup()
     end
   }
 
@@ -177,7 +187,7 @@ return require('packer').startup(function(use)
   use {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
-      require('config/indent-blankline')
+      require('indent_blankline').setup()
     end
   }
 
@@ -191,7 +201,7 @@ return require('packer').startup(function(use)
   use {
     'norcalli/nvim-colorizer.lua',
     config = function()
-      require('config/nvim-colorizer')
+      require('colorizer').setup()
     end
   }
 
@@ -201,6 +211,7 @@ return require('packer').startup(function(use)
       require('config/illuminate')
     end
   }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_installed then
