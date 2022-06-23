@@ -11,11 +11,4 @@ require('lualine').setup({
       }
     }
   },
-  tabline = {
-    lualine_z = {
-      {
-        'buffers',
-      }
-    },
-  },
 })
