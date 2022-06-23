@@ -33,7 +33,15 @@ return require('packer').startup(function(use)
   -- status bar
   use {
     'nvim-lualine/lualine.nvim',
-    requires = {'kyazdani42/nvim-web-devicons', opt = true},
+    requires = {
+      {
+        'kyazdani42/nvim-web-devicons',
+        opt = true
+      },
+      {
+        'f-person/git-blame.nvim',
+      }
+    },
     config = function()
       require('config/lualine')
     end
@@ -187,6 +195,12 @@ return require('packer').startup(function(use)
     end
   }
 
+  use {
+    'RRethy/vim-illuminate',
+    config = function()
+      require('config/illuminate')
+    end
+  }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_installed then
