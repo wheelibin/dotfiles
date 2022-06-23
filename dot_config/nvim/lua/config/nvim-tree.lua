@@ -66,9 +66,8 @@ require('nvim-tree').setup({
     }
 })
 
-local map = vim.api.nvim_set_keymap
-local options = { noremap = true }
+local wk = require("which-key")
 
--- toggle file tree
-map('n', '<Leader>n', [[:NvimTreeToggle<cr>]], options)
-
+wk.register({
+  ["<leader>n"] = { [[:NvimTreeToggle<cr>]], "Nvim-Tree Toggle" }
+})
