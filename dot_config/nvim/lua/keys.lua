@@ -1,10 +1,20 @@
+local wk = require("which-key")
+
+wk.register({
+  -- buffer switching
+  ["<leader>b"] = { name = "+Buffer" },
+  ["<leader>bf"] = { [[:bn<cr>]], "Buffer Forward (next)" },
+  ["<leader>bb"] = { [[:bp<cr>]], "Buffer Back (prev)" },
+
+  --- copy paste to system clipboard
+  ["<Leader>y"] = { '"+y', "Copy to system clipboard", mode = "v" },
+  ["<Leader>p"] = { '"+p', "Paste from system clipboard" },
+  ["<Leader>P"] = { '"+P', "Paste from system clipboard before" },
+})
+
 local map = require('utils').map
 
--- easier buffer switching
-map('n', '<Leader>bf', [[:bn<cr>]])
-map('n', '<Leader>bb', [[:bp<cr>]])
-
---- faster window navigation
+-- faster window navigation
 map("n", "<M-h>", ":wincmd h<CR>")
 map("n", "<M-j>", ":wincmd j<CR>")
 map("n", "<M-k>", ":wincmd k<CR>")
@@ -23,11 +33,6 @@ map("n", "<C-M-S-j>", ':resize +2<CR>')
 map("n", "<C-M-S-k>", ':resize -2<CR>')
 map("n", "<C-M-S-l>", ':vertical resize +2<CR>')
 map("n", "<C-M-S-h>", ':vertical resize -2<CR>')
-
---- copy paste to system clipboard
-map("v", "<Leader>y", '"+y')
-map("n", "<Leader>p", '"+p')
-map("n", "<Leader>P", '"+P')
 
 --- move line in normal, insert and visual mode
 map("n", "<C-j>", ":m .+1<CR>==")
