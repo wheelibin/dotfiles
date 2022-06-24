@@ -1,6 +1,7 @@
 local wk = require("which-key")
 
 wk.register({
+  ["<F2>"] = { function() require('legendary').find(nil, require('legendary.filters').current_mode()) end, "Show Command Palette" },
   -- buffer switching
   ["<leader>b"] = { name = "+Buffer" },
   ["<leader>bf"] = { [[:bn<cr>]], "Buffer Forward (next)" },
