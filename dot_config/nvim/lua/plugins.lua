@@ -13,8 +13,11 @@ return require('packer').startup(function(use)
   -- key mapping legend and discovery
   use {
     'mrjones2014/legendary.nvim',
+    requires = {
+      {'stevearc/dressing.nvim'}
+    },
     config = function()
-      require('legendary').setup()
+      require('config/legendary')
     end
   }
 
@@ -24,10 +27,11 @@ return require('packer').startup(function(use)
       require('which-key').setup()
     end
   }
+
   -- theme
   use {
     'shaunsingh/nord.nvim',
-    config = function() 
+    config = function()
       require('config/nord')
     end
   }
@@ -75,10 +79,6 @@ return require('packer').startup(function(use)
       require('config/telescope')
     end
   }
-  use {'stevearc/dressing.nvim'}
-
-
-  
 
   -- some language configs for the built-in language server
   use {
