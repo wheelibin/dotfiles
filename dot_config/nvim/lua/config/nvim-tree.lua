@@ -66,8 +66,8 @@ require('nvim-tree').setup({
     }
 })
 
-local wk = require("which-key")
-
-wk.register({
-  ["<leader>n"] = { [[:NvimTreeToggle<cr>]], "Nvim-Tree Toggle" }
+local legendary = require('legendary')
+legendary.bind_keymap({
+  "<leader>n", [[:NvimTreeToggle<cr>]], description = "Nvim-Tree Toggle"
 })
+
