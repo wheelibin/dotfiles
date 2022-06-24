@@ -1,45 +1,49 @@
-local wk = require("which-key")
+local legendary = require('legendary')
+local helpers = require('legendary.helpers')
+local filters = require('legendary.filters')
 
-wk.register({
-  ["<F2>"] = { function() require('legendary').find(nil, require('legendary.filters').current_mode()) end, "Show Command Palette" },
+legendary.bind_keymaps({
+  { '<F2>', helpers.lazy(legendary.find, nil, helpers.lazy(filters.current_mode)), description = 'Show Legendary' },
+
   -- buffer switching
-  ["<leader>b"] = { name = "+Buffer" },
-  ["<leader>bf"] = { [[:bn<cr>]], "Buffer Forward (next)" },
-  ["<leader>bb"] = { [[:bp<cr>]], "Buffer Back (prev)" },
+  { '<Leader>bf', [[:bn<cr>]], description = "Buffer forward" },
+  { '<Leader>bb', [[:bp<cr>]], description = "Buffer back" },
 
-  --- copy paste to system clipboard
-  ["<Leader>y"] = { '"+y', "Copy to system clipboard", mode = "v" },
-  ["<Leader>p"] = { '"+p', "Paste from system clipboard" },
-  ["<Leader>P"] = { '"+P', "Paste from system clipboard before" },
+  -- window navigation
+  { "<M-h>", ":wincmd h<CR>", description = "Goto window to the left" },
+  { "<M-j>", ":wincmd j<CR>", description = "Goto window below" },
+  { "<M-k>", ":wincmd k<CR>", description = "Goto window above" },
+  { "<M-l>", ":wincmd l<CR>", description = "Goto window to the right" },
+  { "<M-r>", ":wincmd r<CR>", description = "Cycle through all windows" },
+  { "<M-q>", ":wincmd q<CR>", description = "Close current window" },
+
+  -- window creation
+  { "<M-S-h>", ":wincmd v<CR>:wincmd h<CR>", description = "New window to the right" },
+  { "<M-S-j>", ":wincmd s<CR>", description = "New window below" },
+  { "<M-S-k>", ":wincmd s<CR>:wincmd k<CR>", description = "New window above" },
+  { "<M-S-l>", ":wincmd v<CR>", description = "New window to the left" },
+
+  -- window resizing
+  { "<C-M-S-j>", ':resize +2<CR>', description = "Resize window - shorter" },
+  { "<C-M-S-k>", ':resize -2<CR>', description = "Resize window - taller" },
+  { "<C-M-S-l>", ':vertical resize +2<CR>', description = "Resize window - wider" },
+  { "<C-M-S-h>", ':vertical resize -2<CR>', description = "Resize window - narrower" },
+
+  -- copy/paste system clipboard
+  { "<Leader>y", '"+y', mode = "v", description = "Copy to system clipboard" },
+  { "<Leader>p", '"+p', description = "Paste from system clipboard" },
+  { "<Leader>P", '"+P', description = "Paste from system clipboard (before)" },
+
+  -- move lines
+  { '<C-j>', {
+    n = ":m .+1<CR>==",
+    i = "<Esc>:m .+1<CR>==gi",
+    v = ":m '>+1<CR>gv=gv"
+  }, description = 'Move line down' },
+  { '<C-k>', {
+    n = ":m .-2<CR>==",
+    i = "<Esc>:m .-2<CR>==gi",
+    v = ":m '<-2<CR>gv=gv"
+  }, description = 'Move line up' },
+
 })
-
-local map = require('utils').map
-
--- faster window navigation
-map("n", "<M-h>", ":wincmd h<CR>")
-map("n", "<M-j>", ":wincmd j<CR>")
-map("n", "<M-k>", ":wincmd k<CR>")
-map("n", "<M-l>", ":wincmd l<CR>")
-map("n", "<M-r>", ":wincmd r<CR>")
-map("n", "<M-q>", ":wincmd q<CR>")
-
---- faster window creation
-map("n", "<M-S-h>", ":wincmd v<CR>:wincmd h<CR>")
-map("n", "<M-S-j>", ":wincmd s<CR>")
-map("n", "<M-S-k>", ":wincmd s<CR>:wincmd k<CR>")
-map("n", "<M-S-l>", ":wincmd v<CR>")
-
--- window resizing
-map("n", "<C-M-S-j>", ':resize +2<CR>')
-map("n", "<C-M-S-k>", ':resize -2<CR>')
-map("n", "<C-M-S-l>", ':vertical resize +2<CR>')
-map("n", "<C-M-S-h>", ':vertical resize -2<CR>')
-
---- move line in normal, insert and visual mode
-map("n", "<C-j>", ":m .+1<CR>==")
-map("n", "<C-k>", ":m .-2<CR>==")
-map("i", "<C-j>", "<Esc>:m .+1<CR>==gi")
-map("i", "<C-k>", "<Esc>:m .-2<CR>==gi")
-map("v", "<C-j>", ":m '>+1<CR>gv=gv")
-map("v", "<C-k>", ":m '<-2<CR>gv=gv")
-
