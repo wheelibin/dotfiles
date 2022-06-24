@@ -1,5 +1,10 @@
 require('neogit').setup()
 
-local map = require('utils').map
+local legendary = require('legendary')
+local helpers = require('legendary.helpers')
+local filters = require('legendary.filters')
 
- map('n', '<Leader>g', '<cmd>lua require("neogit").open({ kind = "vsplit" })<cr>')
+legendary.bind_keymaps({
+  { '<F2>', helpers.lazy(legendary.find, nil, helpers.lazy(filters.current_mode)), description = 'Show Legendary' },
+  { '<leader>g', helpers.lazy_required_fn('neogit', 'open', { kind = "vsplit" }), description = "Neogit Toggle" }
+})
