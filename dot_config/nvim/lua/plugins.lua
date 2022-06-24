@@ -17,17 +17,10 @@ return require('packer').startup(function(use)
       {'stevearc/dressing.nvim'}
     },
     config = function()
-      require('config/legendary')
+      require('legendary').setup()
     end
   }
 
-  -- use {
-  --   'folke/which-key.nvim',
-  --   config = function()
-  --     require('which-key').setup()
-  --   end
-  -- }
-  --
   -- theme
   use {
     'shaunsingh/nord.nvim',
@@ -101,6 +94,7 @@ return require('packer').startup(function(use)
       'saadparwaiz1/cmp_luasnip',
       -- Snippets plugin
       'L3MON4D3/LuaSnip',
+      'rafamadriz/friendly-snippets'
     },
     config = function()
       require('config/nvim-cmp')
@@ -194,7 +188,7 @@ return require('packer').startup(function(use)
   use {
     'windwp/nvim-autopairs',
     config = function()
-      require('config/nvim-autopairs')
+      require('nvim-autopairs').setup()
     end
   }
 
