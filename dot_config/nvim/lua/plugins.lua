@@ -151,16 +151,6 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'folke/trouble.nvim',
-    requires = {
-      'kyazdani42/nvim-web-devicons'
-    },
-    config = function()
-      require('config/trouble')
-    end
-  }
-
-  use {
     'mg979/vim-visual-multi'
   }
 
