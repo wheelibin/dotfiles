@@ -1,9 +1,11 @@
 -- auto install the package manager on first use
 local packer_installed = false
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_installed = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  packer_installed = fn.system({
+    'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path
+  })
 end
 
 return require('packer').startup(function(use)
@@ -13,9 +15,7 @@ return require('packer').startup(function(use)
   -- key mapping legend and discovery
   use {
     'mrjones2014/legendary.nvim',
-    requires = {
-      {'stevearc/dressing.nvim'}
-    },
+    requires = { { 'stevearc/dressing.nvim' } },
     config = function()
       require('legendary').setup()
     end
@@ -44,15 +44,7 @@ return require('packer').startup(function(use)
   -- status bar
   use {
     'nvim-lualine/lualine.nvim',
-    requires = {
-      {
-        'kyazdani42/nvim-web-devicons',
-        opt = true
-      },
-      {
-        'f-person/git-blame.nvim',
-      }
-    },
+    requires = { { 'kyazdani42/nvim-web-devicons', opt = true }, { 'f-person/git-blame.nvim' } },
     config = function()
       require('config/lualine')
     end
@@ -61,13 +53,7 @@ return require('packer').startup(function(use)
   -- find files (fuzzy search/grep)
   use {
     'nvim-telescope/telescope.nvim',
-    requires = {
-      {'nvim-lua/plenary.nvim'},
-      {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        run = 'make'
-      }
-    },
+    requires = { { 'nvim-lua/plenary.nvim' }, { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' } },
     config = function()
       require('config/telescope')
     end
@@ -75,8 +61,7 @@ return require('packer').startup(function(use)
 
   -- some language configs for the built-in language server
   use {
-    'williamboman/nvim-lsp-installer',
-    {
+    'williamboman/nvim-lsp-installer', {
       'neovim/nvim-lspconfig',
       config = function()
         require('config/lspconfig')
@@ -89,12 +74,9 @@ return require('packer').startup(function(use)
     'hrsh7th/nvim-cmp',
     requires = {
       -- LSP source for nvim-cmp
-      'hrsh7th/cmp-nvim-lsp',
-      -- Snippets source for nvim-cmp
-      'saadparwaiz1/cmp_luasnip',
-      -- Snippets plugin
-      'L3MON4D3/LuaSnip',
-      'rafamadriz/friendly-snippets'
+      'hrsh7th/cmp-nvim-lsp', -- Snippets source for nvim-cmp
+      'saadparwaiz1/cmp_luasnip', -- Snippets plugin
+      'L3MON4D3/LuaSnip', 'rafamadriz/friendly-snippets'
     },
     config = function()
       require('config/nvim-cmp')
@@ -113,9 +95,7 @@ return require('packer').startup(function(use)
   -- linting and more
   use {
     'jose-elias-alvarez/null-ls.nvim',
-    requires = {
-      {'nvim-lua/plenary.nvim'}
-    },
+    requires = { { 'nvim-lua/plenary.nvim' } },
     config = function()
       require('config/null-ls')
     end
@@ -131,9 +111,7 @@ return require('packer').startup(function(use)
 
   use {
     'TimUntersberger/neogit',
-    requires = {
-      'nvim-lua/plenary.nvim'
-    },
+    requires = { 'nvim-lua/plenary.nvim' },
     config = function()
       require('config/neogit')
     end
@@ -146,13 +124,9 @@ return require('packer').startup(function(use)
     end
   }
 
-  use {
-    'ray-x/lsp_signature.nvim',
-  }
+  use { 'ray-x/lsp_signature.nvim' }
 
-  use {
-    'mg979/vim-visual-multi'
-  }
+  use { 'mg979/vim-visual-multi' }
 
   use {
     'akinsho/toggleterm.nvim',

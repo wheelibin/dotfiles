@@ -24,12 +24,12 @@ opt.shiftwidth = 2
 opt.softtabstop = 2
 opt.tabstop = 2
 
---Decrease update time
+-- Decrease update time
 opt.updatetime = 250
 opt.signcolumn = 'yes'
 
 -- Set completeopt to have a better completion experience
-opt.completeopt = {'menu', 'menuone', 'noselect'}
+opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
 -- needed for colorizer
 opt.termguicolors = true
