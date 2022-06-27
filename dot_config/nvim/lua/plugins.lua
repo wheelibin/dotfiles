@@ -44,7 +44,9 @@ return require('packer').startup(function(use)
   -- status bar
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { { 'kyazdani42/nvim-web-devicons', opt = true }, { 'f-person/git-blame.nvim' } },
+    requires = {
+      { 'kyazdani42/nvim-web-devicons', opt = true }, { 'f-person/git-blame.nvim' }, { 'arkav/lualine-lsp-progress' }
+    },
     config = function()
       require('config/lualine')
     end
@@ -125,6 +127,12 @@ return require('packer').startup(function(use)
   }
 
   use { 'ray-x/lsp_signature.nvim' }
+  use {
+    'j-hui/fidget.nvim',
+    config = function()
+      require('fidget').setup()
+    end
+  }
 
   use { 'mg979/vim-visual-multi' }
 

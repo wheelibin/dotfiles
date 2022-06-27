@@ -7,8 +7,15 @@ vim.g.gitblame_date_format = '%r'
 require('lualine').setup({
   options = { theme = 'nord' },
   sections = {
-    lualine_c = { { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available } },
-    lualine_x = { 'encoding', 'filetype' }
+    lualine_c = {
+      {
+        git_blame.get_current_blame_text,
+        cond = git_blame.is_blame_text_available
+      }
+    },
+    lualine_x = { 'encoding', 'filetype' },
+    lualine_y = {}
+    -- lualine_z = { 'lsp_progress' }
   },
   tabline = {
     lualine_a = {
@@ -19,5 +26,6 @@ require('lualine').setup({
       }
     },
     lualine_z = { 'buffers' }
-  }
+  },
+  extensions = { 'nvim-tree', 'toggleterm' }
 })
