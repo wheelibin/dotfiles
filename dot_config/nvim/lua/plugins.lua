@@ -44,9 +44,7 @@ return require('packer').startup(function(use)
   -- status bar
   use {
     'nvim-lualine/lualine.nvim',
-    requires = {
-      { 'kyazdani42/nvim-web-devicons', opt = true }, { 'f-person/git-blame.nvim' }
-    },
+    requires = { { 'kyazdani42/nvim-web-devicons', opt = true }, { 'f-person/git-blame.nvim' } },
     config = function()
       require('config/lualine')
     end
@@ -119,14 +117,8 @@ return require('packer').startup(function(use)
     end
   }
 
-  use {
-    'numToStr/Comment.nvim',
-    config = function()
-      require('Comment').setup()
-    end
-  }
-
   use { 'ray-x/lsp_signature.nvim' }
+
   use {
     'j-hui/fidget.nvim',
     config = function()
@@ -158,23 +150,9 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'windwp/nvim-autopairs',
-    config = function()
-      require('nvim-autopairs').setup()
-    end
-  }
-
-  use {
     'norcalli/nvim-colorizer.lua',
     config = function()
       require('colorizer').setup()
-    end
-  }
-
-  use {
-    'RRethy/vim-illuminate',
-    config = function()
-      require('config/illuminate')
     end
   }
 
@@ -191,6 +169,15 @@ return require('packer').startup(function(use)
       require('leap').set_default_keymaps()
     end
   }
+
+  -- swiss army knife, see config to see which modules are enabled
+  use {
+    'echasnovski/mini.nvim',
+    config = function()
+      require('config/mini')
+    end
+  }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_installed then

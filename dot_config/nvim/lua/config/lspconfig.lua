@@ -15,13 +15,38 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   legendary.bind_keymaps({
-    { 'gD', vim.lsp.buf.declaration, description = 'Go to declaration (LSP)', buffer = bufnr },
-    { 'gd', vim.lsp.buf.definition, description = 'Go to definition (LSP)', buffer = bufnr },
-    { '<C-space>', vim.lsp.buf.hover, description = 'LSP Info', buffer = bufnr },
-    { 'gi', vim.lsp.buf.implementation, description = 'Go to implementation (LSP)', buffer = bufnr },
-    { '<leader>rn', vim.lsp.buf.rename, description = 'Rename (LSP)', buffer = bufnr },
-    { '<leader>ca', vim.lsp.buf.code_action, description = 'Code Action(s) (LSP)', buffer = bufnr },
     {
+      'gD',
+      vim.lsp.buf.declaration,
+      description = 'Go to declaration (LSP)',
+      buffer = bufnr
+    }, {
+      'gd',
+      vim.lsp.buf.definition,
+      description = 'Go to definition (LSP)',
+      buffer = bufnr
+    },
+    {
+      '<C-space>',
+      vim.lsp.buf.hover,
+      description = 'LSP Info',
+      buffer = bufnr
+    }, {
+      'gi',
+      vim.lsp.buf.implementation,
+      description = 'Go to implementation (LSP)',
+      buffer = bufnr
+    }, {
+      '<leader>rn',
+      vim.lsp.buf.rename,
+      description = 'Rename (LSP)',
+      buffer = bufnr
+    }, {
+      '<leader>ca',
+      vim.lsp.buf.code_action,
+      description = 'Code Action(s) (LSP)',
+      buffer = bufnr
+    }, {
       '<leader>f',
       helpers.lazy(vim.lsp.buf.format, { async = true }),
       description = 'Format buffer (LSP)',
@@ -30,7 +55,6 @@ local on_attach = function(client, bufnr)
   })
 
   require('lsp_signature').on_attach()
-  require('illuminate').on_attach(client)
 
 end
 
@@ -40,7 +64,13 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 require('nvim-lsp-installer').setup({
   automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
-  ui = { icons = { server_installed = '✓', server_pending = '➜', server_uninstalled = '✗' } }
+  ui = {
+    icons = {
+      server_installed = '✓',
+      server_pending = '➜',
+      server_uninstalled = '✗'
+    }
+  }
 })
 local lspconfig = require('lspconfig')
 
@@ -52,10 +82,13 @@ end
 -- Make sure the method signature window can't be focussed (why on earth would you want that)
 vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { focusable = false })
 
-lspconfig.sumneko_lua.setup { settings = { Lua = { diagnostics = { globals = { 'vim' } } } } }
+lspconfig.sumneko_lua.setup {
+  settings = { Lua = { diagnostics = { globals = { 'vim' } } } }
+}
 
 local sign = function(opts)
-  vim.fn.sign_define(opts.name, { texthl = opts.name, text = opts.text, numhl = '' })
+  vim.fn.sign_define(opts.name,
+    { texthl = opts.name, text = opts.text, numhl = '' })
 end
 sign({ name = 'DiagnosticSignError', text = '✘' })
 sign({ name = 'DiagnosticSignWarn', text = '▲' })
