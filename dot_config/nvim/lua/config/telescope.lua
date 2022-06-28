@@ -18,5 +18,6 @@ legendary.bind_keymaps({
     '<leader>fd',
     helpers.lazy(builtin.diagnostics, { layout_strategy = 'vertical' }),
     description = 'Find diagnostics (LSP)'
-  }
+  },
+  { '<leader>fs', builtin.lsp_dynamic_workspace_symbols, description = 'Find symbols (LSP)' },
 })
