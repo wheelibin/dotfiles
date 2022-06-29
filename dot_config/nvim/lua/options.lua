@@ -34,5 +34,7 @@ opt.completeopt = { 'menu', 'menuone', 'noselect' }
 -- needed for colorizer
 opt.termguicolors = true
 
+opt.background = 'dark'
+
 -- enable the mouse in (a)ll modes
 opt.mouse = 'a'

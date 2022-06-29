@@ -5,7 +5,7 @@ vim.g.gitblame_display_virtual_text = 0
 vim.g.gitblame_date_format = '%r'
 
 require('lualine').setup({
-  options = { theme = 'nord' },
+  options = { theme = 'gruvbox-material' },
   sections = {
     lualine_a = { 'mode' },
     lualine_b = { 'branch', 'diff', 'diagnostics' },

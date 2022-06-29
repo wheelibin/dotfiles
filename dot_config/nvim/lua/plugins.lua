@@ -22,13 +22,22 @@ return require('packer').startup(function(use)
   }
 
   -- theme
-  use {
-    'shaunsingh/nord.nvim',
+  -- use {
+  --   'shaunsingh/nord.nvim',
+  --   config = function()
+  --     require('config/nord')
+  --   end
+  -- }
+
+  use { 'sainnhe/gruvbox-material',
     config = function()
-      require('config/nord')
+
+      -- vim.g.gruvbox_material_background = 'soft'
+      vim.g.gruvbox_material_better_performance = 1
+
+      vim.cmd('colorscheme gruvbox-material')
     end
   }
-
   -- file tree
   use {
     'kyazdani42/nvim-tree.lua',
