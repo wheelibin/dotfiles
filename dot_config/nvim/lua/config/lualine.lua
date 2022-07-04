@@ -8,7 +8,7 @@ require('lualine').setup({
   options = { theme = 'gruvbox-material' },
   sections = {
     lualine_a = { 'mode' },
-    lualine_b = { 'branch', 'diff', 'diagnostics' },
+    lualine_b = { 'branch', 'diff', { 'diagnostics', colored = false } },
     lualine_c = { { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available } },
     lualine_x = { 'encoding', 'filetype' },
     lualine_y = { 'progress' },
