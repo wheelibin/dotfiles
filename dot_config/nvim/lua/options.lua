@@ -34,7 +34,10 @@ opt.completeopt = { 'menu', 'menuone', 'noselect' }
 -- needed for colorizer
 opt.termguicolors = true
 
-opt.background = 'dark'
-
 -- enable the mouse in (a)ll modes
 opt.mouse = 'a'
+
+-- scroll offset
+opt.scrolloff = 4
+
+opt.cursorline = true
