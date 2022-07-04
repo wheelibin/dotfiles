@@ -22,19 +22,14 @@ return require('packer').startup(function(use)
   }
 
   -- theme
-  -- use {
-  --   'shaunsingh/nord.nvim',
-  --   config = function()
-  --     require('config/nord')
-  --   end
-  -- }
 
   use { 'sainnhe/gruvbox-material',
     config = function()
 
-      -- vim.g.gruvbox_material_background = 'soft'
+      vim.g.gruvbox_material_background = 'soft'
       vim.g.gruvbox_material_better_performance = 1
-
+      -- vim.g.gruvbox_material_diagnostic_line_highlight = 1
+      -- vim.g.gruvbox_material_diagnostic_text_highlight = 1
       vim.cmd('colorscheme gruvbox-material')
     end
   }
@@ -82,10 +77,15 @@ return require('packer').startup(function(use)
   use {
     'hrsh7th/nvim-cmp',
     requires = {
-      -- LSP source for nvim-cmp
-      'hrsh7th/cmp-nvim-lsp', -- Snippets source for nvim-cmp
-      'saadparwaiz1/cmp_luasnip', -- Snippets plugin
-      'L3MON4D3/LuaSnip', 'rafamadriz/friendly-snippets'
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'hrsh7th/cmp-vsnip',
+      'hrsh7th/vim-vsnip',
+      'hrsh7th/cmp-nvim-lsp-document-symbol',
+      'ray-x/lsp_signature.nvim',
+      'rafamadriz/friendly-snippets'
     },
     config = function()
       require('config/nvim-cmp')
@@ -125,8 +125,6 @@ return require('packer').startup(function(use)
       require('config/neogit')
     end
   }
-
-  use { 'ray-x/lsp_signature.nvim' }
 
   use {
     'j-hui/fidget.nvim',
