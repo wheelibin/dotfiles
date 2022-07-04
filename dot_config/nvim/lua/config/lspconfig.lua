@@ -1,5 +1,5 @@
 -- lspconfig
-local servers = { 'tsserver', 'sumneko_lua', 'clangd' }
+local servers = { 'tsserver', 'sumneko_lua', 'clangd', 'pylsp' }
 
 local legendary = require('legendary')
 local helpers = require('legendary.helpers')
@@ -54,7 +54,11 @@ local on_attach = function(client, bufnr)
     }
   })
 
-  require('lsp_signature').on_attach()
+  require('lsp_signature').on_attach({
+    bind = true,
+    hint_enable = false,
+    timer_interval = 100
+  })
 
 end
 
@@ -79,12 +83,9 @@ for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup { on_attach = on_attach, capabilities = capabilities }
 end
 
--- Make sure the method signature window can't be focussed (why on earth would you want that)
-vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { focusable = false })
-
-lspconfig.sumneko_lua.setup {
-  settings = { Lua = { diagnostics = { globals = { 'vim' } } } }
-}
+-- lspconfig.sumneko_lua.setup {
+--   settings = { Lua = { diagnostics = { globals = { 'vim' } } } }
+-- }
 
 local sign = function(opts)
   vim.fn.sign_define(opts.name,
@@ -101,4 +102,4 @@ vim.diagnostic.config({
 })
 
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
-vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { focusable = false, border = 'rounded' })
