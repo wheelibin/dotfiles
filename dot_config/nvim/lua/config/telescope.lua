@@ -1,7 +1,21 @@
 local telescope = require('telescope')
 local builtin = require('telescope.builtin')
 
-telescope.setup()
+telescope.setup {
+  pickers = {
+    buffers = {
+      show_all_buffers = true,
+      sort_lastused = true,
+      theme = "dropdown",
+      previewer = false,
+      mappings = {
+        i = {
+          ["<M-x>"] = "delete_buffer",
+        }
+      }
+    }
+  }
+}
 telescope.load_extension('fzf')
 
 local legendary = require('legendary')
