@@ -19,4 +19,13 @@ vim.cmd('hi! link MiniCursorword Visual')
 require('mini.pairs').setup()
 
 -- remove buffers retaining window layout
-require('mini.bufremove').setup()
+local miniBufRemove = require('mini.bufremove')
+miniBufRemove.setup()
+legendary.bind_keymaps({
+  { '<M-x>', miniBufRemove.delete, description = 'Delete Buffer' }, --
+})
+
+
+
+-- Add, delete, replace, find, highlight surrounding (like pair of parenthesis, quotes, etc.).
+require('mini.surround').setup()
