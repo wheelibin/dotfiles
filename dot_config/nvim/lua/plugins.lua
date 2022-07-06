@@ -28,8 +28,6 @@ return require('packer').startup(function(use)
 
       vim.g.gruvbox_material_background = 'soft'
       vim.g.gruvbox_material_better_performance = 1
-      -- vim.g.gruvbox_material_diagnostic_line_highlight = 1
-      -- vim.g.gruvbox_material_diagnostic_text_highlight = 1
       vim.cmd('colorscheme gruvbox-material')
     end
   }
@@ -166,7 +164,7 @@ return require('packer').startup(function(use)
   use {
     'lewis6991/gitsigns.nvim',
     config = function()
-      require('gitsigns').setup()
+      require('config/gitsigns')
     end
   }
 
