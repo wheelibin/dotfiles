@@ -21,16 +21,30 @@ return require('packer').startup(function(use)
     end
   }
 
-  -- theme
-
-  use { 'sainnhe/gruvbox-material',
+  -- themes
+  use {
+    'sainnhe/sonokai',
     config = function()
-
-      vim.g.gruvbox_material_background = 'soft'
-      vim.g.gruvbox_material_better_performance = 1
-      vim.cmd('colorscheme gruvbox-material')
+      vim.g.sonokai_style = 'maia'
+      vim.g.sonokai_better_performance = 1
+      -- vim.cmd('colorscheme sonokai')
     end
   }
+  use { 'sainnhe/gruvbox-material',
+    config = function()
+      vim.g.gruvbox_material_background = 'soft'
+      vim.g.gruvbox_material_better_performance = 1
+      -- vim.cmd('colorscheme gruvbox-material')
+    end
+  }
+  use { 'sainnhe/everforest',
+    config = function()
+      vim.g.everforest_background = 'hard'
+      vim.g.everforest_better_performance = 1
+      vim.cmd('colorscheme everforest')
+    end
+  }
+
   -- file tree
   use {
     'kyazdani42/nvim-tree.lua',

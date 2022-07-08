@@ -8,7 +8,10 @@ require('nvim-tree').setup({
       custom_only = false,
       list = { { key = 'l', action = 'edit' }, { key = 'L', action = 'preview' }, { key = 'h', action = 'close_node' } }
     }
-  }
+  },
+  update_focused_file = {
+    enable = true,
+  },
 })
 
 local legendary = require('legendary')
