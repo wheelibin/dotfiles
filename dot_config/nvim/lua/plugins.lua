@@ -30,14 +30,16 @@ return require('packer').startup(function(use)
       -- vim.cmd('colorscheme sonokai')
     end
   }
-  use { 'sainnhe/gruvbox-material',
+  use {
+    'sainnhe/gruvbox-material',
     config = function()
       vim.g.gruvbox_material_background = 'soft'
       vim.g.gruvbox_material_better_performance = 1
       -- vim.cmd('colorscheme gruvbox-material')
     end
   }
-  use { 'sainnhe/everforest',
+  use {
+    'sainnhe/everforest',
     config = function()
       vim.g.everforest_background = 'hard'
       vim.g.everforest_better_performance = 1
@@ -89,14 +91,8 @@ return require('packer').startup(function(use)
   use {
     'hrsh7th/nvim-cmp',
     requires = {
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-cmdline',
-      'hrsh7th/cmp-vsnip',
-      'hrsh7th/vim-vsnip',
-      'hrsh7th/cmp-nvim-lsp-document-symbol',
-      'ray-x/lsp_signature.nvim',
+      'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-path', 'hrsh7th/cmp-cmdline', 'hrsh7th/cmp-vsnip',
+      'hrsh7th/vim-vsnip', 'hrsh7th/cmp-nvim-lsp-document-symbol', 'ray-x/lsp_signature.nvim',
       'rafamadriz/friendly-snippets'
     },
     config = function()
@@ -155,13 +151,6 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'klen/nvim-test',
-    config = function()
-      require('config/nvim-test')
-    end
-  }
-
-  use {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
       require('indent_blankline').setup()
@@ -194,6 +183,17 @@ return require('packer').startup(function(use)
     'echasnovski/mini.nvim',
     config = function()
       require('config/mini')
+    end
+  }
+
+  use {
+    'nvim-neotest/neotest',
+    requires = {
+      'nvim-lua/plenary.nvim', 'nvim-treesitter/nvim-treesitter', 'antoinemadec/FixCursorHold.nvim',
+      'haydenmeade/neotest-jest'
+    },
+    config = function()
+      require('config/neotest')
     end
   }
 
