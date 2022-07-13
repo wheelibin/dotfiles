@@ -1,7 +1,16 @@
 local telescope = require('telescope')
 local builtin = require('telescope.builtin')
+local actions = require("telescope.actions")
 
 telescope.setup {
+  defaults = {
+    mappings = {
+      i = {
+        -- just close immediately on ESC rather than going to normal mode in the input
+        ["<esc>"] = actions.close
+      },
+    },
+  },
   pickers = {
     buffers = {
       show_all_buffers = true,
@@ -10,9 +19,13 @@ telescope.setup {
       previewer = false,
       mappings = {
         i = {
+          -- close the selected buffer directly from the picker
           ["<M-x>"] = "delete_buffer",
         }
       }
+    },
+    find_files = {
+      hidden = true
     }
   }
 }
