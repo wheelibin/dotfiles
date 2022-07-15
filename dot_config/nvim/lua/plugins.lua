@@ -25,9 +25,9 @@ return require('packer').startup(function(use)
   use {
     'sainnhe/sonokai',
     config = function()
-      vim.g.sonokai_style = 'maia'
+      vim.g.sonokai_style = 'atlantis'
       vim.g.sonokai_better_performance = 1
-      -- vim.cmd('colorscheme sonokai')
+      vim.cmd('colorscheme sonokai')
     end
   }
   use {
@@ -43,9 +43,32 @@ return require('packer').startup(function(use)
     config = function()
       vim.g.everforest_background = 'hard'
       vim.g.everforest_better_performance = 1
-      vim.cmd('colorscheme everforest')
+      -- vim.cmd('colorscheme everforest')
     end
   }
+
+  use {
+    'gruvbox-community/gruvbox',
+    config = function()
+      vim.g.gruvbox_contrast_dark = 'soft'
+      -- vim.cmd('colorscheme gruvbox')
+    end
+  }
+
+  use {
+    'phanviet/vim-monokai-pro',
+    config = function()
+      -- vim.cmd('colorscheme monokai_pro')
+    end
+  }
+
+  use {
+    'joshdick/onedark.vim',
+    config = function()
+      -- vim.cmd('colorscheme onedark')
+    end
+  }
+
 
   -- file tree
   use {

@@ -1,7 +1,7 @@
 local neotest = require('neotest')
 
 neotest.setup({
-  adapters = { require('neotest-jest')({ jestCommand = 'npm run test --' }) },
+  adapters = { require('neotest-jest')({ jestCommand = 'npm run test:once --' }) },
   highlights = {
     dir = 'Green',
     failed = 'Red',
@@ -20,5 +20,5 @@ legendary.bind_keymaps({
     '<leader>to',
     helpers.lazy(neotest.output.open, { short = true }),
     description = 'Test Output'
-  }, { '<leader>ts', neotest.summary.open, description = 'Test status' }
+  }, { '<leader>ts', neotest.summary.toggle, description = 'Test status' }
 })
