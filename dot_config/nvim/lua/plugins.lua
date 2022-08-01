@@ -30,45 +30,6 @@ return require('packer').startup(function(use)
       vim.cmd('colorscheme sonokai')
     end
   }
-  use {
-    'sainnhe/gruvbox-material',
-    config = function()
-      vim.g.gruvbox_material_background = 'soft'
-      vim.g.gruvbox_material_better_performance = 1
-      -- vim.cmd('colorscheme gruvbox-material')
-    end
-  }
-  use {
-    'sainnhe/everforest',
-    config = function()
-      vim.g.everforest_background = 'hard'
-      vim.g.everforest_better_performance = 1
-      -- vim.cmd('colorscheme everforest')
-    end
-  }
-
-  use {
-    'gruvbox-community/gruvbox',
-    config = function()
-      vim.g.gruvbox_contrast_dark = 'soft'
-      -- vim.cmd('colorscheme gruvbox')
-    end
-  }
-
-  use {
-    'phanviet/vim-monokai-pro',
-    config = function()
-      -- vim.cmd('colorscheme monokai_pro')
-    end
-  }
-
-  use {
-    'joshdick/onedark.vim',
-    config = function()
-      -- vim.cmd('colorscheme onedark')
-    end
-  }
-
 
   -- file tree
   use {
@@ -132,58 +93,37 @@ return require('packer').startup(function(use)
     end
   }
 
-  -- linting and more
-  use {
-    'jose-elias-alvarez/null-ls.nvim',
-    requires = { { 'nvim-lua/plenary.nvim' } },
-    config = function()
-      require('config/null-ls')
-    end
-  }
+   -- linting and more
+   use {
+     'jose-elias-alvarez/null-ls.nvim',
+     requires = { { 'nvim-lua/plenary.nvim' } },
+     config = function()
+       require('config/null-ls')
+     end
+   }
 
-  -- fancy scrollbar with errors/warning markers
-  use {
-    'petertriho/nvim-scrollbar',
-    config = function()
-      require('scrollbar').setup()
-    end
-  }
+   -- fancy scrollbar with errors/warning markers
+   use {
+     'petertriho/nvim-scrollbar',
+     config = function()
+       require('scrollbar').setup()
+     end
+   }
 
   use {
     'TimUntersberger/neogit',
-    requires = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      require('config/neogit')
-    end
-  }
-
-  use {
-    'j-hui/fidget.nvim',
-    config = function()
-      require('fidget').setup()
-    end
-  }
+     requires = { 'nvim-lua/plenary.nvim' },
+     config = function()
+       require('config/neogit')
+     end
+   }
 
   use { 'mg979/vim-visual-multi' }
-
-  use {
-    'akinsho/toggleterm.nvim',
-    config = function()
-      require('config/toggleterm')
-    end
-  }
 
   use {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
       require('indent_blankline').setup()
-    end
-  }
-
-  use {
-    'norcalli/nvim-colorizer.lua',
-    config = function()
-      require('colorizer').setup()
     end
   }
 
@@ -210,13 +150,9 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'nvim-neotest/neotest',
-    requires = {
-      'nvim-lua/plenary.nvim', 'nvim-treesitter/nvim-treesitter', 'antoinemadec/FixCursorHold.nvim',
-      'haydenmeade/neotest-jest'
-    },
+    'rcarriga/nvim-notify',
     config = function()
-      require('config/neotest')
+      require('config/nvim-notify')
     end
   }
 
