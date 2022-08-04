@@ -63,12 +63,11 @@ return require('packer').startup(function(use)
 
   -- some language configs for the built-in language server
   use {
-    'williamboman/nvim-lsp-installer', {
-      'neovim/nvim-lspconfig',
-      config = function()
-        require('config/lspconfig')
-      end
-    }
+    'neovim/nvim-lspconfig',
+    requires = { 'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim' },
+    config = function()
+      require('config/lspconfig')
+    end
   }
 
   -- Autocompletion plugin

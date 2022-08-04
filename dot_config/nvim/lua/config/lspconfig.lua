@@ -1,5 +1,5 @@
 -- lspconfig
-local servers = { 'tsserver', 'sumneko_lua', 'clangd', 'pylsp' }
+local servers = { 'tsserver', 'sumneko_lua', 'clangd', 'pylsp', 'html', 'marksman', 'jsonls' }
 
 local legendary = require('legendary')
 local helpers = require('legendary.helpers')
@@ -66,16 +66,12 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-require('nvim-lsp-installer').setup({
-  automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
-  ui = {
-    icons = {
-      server_installed = '✓',
-      server_pending = '➜',
-      server_uninstalled = '✗'
-    }
-  }
+
+require("mason").setup()
+require("mason-lspconfig").setup({
+  automatic_installation = true
 })
+
 local lspconfig = require('lspconfig')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
@@ -83,9 +79,23 @@ for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup { on_attach = on_attach, capabilities = capabilities }
 end
 
-lspconfig.sumneko_lua.setup {
+lspconfig.sumneko_lua.setup({
   settings = { Lua = { diagnostics = { globals = { 'vim' } } } }
-}
+})
+
+-- require("mason").setup({
+--   ui = {
+--     icons = {
+--       package_installed = "✓",
+--       package_pending = "➜",
+--       package_uninstalled = "✗"
+--     }
+--   }
+-- })
+-- require("mason-lspconfig").setup({
+--   automatic_installation = true
+-- })
+
 
 local sign = function(opts)
   vim.fn.sign_define(opts.name,
