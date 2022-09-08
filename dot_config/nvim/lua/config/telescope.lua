@@ -47,5 +47,6 @@ legendary.bind_keymaps({
   { '<leader>fs', builtin.lsp_dynamic_workspace_symbols, description = 'Find symbols (LSP)' },
   { '<leader>fi', builtin.lsp_implementations, description = 'Find implementation(s) (LSP)' },
   { '<leader>fd', builtin.lsp_definitions, description = 'Find definition(s) (LSP)' },
-  { '<leader>fh', builtin.git_bcommits, description = 'File History (git)' }
+  { '<leader>fh', builtin.git_bcommits, description = 'File History (git)' },
+  { '<leader>fw', helpers.lazy(builtin.grep_string, { word_match = '-w' }), description = 'Find word under cursor' }
 })
