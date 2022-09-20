@@ -22,12 +22,29 @@ return require('packer').startup(function(use)
   }
 
   -- themes
+  -- use {
+  --   'sainnhe/sonokai',
+  --   config = function()
+  --     vim.g.sonokai_style = 'atlantis'
+  --     vim.g.sonokai_better_performance = 1
+  --     vim.cmd('colorscheme sonokai')
+  --   end
+  -- }
+
+  -- use {
+  --   'sainnhe/everforest',
+  --   rtp = 'vim' ,
+  --   config = function()
+  --     vim.cmd('colorscheme everforest')
+  --   end
+  -- }
+
   use {
-    'sainnhe/sonokai',
+    'catppuccin/nvim',
+    as = 'catppuccin',
     config = function()
-      vim.g.sonokai_style = 'atlantis'
-      vim.g.sonokai_better_performance = 1
-      vim.cmd('colorscheme sonokai')
+      require("catppuccin").setup()
+      vim.cmd('colorscheme catppuccin')
     end
   }
 
@@ -41,7 +58,7 @@ return require('packer').startup(function(use)
   }
 
   -- highlight cursor movement
-  use 'DanilaMihailov/beacon.nvim'
+  -- use 'DanilaMihailov/beacon.nvim'
 
   -- status bar
   use {
@@ -92,32 +109,32 @@ return require('packer').startup(function(use)
     end
   }
 
-   -- linting and more
-   use {
-     'jose-elias-alvarez/null-ls.nvim',
-     requires = { { 'nvim-lua/plenary.nvim' } },
-     config = function()
-       require('config/null-ls')
-     end
-   }
+  -- linting and more
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    requires = { { 'nvim-lua/plenary.nvim' } },
+    config = function()
+      require('config/null-ls')
+    end
+  }
 
-   -- fancy scrollbar with errors/warning markers
-   use {
-     'petertriho/nvim-scrollbar',
-     config = function()
-       require('scrollbar').setup()
-     end
-   }
+  -- fancy scrollbar with errors/warning markers
+  use {
+    'petertriho/nvim-scrollbar',
+    config = function()
+      require('scrollbar').setup()
+    end
+  }
 
   use {
     'TimUntersberger/neogit',
-     requires = { 'nvim-lua/plenary.nvim' },
-     config = function()
-       require('config/neogit')
-     end
-   }
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('config/neogit')
+    end
+  }
 
-  use { 'mg979/vim-visual-multi' }
+  -- use { 'mg979/vim-visual-multi' }
 
   use {
     'lukas-reineke/indent-blankline.nvim',
@@ -133,12 +150,12 @@ return require('packer').startup(function(use)
     end
   }
 
-  use {
-    'ggandor/leap.nvim',
-    config = function()
-      require('leap').set_default_keymaps()
-    end
-  }
+  -- use {
+  --   'ggandor/leap.nvim',
+  --   config = function()
+  --     require('leap').set_default_keymaps()
+  --   end
+  -- }
 
   -- swiss army knife, see config to see which modules are enabled
   use {
@@ -153,6 +170,17 @@ return require('packer').startup(function(use)
     config = function()
       require('config/nvim-notify')
     end
+  }
+
+  use {
+    'windwp/nvim-autopairs',
+    config = function()
+      require('nvim-autopairs').setup {}
+    end
+  }
+
+  use {
+    'arkav/lualine-lsp-progress',
   }
 
   -- Automatically set up your configuration after cloning packer.nvim

@@ -5,7 +5,7 @@ vim.g.gitblame_display_virtual_text = 0
 vim.g.gitblame_date_format = '%r'
 
 require('lualine').setup({
-  options = { theme = 'sonokai' },
+  options = { theme = 'auto' },
   sections = {
     lualine_a = { 'mode' },
     lualine_b = { 'branch', 'diff', { 'diagnostics', colored = false } },
@@ -29,14 +29,15 @@ require('lualine').setup({
     lualine_z = {}
   },
   tabline = {
-    lualine_a = {
+    lualine_a = { 'lsp_progress' } ,
+    lualine_z = {
       {
         'filename',
         file_status = true,
         path = 1 -- 0 = just filename, 1 = relative path, 2 = absolute path
       }
     },
-    lualine_z = { 'buffers' }
+    -- lualine_z = { 'buffers' }
   },
-  extensions = { 'nvim-tree', 'toggleterm' }
+  extensions = { 'nvim-tree' }
 })
