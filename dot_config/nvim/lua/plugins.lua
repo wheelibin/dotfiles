@@ -12,6 +12,11 @@ return require('packer').startup(function(use)
   -- packer itself
   use 'wbthomason/packer.nvim'
 
+  -- Speed up loading Lua modules in Neovim to improve startup time
+  use {
+    'lewis6991/impatient.nvim'
+  }
+
   -- key mapping legend and discovery
   use {
     'mrjones2014/legendary.nvim',
@@ -72,7 +77,12 @@ return require('packer').startup(function(use)
   -- find files (fuzzy search/grep)
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { { 'nvim-lua/plenary.nvim' }, { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' } },
+    requires = {
+      { 'nvim-lua/plenary.nvim' },
+      { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+      { 'nvim-telescope/telescope-frecency.nvim' },
+      {'kkharji/sqlite.lua'}
+    },
     config = function()
       require('config/telescope')
     end
@@ -81,7 +91,7 @@ return require('packer').startup(function(use)
   -- some language configs for the built-in language server
   use {
     'neovim/nvim-lspconfig',
-    requires = { 'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim' },
+    requires = { 'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim', 'lvimuser/lsp-inlayhints.nvim' },
     config = function()
       require('config/lspconfig')
     end
@@ -134,8 +144,6 @@ return require('packer').startup(function(use)
     end
   }
 
-  -- use { 'mg979/vim-visual-multi' }
-
   use {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
@@ -149,13 +157,6 @@ return require('packer').startup(function(use)
       require('config/gitsigns')
     end
   }
-
-  -- use {
-  --   'ggandor/leap.nvim',
-  --   config = function()
-  --     require('leap').set_default_keymaps()
-  --   end
-  -- }
 
   -- swiss army knife, see config to see which modules are enabled
   use {
@@ -181,6 +182,30 @@ return require('packer').startup(function(use)
 
   use {
     'arkav/lualine-lsp-progress',
+  }
+
+  use {
+    'ethanholz/nvim-lastplace'
+  }
+
+  -- Lua
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+
+  use {
+    'levouh/tint.nvim',
+    config = function()
+      require('tint').setup()
+    end
   }
 
   -- Automatically set up your configuration after cloning packer.nvim

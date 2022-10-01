@@ -54,18 +54,20 @@ local on_attach = function(client, bufnr)
     }
   })
 
+  require('lsp-inlayhints').on_attach(client, bufnr)
+
   require('lsp_signature').on_attach({
     bind = true,
     hint_enable = false,
     timer_interval = 100
   })
 
+
 end
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
 
 require("mason").setup()
 require("mason-lspconfig").setup({
@@ -83,19 +85,32 @@ lspconfig.sumneko_lua.setup({
   settings = { Lua = { diagnostics = { globals = { 'vim' } } } }
 })
 
--- require("mason").setup({
---   ui = {
---     icons = {
---       package_installed = "✓",
---       package_pending = "➜",
---       package_uninstalled = "✗"
---     }
---   }
--- })
--- require("mason-lspconfig").setup({
---   automatic_installation = true
--- })
-
+lspconfig.tsserver.setup({
+  settings = {
+    typescript = {
+      inlayHints = {
+        includeInlayParameterNameHints = 'all',
+        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayVariableTypeHints = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayEnumMemberValueHints = true,
+      }
+    },
+    javascript = {
+      inlayHints = {
+        includeInlayParameterNameHints = 'all',
+        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayVariableTypeHints = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayEnumMemberValueHints = true,
+      }
+    }
+  }
+})
 
 local sign = function(opts)
   vim.fn.sign_define(opts.name,

@@ -7,10 +7,9 @@ null_ls.setup({
     null_ls.builtins.diagnostics.eslint_d.with({
       method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
     }),
-    null_ls.builtins.diagnostics.tsc.with({
-      method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
-    }),
+    null_ls.builtins.diagnostics.tsc,
     null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.code_actions.gitsigns
   },
   on_attach = function(client, bufnr)
     if client.supports_method('textDocument/formatting') then

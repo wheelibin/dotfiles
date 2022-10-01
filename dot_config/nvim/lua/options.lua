@@ -41,3 +41,5 @@ opt.mouse = 'a'
 opt.scrolloff = 4
 
 opt.cursorline = true
+
+opt.swapfile = false

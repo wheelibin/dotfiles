@@ -4,8 +4,14 @@ vim.g.gitblame_enable = 1
 vim.g.gitblame_display_virtual_text = 0
 vim.g.gitblame_date_format = '%r'
 
-require('lualine').setup({
-  options = { theme = 'auto' },
+
+local config = {
+  options = { 
+    theme = 'auto',
+    refresh = {
+      tabline = 500,
+    }
+  },
   sections = {
     lualine_a = { 'mode' },
     lualine_b = { 'branch', 'diff', { 'diagnostics', colored = false } },
@@ -29,7 +35,7 @@ require('lualine').setup({
     lualine_z = {}
   },
   tabline = {
-    lualine_a = { 'lsp_progress' } ,
+    lualine_a = {},
     lualine_z = {
       {
         'filename',
@@ -40,4 +46,35 @@ require('lualine').setup({
     -- lualine_z = { 'buffers' }
   },
   extensions = { 'nvim-tree' }
-})
+}
+
+local lsp_progress_comp = {
+  'lsp_progress',
+  -- display_components = { 'lsp_client_name', { 'title', 'percentage', 'message' }},
+  -- With spinner
+  display_components = { 'lsp_client_name', 'spinner', { 'title', 'percentage' } },
+  -- colors = {
+  --   percentage      = colors.cyan,
+  --   title           = colors.cyan,
+  --   message         = colors.cyan,
+  --   spinner         = colors.cyan,
+  --   lsp_client_name = colors.magenta,
+  --   use             = true,
+  -- },
+  separators = {
+    -- component = ' ',
+    -- progress = ' | ',
+    message = { pre = '(', post = ')', commenced = '', completed = 'Done' },
+    -- percentage = { pre = '', post = '%% ' },
+    -- title = { pre = '', post = ': ' },
+    -- lsp_client_name = { pre = '[', post = ']' },
+    -- spinner = { pre = '', post = '' },
+  },
+  timer = { progress_enddelay = 10, spinner = 500, lsp_client_name_enddelay = 10 },
+  -- spinner_symbols = { '◐', '◓', '◑', '◒' }
+  spinner_symbols = { '◡◡', '⊙⊙', '◠◠', '◡◡', '⊙⊙', '◠◠' },
+  color= 'Todo'
+}
+table.insert(config.tabline.lualine_a, lsp_progress_comp)
+
+require('lualine').setup(config)
