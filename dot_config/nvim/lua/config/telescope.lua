@@ -53,6 +53,7 @@ telescope.setup {
 
 telescope.load_extension('fzf')
 telescope.load_extension('frecency')
+telescope.load_extension('coc')
 
 local legendary = require('legendary')
 local helpers = require('legendary.helpers')
@@ -61,13 +62,12 @@ legendary.bind_keymaps({
   { '<leader>ff', builtin.find_files, description = 'Find files' },
   { '<leader>fg', builtin.live_grep, description = 'Find text (grep)' },
   { '<leader>fb', builtin.buffers, description = 'Find buffers' },
-  { '<leader>fr', helpers.lazy(builtin.lsp_references, { layout_strategy = 'vertical' }),
-    description = 'Find references (LSP)' },
+  { '<leader>fr', ':Telescope coc references<cr>', description = 'Find references (LSP)' },
   { '<leader>fe', helpers.lazy(builtin.diagnostics, { layout_strategy = 'vertical' }),
     description = 'Find errors (diagnostics) (LSP)' },
-  { '<leader>fs', builtin.lsp_dynamic_workspace_symbols, description = 'Find symbols (LSP)' },
+  { '<leader>fs', ':Telescope coc workspace_symbols<cr>', description = 'Find symbols (LSP)' },
   { '<leader>fi', builtin.lsp_implementations, description = 'Find implementation(s) (LSP)' },
-  { '<leader>fd', builtin.lsp_definitions, description = 'Find definition(s) (LSP)' },
+  { '<leader>fd', ':Telescope coc definitions<cr>', description = 'Find definition(s) (LSP)' },
   { '<leader>fh', builtin.git_bcommits, description = 'File History (git)' },
   { '<leader>fw', helpers.lazy(builtin.grep_string, { word_match = '-w' }), description = 'Find word under cursor' },
   { '<leader>tr', builtin.resume, description = 'Telescope Resume'}

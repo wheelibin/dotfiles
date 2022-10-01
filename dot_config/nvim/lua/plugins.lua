@@ -81,6 +81,7 @@ return require('packer').startup(function(use)
       { 'nvim-lua/plenary.nvim' },
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
       { 'nvim-telescope/telescope-frecency.nvim' },
+      { 'fannheyward/telescope-coc.nvim'},
       {'kkharji/sqlite.lua'}
     },
     config = function()
@@ -88,27 +89,27 @@ return require('packer').startup(function(use)
     end
   }
 
-  -- some language configs for the built-in language server
-  use {
-    'neovim/nvim-lspconfig',
-    requires = { 'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim', 'lvimuser/lsp-inlayhints.nvim' },
-    config = function()
-      require('config/lspconfig')
-    end
-  }
-
-  -- Autocompletion plugin
-  use {
-    'hrsh7th/nvim-cmp',
-    requires = {
-      'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-path', 'hrsh7th/cmp-cmdline', 'hrsh7th/cmp-vsnip',
-      'hrsh7th/vim-vsnip', 'hrsh7th/cmp-nvim-lsp-document-symbol', 'ray-x/lsp_signature.nvim',
-      'rafamadriz/friendly-snippets'
-    },
-    config = function()
-      require('config/nvim-cmp')
-    end
-  }
+  -- -- some language configs for the built-in language server
+  -- use {
+  --   'neovim/nvim-lspconfig',
+  --   requires = { 'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim', 'lvimuser/lsp-inlayhints.nvim' },
+  --   config = function()
+  --     require('config/lspconfig')
+  --   end
+  -- }
+  --
+  -- -- Autocompletion plugin
+  -- use {
+  --   'hrsh7th/nvim-cmp',
+  --   requires = {
+  --     'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-path', 'hrsh7th/cmp-cmdline', 'hrsh7th/cmp-vsnip',
+  --     'hrsh7th/vim-vsnip', 'hrsh7th/cmp-nvim-lsp-document-symbol', 'ray-x/lsp_signature.nvim',
+  --     'rafamadriz/friendly-snippets'
+  --   },
+  --   config = function()
+  --     require('config/nvim-cmp')
+  --   end
+  -- }
 
   -- better syntax highlighting
   use {
@@ -119,14 +120,14 @@ return require('packer').startup(function(use)
     end
   }
 
-  -- linting and more
-  use {
-    'jose-elias-alvarez/null-ls.nvim',
-    requires = { { 'nvim-lua/plenary.nvim' } },
-    config = function()
-      require('config/null-ls')
-    end
-  }
+  -- -- linting and more
+  -- use {
+  --   'jose-elias-alvarez/null-ls.nvim',
+  --   requires = { { 'nvim-lua/plenary.nvim' } },
+  --   config = function()
+  --     require('config/null-ls')
+  --   end
+  -- }
 
   -- fancy scrollbar with errors/warning markers
   use {
@@ -205,6 +206,14 @@ return require('packer').startup(function(use)
     'levouh/tint.nvim',
     config = function()
       require('tint').setup()
+    end
+  }
+
+  use {
+    'neoclide/coc.nvim',
+    branch = 'release',
+    config = function()
+      require('config/coc')
     end
   }
 
