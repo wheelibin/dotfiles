@@ -15,5 +15,30 @@
     "typescript",
     "typescriptreact"
   ],
-  "Lua.telemetry.enable": false
+  "Lua.telemetry.enable": false,
+  "suggest.floatConfig": {
+    "border": true,
+    "rounded": true,
+    "highlight":"StatusLine",
+    "borderhighlight": "DiagnosticHint"
+  },
+  "signature.floatConfig": {
+    "border": true,
+    "rounded": true,
+    "highlight":"StatusLine",
+    "borderhighlight": "DiagnosticHint"
+  },
+  "hover.floatConfig": {
+    "border": true,
+    "rounded": true,
+    "highlight":"StatusLine",
+    "borderhighlight": "DiagnosticInfo"
+  },
+"diagnostic.floatConfig": {
+    "border": true,
+    "rounded": true,
+    "highlight":"StatusLine",
+    "borderhighlight": "DiagnosticWarn"
+  }
+  
 }
