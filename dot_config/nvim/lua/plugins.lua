@@ -81,8 +81,8 @@ return require('packer').startup(function(use)
       { 'nvim-lua/plenary.nvim' },
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
       { 'nvim-telescope/telescope-frecency.nvim' },
-      { 'fannheyward/telescope-coc.nvim'},
-      {'kkharji/sqlite.lua'}
+      { 'fannheyward/telescope-coc.nvim' },
+      { 'kkharji/sqlite.lua' }
     },
     config = function()
       require('config/telescope')
@@ -119,6 +119,15 @@ return require('packer').startup(function(use)
       require('config/treesitter')
     end
   }
+
+  use {
+    'neoclide/coc.nvim',
+    branch = 'release',
+    config = function()
+      require('config/coc')
+    end
+  }
+
 
   -- -- linting and more
   -- use {
@@ -189,18 +198,18 @@ return require('packer').startup(function(use)
     'ethanholz/nvim-lastplace'
   }
 
-  -- Lua
-  use {
-    "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
-    config = function()
-      require("trouble").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
-    end
-  }
+  -- -- Lua
+  -- use {
+  --   "folke/trouble.nvim",
+  --   requires = "kyazdani42/nvim-web-devicons",
+  --   config = function()
+  --     require("trouble").setup {
+  --       -- your configuration comes here
+  --       -- or leave it empty to use the default settings
+  --       -- refer to the configuration section below
+  --     }
+  --   end
+  -- }
 
   use {
     'levouh/tint.nvim',
@@ -209,13 +218,6 @@ return require('packer').startup(function(use)
     end
   }
 
-  use {
-    'neoclide/coc.nvim',
-    branch = 'release',
-    config = function()
-      require('config/coc')
-    end
-  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

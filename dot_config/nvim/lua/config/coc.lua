@@ -1,14 +1,21 @@
 local legendary = require('legendary')
 
 vim.g.coc_global_extensions = {
-  'coc-tsserver',
-  'coc-json',
-  'coc-html',
   'coc-css',
-  'coc-prettier',
   'coc-eslint',
+  'coc-html',
+  'coc-json',
+  'coc-lists',
+  'coc-markdownlint',
+  'coc-pairs',
+  'coc-prettier',
+  'coc-pyright',
+  'coc-snippets',
+  'coc-stylua',
   'coc-sumneko-lua',
-  'coc-pairs'
+  'coc-swagger',
+  'coc-tsserver',
+  'coc-yaml',
 }
 
 local expr_opts = { silent = true, expr = true, noremap = true }
@@ -20,21 +27,22 @@ legendary.bind_keymaps({
   },
   { '[d', "<Plug>(coc-diagnostic-prev)", description = 'Prev Diagnostics message' },
   { ']d', "<Plug>(coc-diagnostic-next)", description = 'Next Diagnostics message' },
-  { '<cr>', [[pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"]], mode = 'i', opts = expr_opts},
-  { '<Tab>', [[pumvisible() ? coc#pum#next(1) : "\<Tab>"]], mode='i', opts = expr_opts },
-  { '<S-Tab>', [[pumvisible() ? coc#pum#prev(1) : "\<S-Tab>"]], mode='i', opts = expr_opts},
+  { '<Tab>', [[pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"]], mode = 'i', opts = expr_opts },
+  -- { '<Tab>', [[pumvisible() ? coc#pum#next(1) : "\<Tab>"]], mode = 'i', opts = expr_opts },
+  -- { '<S-Tab>', [[pumvisible() ? coc#pum#prev(1) : "\<S-Tab>"]], mode = 'i', opts = expr_opts },
+  { '<CR>', [[pumvisible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], mode = 'i', opts = expr_opts },
 
   -- trigger completion
-  { '<C-space>', [[coc#refresh()]], mode = 'i', opts = expr_opts},
+  { '<C-space>', [[coc#refresh()]], mode = 'i', opts = expr_opts },
 
   -- code navigation
-  { 'gd', "<Plug>(coc-definition)"},
-  { 'gs', ":call CocAction('jumpDefinition', 'vsplit') <CR>"},
-  { 'gi', "<Plug>(coc-definition)"},
-  { 'gd', "<Plug>(coc-implementation)"},
-  { 'gr', "<Plug>(coc-references)"},
-  { '<leader>ca', '<Plug>(coc-codeaction)'}
-
+  { 'gd', "<Plug>(coc-definition)" },
+  { 'gs', ":call CocAction('jumpDefinition', 'vsplit') <CR>" },
+  { 'gd', "<Plug>(coc-definition)" },
+  { 'gi', "<Plug>(coc-implementation)" },
+  { 'gr', "<Plug>(coc-references)" },
+  { '<leader>ca', '<Plug>(coc-codeaction)' },
+  { '<leader>f', ':call CocAction("format") <CR>' }
 })
 
 -- AutoCmds
@@ -46,12 +54,3 @@ local set_colours = function()
   vim.cmd("hi! link CocSearch DiagnosticHint")
 end
 vim.api.nvim_create_autocmd("ColorScheme", { pattern = '*', callback = set_colours })
-
--- highlight overrides
--- autocmd ColorScheme * call Highlight()
---
--- function! Highlight() abort
---   hi Conceal ctermfg=239 guifg=#504945
---   hi CocSearch ctermfg=12 guifg=#18A3FF
--- endfunction
---
