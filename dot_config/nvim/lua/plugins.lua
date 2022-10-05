@@ -190,9 +190,9 @@ return require('packer').startup(function(use)
   --   -- end
   -- }
 
-  use {
-    'arkav/lualine-lsp-progress',
-  }
+  -- use {
+  --   'arkav/lualine-lsp-progress',
+  -- }
 
   use {
     'ethanholz/nvim-lastplace'
