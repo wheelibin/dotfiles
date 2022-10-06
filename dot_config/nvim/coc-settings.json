@@ -1,5 +1,5 @@
 {
-    "coc.preferences.formatOnSaveFiletypes": [
+  "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "javascriptreact",
     "typescript",
@@ -9,36 +9,38 @@
   "coc.preferences.formatOnType": true,
 
   "eslint.autoFixOnSave": true,
-  "eslint.filetypes": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
+  "eslint.options": {
+    "filetypes": [
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact"
+    ]
+  },
   "Lua.telemetry.enable": false,
   "suggest.floatConfig": {
     "border": true,
     "rounded": true,
-    "highlight":"StatusLine",
+    "highlight": "StatusLine",
     "borderhighlight": "DiagnosticHint"
   },
   "signature.floatConfig": {
     "border": true,
     "rounded": true,
-    "highlight":"StatusLine",
+    "highlight": "StatusLine",
     "borderhighlight": "DiagnosticHint"
   },
   "hover.floatConfig": {
     "border": true,
     "rounded": true,
-    "highlight":"StatusLine",
+    "highlight": "StatusLine",
     "borderhighlight": "DiagnosticInfo"
   },
-"diagnostic.floatConfig": {
+  "diagnostic.floatConfig": {
     "border": true,
     "rounded": true,
-    "highlight":"StatusLine",
+    "highlight": "StatusLine",
     "borderhighlight": "DiagnosticWarn"
-  }
-  
+  },
+  "snippets.ultisnips.enable": false
 }
