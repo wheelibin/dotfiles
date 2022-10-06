@@ -1,5 +1,9 @@
 local legendary = require('legendary')
 
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0
+
 vim.g.coc_global_extensions = {
   'coc-css',
   'coc-eslint',
@@ -27,9 +31,9 @@ legendary.bind_keymaps({
   },
   { '[d', "<Plug>(coc-diagnostic-prev)", description = 'Prev Diagnostics message' },
   { ']d', "<Plug>(coc-diagnostic-next)", description = 'Next Diagnostics message' },
-  -- { '<Tab>', [[pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"]], mode = 'i', opts = expr_opts },
-  { '<Tab>', [[pumvisible() ? coc#pum#next(1) : "\<Tab>"]], mode = 'i', opts = expr_opts },
-  { '<S-Tab>', [[pumvisible() ? coc#pum#prev(1) : "\<S-Tab>"]], mode = 'i', opts = expr_opts },
+  { '<Tab>', [[pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"]], mode = 'i', opts = expr_opts },
+  -- { '<Tab>', [[pumvisible() ? coc#pum#next(1) : "\<Tab>"]], mode = 'i', opts = expr_opts },
+  -- { '<S-Tab>', [[pumvisible() ? coc#pum#prev(1) : "\<S-Tab>"]], mode = 'i', opts = expr_opts },
   { '<CR>', [[pumvisible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], mode = 'i', opts = expr_opts },
 
   -- trigger completion
@@ -41,8 +45,19 @@ legendary.bind_keymaps({
   { 'gd', "<Plug>(coc-definition)" },
   { 'gi', "<Plug>(coc-implementation)" },
   { 'gr', "<Plug>(coc-references)" },
+
+  -- code action(s) for buffer
   { '<leader>ca', '<Plug>(coc-codeaction)' },
-  { '<leader>f', ':call CocAction("format") <CR>' }
+
+  -- format
+  { '<leader>f', ':call CocAction("format") <CR>' },
+
+  -- Apply AutoFix to problem on the current line.
+  { '<leader>af', "<Plug>(coc-fix-current)" },
+
+  -- Run the Code Lens action on the current line.
+  { '<leader>cl', "<Plug>(coc-codelens-action)" },
+
 })
 
 -- AutoCmds
@@ -55,6 +70,6 @@ local set_colours = function()
   vim.cmd("hi! link DiffAdd GitSignsAdd")
   vim.cmd("hi! link DiffChange GitSignsChange")
   vim.cmd("hi! link DiffDelete GitSignsDelete")
-  
+
 end
 vim.api.nvim_create_autocmd("ColorScheme", { pattern = '*', callback = set_colours })
