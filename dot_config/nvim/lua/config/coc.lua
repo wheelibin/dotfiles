@@ -67,6 +67,7 @@ vim.api.nvim_create_autocmd("CursorHold", { pattern = '*', command = [[call CocA
 -- override some highlight groups
 local set_colours = function()
   vim.cmd("hi! link CocSearch DiagnosticHint")
+  vim.cmd("hi! link CocHighlightText Underlined")
   vim.cmd("hi! link DiffAdd GitSignsAdd")
   vim.cmd("hi! link DiffChange GitSignsChange")
   vim.cmd("hi! link DiffDelete GitSignsDelete")
