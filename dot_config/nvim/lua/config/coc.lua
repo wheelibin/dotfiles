@@ -58,6 +58,7 @@ legendary.bind_keymaps({
   -- Run the Code Lens action on the current line.
   { '<leader>cl', "<Plug>(coc-codelens-action)" },
 
+  { '<leader>rn', '<Plug>(coc-rename)' }
 })
 
 -- AutoCmds
