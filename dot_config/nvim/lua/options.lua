@@ -13,6 +13,7 @@ opt.undofile = true
 
 -- line numbers
 opt.number = true
+opt.relativenumber = true
 
 -- search flags
 opt.ignorecase = true
@@ -43,7 +44,3 @@ opt.scrolloff = 4
 opt.cursorline = true
 
 opt.swapfile = false
-
-
-
-

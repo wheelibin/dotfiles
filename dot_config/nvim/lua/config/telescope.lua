@@ -37,12 +37,10 @@ telescope.setup {
           ["<M-r>"] = function(bufnr)
             local action_state = require "telescope.actions.state"
             local find_string = action_state.get_current_line()
-            find_string = find_string:gsub('%/', '\\/')
             vim.ui.input({ prompt = "Replace string " .. find_string }, function(replace_string)
-              replace_string = replace_string:gsub('%/', '\\/')
               actions.send_selected_to_qflist(bufnr)
               actions.open_qflist(bufnr)
-              vim.cmd('cdo s/' .. find_string .. '/' .. replace_string .. '/gc')
+              vim.cmd('cdo s%' .. find_string .. '%' .. replace_string .. '%gc')
             end)
           end
         }
@@ -63,12 +61,11 @@ legendary.bind_keymaps({
   { '<leader>fg', builtin.live_grep, description = 'Find text (grep)' },
   { '<leader>fb', builtin.buffers, description = 'Find buffers' },
   { '<leader>fr', ':Telescope coc references<cr>', description = 'Find references (LSP)' },
-  { '<leader>fe', helpers.lazy(builtin.diagnostics, { layout_strategy = 'vertical' }),
-    description = 'Find errors (diagnostics) (LSP)' },
+  { '<leader>fe', ':Telescope coc workspace_diagnostics<cr>', description = 'Find errors (diagnostics) (LSP)' },
   { '<leader>fs', ':Telescope coc workspace_symbols<cr>', description = 'Find symbols (LSP)' },
   { '<leader>fi', builtin.lsp_implementations, description = 'Find implementation(s) (LSP)' },
   { '<leader>fd', ':Telescope coc definitions<cr>', description = 'Find definition(s) (LSP)' },
   { '<leader>fh', builtin.git_bcommits, description = 'File History (git)' },
   { '<leader>fw', helpers.lazy(builtin.grep_string, { word_match = '-w' }), description = 'Find word under cursor' },
-  { '<leader>tr', builtin.resume, description = 'Telescope Resume'}
+  { '<leader>tr', builtin.resume, description = 'Telescope Resume' }
 })

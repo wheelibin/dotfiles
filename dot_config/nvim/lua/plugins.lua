@@ -26,24 +26,6 @@ return require('packer').startup(function(use)
     end
   }
 
-  -- themes
-  -- use {
-  --   'sainnhe/sonokai',
-  --   config = function()
-  --     vim.g.sonokai_style = 'atlantis'
-  --     vim.g.sonokai_better_performance = 1
-  --     vim.cmd('colorscheme sonokai')
-  --   end
-  -- }
-
-  -- use {
-  --   'sainnhe/everforest',
-  --   rtp = 'vim' ,
-  --   config = function()
-  --     vim.cmd('colorscheme everforest')
-  --   end
-  -- }
-
   use {
     'catppuccin/nvim',
     as = 'catppuccin',
@@ -63,7 +45,7 @@ return require('packer').startup(function(use)
   }
 
   -- highlight cursor movement
-  -- use 'DanilaMihailov/beacon.nvim'
+  use 'DanilaMihailov/beacon.nvim'
 
   -- status bar
   use {
@@ -110,6 +92,29 @@ return require('packer').startup(function(use)
   --     require('config/nvim-cmp')
   --   end
   -- }
+  -- -- linting and more
+  -- use {
+  --   'jose-elias-alvarez/null-ls.nvim',
+  --   requires = { { 'nvim-lua/plenary.nvim' } },
+  --   config = function()
+  --     require('config/null-ls')
+  --   end
+  -- }
+  -- use {
+  --   "folke/trouble.nvim",
+  --   requires = "kyazdani42/nvim-web-devicons",
+  --   config = function()
+  --     require("trouble").setup {
+  --       -- your configuration comes here
+  --       -- or leave it empty to use the default settings
+  --       -- refer to the configuration section below
+  --     }
+  --   end
+  -- }
+  -- use {
+  --   'arkav/lualine-lsp-progress',
+  -- }
+
 
   -- better syntax highlighting
   use {
@@ -127,16 +132,6 @@ return require('packer').startup(function(use)
       require('config/coc')
     end
   }
-
-
-  -- -- linting and more
-  -- use {
-  --   'jose-elias-alvarez/null-ls.nvim',
-  --   requires = { { 'nvim-lua/plenary.nvim' } },
-  --   config = function()
-  --     require('config/null-ls')
-  --   end
-  -- }
 
   -- fancy scrollbar with errors/warning markers
   use {
@@ -190,26 +185,10 @@ return require('packer').startup(function(use)
   --   -- end
   -- }
 
-  -- use {
-  --   'arkav/lualine-lsp-progress',
-  -- }
 
   use {
     'ethanholz/nvim-lastplace'
   }
-
-  -- -- Lua
-  -- use {
-  --   "folke/trouble.nvim",
-  --   requires = "kyazdani42/nvim-web-devicons",
-  --   config = function()
-  --     require("trouble").setup {
-  --       -- your configuration comes here
-  --       -- or leave it empty to use the default settings
-  --       -- refer to the configuration section below
-  --     }
-  --   end
-  -- }
 
   use {
     'levouh/tint.nvim',
@@ -218,6 +197,35 @@ return require('packer').startup(function(use)
     end
   }
 
+  -- use {
+  --   'gennaro-tedesco/nvim-peekup'
+  -- }
+
+
+  -- use({
+  --   "folke/noice.nvim",
+  --   event = "VimEnter",
+  --   config = function()
+  --     require("noice").setup()
+  --   end,
+  --   requires = {
+  --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+  --     "MunifTanjim/nui.nvim",
+  --     "rcarriga/nvim-notify",
+  --   }
+  -- })
+
+  -- -- Lua
+  -- use {
+  --   "folke/zen-mode.nvim",
+  --   config = function()
+  --     require("zen-mode").setup {
+  --       -- your configuration comes here
+  --       -- or leave it empty to use the default settings
+  --       -- refer to the configuration section below
+  --     }
+  --   end
+  -- }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

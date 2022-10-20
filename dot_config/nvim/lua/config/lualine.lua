@@ -4,6 +4,9 @@ vim.g.gitblame_enable = 1
 vim.g.gitblame_display_virtual_text = 0
 vim.g.gitblame_date_format = '%r'
 
+local function get_current_dir()
+  return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+end
 
 local config = {
   options = {
@@ -47,7 +50,7 @@ local config = {
     lualine_z = {}
   },
   tabline = {
-    lualine_a = {},
+    lualine_a = { get_current_dir },
     lualine_z = {
       {
         'filename',

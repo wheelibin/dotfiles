@@ -31,6 +31,7 @@ legendary.bind_keymaps({
   { '<Leader>P', '"+P', description = 'Paste from system clipboard (before)' }, --
   -- move lines
   { '<C-j>', { n = ':m .+1<CR>==', i = '<Esc>:m .+1<CR>==gi', v = ':m \'>+1<CR>gv=gv' }, description = 'Move line down' },
-  { '<C-k>', { n = ':m .-2<CR>==', i = '<Esc>:m .-2<CR>==gi', v = ':m \'<-2<CR>gv=gv' }, description = 'Move line up' }
+  { '<C-k>', { n = ':m .-2<CR>==', i = '<Esc>:m .-2<CR>==gi', v = ':m \'<-2<CR>gv=gv' }, description = 'Move line up' },
 
+  { '<leader><leader>', ':noh<CR>', description = 'Clear search highlighting' }
 })
