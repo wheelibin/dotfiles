@@ -5,7 +5,11 @@ vim.g.gitblame_display_virtual_text = 0
 vim.g.gitblame_date_format = '%r'
 
 local function get_current_dir()
-  return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+  return '📂 ' .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+end
+
+local function format_filename(str)
+  return '📄 ' .. str
 end
 
 local config = {
@@ -13,7 +17,8 @@ local config = {
     theme = 'auto',
     refresh = {
       tabline = 500,
-    }
+    },
+    -- globalstatus = true
   },
   sections = {
     lualine_a = { 'mode' },
@@ -55,7 +60,8 @@ local config = {
       {
         'filename',
         file_status = true,
-        path = 1 -- 0 = just filename, 1 = relative path, 2 = absolute path
+        path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
+        fmt = format_filename
       }
     },
     -- lualine_z = { 'buffers' }

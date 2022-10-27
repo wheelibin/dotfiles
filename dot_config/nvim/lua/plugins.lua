@@ -1,4 +1,4 @@
--- auto install the package manager on first use
+--auto install the package manager on first use
 local packer_installed = false
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
@@ -197,10 +197,9 @@ return require('packer').startup(function(use)
     end
   }
 
-  -- use {
-  --   'gennaro-tedesco/nvim-peekup'
-  -- }
-
+  use {
+    'gennaro-tedesco/nvim-peekup'
+  }
 
   -- use({
   --   "folke/noice.nvim",
@@ -215,17 +214,21 @@ return require('packer').startup(function(use)
   --   }
   -- })
 
-  -- -- Lua
-  -- use {
-  --   "folke/zen-mode.nvim",
-  --   config = function()
-  --     require("zen-mode").setup {
-  --       -- your configuration comes here
-  --       -- or leave it empty to use the default settings
-  --       -- refer to the configuration section below
-  --     }
-  --   end
-  -- }
+  use({
+    'mvllow/modes.nvim',
+    tag = 'v0.2.0',
+    config = function()
+      require('modes').setup()
+    end
+  })
+
+  use {
+    'ggandor/leap.nvim',
+    config = function()
+      require('config/leap')
+    end
+  }
+
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
