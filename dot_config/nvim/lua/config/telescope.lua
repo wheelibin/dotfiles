@@ -1,6 +1,19 @@
 local telescope = require('telescope')
 local builtin = require('telescope.builtin')
 local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
+
+local function delete_others(bufnr)
+  local current_picker = action_state.get_current_picker(bufnr)
+
+  local selected = current_picker:get_selection_row()
+  -- select all buffers
+  actions.select_all(bufnr)
+  -- deselect the current row
+  current_picker:toggle_selection(selected)
+  -- delete selected buffers
+  actions.delete_buffer(bufnr)
+end
 
 telescope.setup {
   defaults = {
@@ -25,6 +38,8 @@ telescope.setup {
         i = {
           -- close the selected buffer directly from the picker
           ["<M-x>"] = "delete_buffer",
+          -- close all buffers except the currently highlighted row
+          ["<M-X>"] = delete_others,
         }
       }
     },
@@ -35,7 +50,6 @@ telescope.setup {
       mappings = {
         i = {
           ["<M-r>"] = function(bufnr)
-            local action_state = require "telescope.actions.state"
             local find_string = action_state.get_current_line()
             vim.ui.input({ prompt = "Replace string " .. find_string }, function(replace_string)
               actions.send_selected_to_qflist(bufnr)
