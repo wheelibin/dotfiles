@@ -31,9 +31,9 @@ legendary.bind_keymaps({
   },
   { '[d', "<Plug>(coc-diagnostic-prev)", description = 'Prev Diagnostics message' },
   { ']d', "<Plug>(coc-diagnostic-next)", description = 'Next Diagnostics message' },
-  { '<Tab>', [[pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"]], mode = 'i', opts = expr_opts },
-  -- { '<Tab>', [[pumvisible() ? coc#pum#next(1) : "\<Tab>"]], mode = 'i', opts = expr_opts },
-  -- { '<S-Tab>', [[pumvisible() ? coc#pum#prev(1) : "\<S-Tab>"]], mode = 'i', opts = expr_opts },
+  -- { '<Tab>', [[pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"]], mode = 'i', opts = expr_opts },
+  { '<Tab>', [[pumvisible() ? coc#pum#next(1) : "\<Tab>"]], mode = 'i', opts = expr_opts },
+  { '<S-Tab>', [[pumvisible() ? coc#pum#prev(1) : "\<S-Tab>"]], mode = 'i', opts = expr_opts },
   { '<CR>', [[pumvisible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], mode = 'i', opts = expr_opts },
 
   -- trigger completion

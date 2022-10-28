@@ -57,10 +57,10 @@ local legendary = require('legendary')
 local helpers = require('legendary.helpers')
 
 legendary.bind_keymaps({
-  { '<leader>ff', builtin.find_files, description = 'Find files' },
+  { '<leader>ff', helpers.lazy(builtin.find_files, { path_display = { 'truncate' } }), description = 'Find files' },
   { '<leader>fg', builtin.live_grep, description = 'Find text (grep)' },
   { '<leader>fb', builtin.buffers, description = 'Find buffers' },
-  { '<leader>fr', ':Telescope coc references<cr>', description = 'Find references (LSP)' },
+  { '<leader>fr', ':Telescope coc references path_display={"tail"}<cr>', description = 'Find references (LSP)' },
   { '<leader>fe', ':Telescope coc workspace_diagnostics<cr>', description = 'Find errors (diagnostics) (LSP)' },
   { '<leader>fs', ':Telescope coc workspace_symbols<cr>', description = 'Find symbols (LSP)' },
   { '<leader>fi', builtin.lsp_implementations, description = 'Find implementation(s) (LSP)' },
