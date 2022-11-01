@@ -82,6 +82,7 @@ legendary.bind_keymaps({
   { '<leader>fi', builtin.lsp_implementations, description = 'Find implementation(s) (LSP)' },
   { '<leader>fd', ':Telescope coc definitions<cr>', description = 'Find definition(s) (LSP)' },
   { '<leader>fh', builtin.git_bcommits, description = 'File History (git)' },
-  { '<leader>fw', helpers.lazy(builtin.grep_string, { word_match = '-w' }), description = 'Find word under cursor' },
+  { '<leader>fw', helpers.lazy(builtin.grep_string, { word_match = '-w', path_display = { 'truncate' } }),
+    description = 'Find word under cursor' },
   { '<leader>tr', builtin.resume, description = 'Telescope Resume' }
 })
