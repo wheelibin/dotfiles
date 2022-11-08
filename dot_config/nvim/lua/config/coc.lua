@@ -9,6 +9,7 @@ vim.g.coc_global_extensions = {
   'coc-eslint',
   'coc-html',
   'coc-json',
+  'coc-go',
   'coc-lists',
   'coc-markdownlint',
   'coc-pairs',
