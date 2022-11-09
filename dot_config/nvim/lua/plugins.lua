@@ -201,19 +201,6 @@ return require('packer').startup(function(use)
     'gennaro-tedesco/nvim-peekup'
   }
 
-  -- use({
-  --   "folke/noice.nvim",
-  --   event = "VimEnter",
-  --   config = function()
-  --     require("noice").setup()
-  --   end,
-  --   requires = {
-  --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-  --     "MunifTanjim/nui.nvim",
-  --     "rcarriga/nvim-notify",
-  --   }
-  -- })
-
   use({
     'mvllow/modes.nvim',
     tag = 'v0.2.0',
@@ -229,6 +216,9 @@ return require('packer').startup(function(use)
     end
   }
 
+  use {
+    'elihunter173/dirbuf.nvim'
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

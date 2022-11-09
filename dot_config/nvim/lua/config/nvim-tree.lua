@@ -12,6 +12,8 @@ require('nvim-tree').setup({
   update_focused_file = {
     enable = true,
   },
+  -- to play nicely with dirbuf
+  hijack_directories = { enable = false }
 })
 
 local legendary = require('legendary')
