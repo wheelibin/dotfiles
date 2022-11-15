@@ -4,7 +4,7 @@ local servers = { 'tsserver', 'sumneko_lua', 'clangd', 'pylsp', 'html', 'marksma
 local legendary = require('legendary')
 local helpers = require('legendary.helpers')
 
-legendary.bind_keymaps({
+legendary.keymaps({
   { '[d', vim.diagnostic.goto_prev, description = 'Prev Diagnostics message' },
   { ']d', vim.diagnostic.goto_next, description = 'Next Diagnostics message' }
 })
@@ -14,7 +14,7 @@ local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  legendary.bind_keymaps({
+  legendary.keymaps({
     {
       'gD',
       vim.lsp.buf.declaration,
@@ -127,4 +127,5 @@ vim.diagnostic.config({
 })
 
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
-vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { focusable = false, border = 'rounded' })
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help,
+  { focusable = false, border = 'rounded' })

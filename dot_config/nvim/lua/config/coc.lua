@@ -25,7 +25,7 @@ vim.g.coc_global_extensions = {
 
 local expr_opts = { silent = true, expr = true, noremap = true }
 
-legendary.bind_keymaps({
+legendary.keymaps({
   { '<C-space>',
     ':call CocAction("doHover")<cr>',
     description = 'Code docs'

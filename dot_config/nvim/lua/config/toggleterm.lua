@@ -15,7 +15,7 @@ require('toggleterm').setup({
 local legendary = require('legendary')
 
 function _G.set_terminal_keymaps()
-  legendary.bind_keymap({ '<esc>', [[<C-\><C-n>]], description = 'Toggle Term', buffer = 0, mode = 't' })
+  legendary.keymap({ '<esc>', [[<C-\><C-n>]], description = 'Toggle Term', buffer = 0, mode = 't' })
 end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead

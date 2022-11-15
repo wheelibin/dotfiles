@@ -6,7 +6,7 @@ local legendary = require('legendary')
 
 -- code commenting
 require('mini.comment').setup()
-legendary.bind_keymaps({
+legendary.keymaps({
   {
     'gc',
     description = 'Toggle comment (like `gcip` - comment inner paragraph)',
@@ -38,7 +38,7 @@ require('mini.cursorword').setup({ delay = 400 })
 -- remove buffers retaining window layout
 local miniBufRemove = require('mini.bufremove')
 miniBufRemove.setup()
-legendary.bind_keymaps({
+legendary.keymaps({
   { '<M-x>', miniBufRemove.delete, description = 'Delete Buffer' } --
 })
 

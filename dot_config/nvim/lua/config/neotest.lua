@@ -15,7 +15,7 @@ neotest.setup({
 local legendary = require('legendary')
 local helpers = require('legendary.helpers')
 
-legendary.bind_keymaps({
+legendary.keymaps({
   { '<leader>tn', neotest.run.run, description = 'Test nearest' }, {
     '<leader>to',
     helpers.lazy(neotest.output.open, { short = true }),

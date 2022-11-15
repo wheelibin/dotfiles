@@ -1,9 +1,10 @@
 local legendary = require('legendary')
-local helpers = require('legendary.helpers')
-local filters = require('legendary.filters')
+local toolbox = require('legendary.toolbox')
+local legendary_filters = require('legendary.filters')
 
-legendary.bind_keymaps({
-  { '<F2>', helpers.lazy(legendary.find, nil, helpers.lazy(filters.current_mode)), description = 'Show Legendary' },
+legendary.keymaps({
+  { '<F2>', toolbox.lazy(legendary.find, { filters = { legendary_filters.current_mode() } }),
+    description = 'Show Legendary' },
 
   -- buffer switching
   { '<Leader>bf', [[:bn<cr>]], description = 'Buffer forward' },
