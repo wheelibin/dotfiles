@@ -71,50 +71,60 @@ return require('packer').startup(function(use)
     end
   }
 
-  -- -- some language configs for the built-in language server
-  -- use {
-  --   'neovim/nvim-lspconfig',
-  --   requires = { 'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim', 'lvimuser/lsp-inlayhints.nvim' },
-  --   config = function()
-  --     require('config/lspconfig')
-  --   end
-  -- }
-  --
-  -- -- Autocompletion plugin
-  -- use {
-  --   'hrsh7th/nvim-cmp',
-  --   requires = {
-  --     'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-path', 'hrsh7th/cmp-cmdline', 'hrsh7th/cmp-vsnip',
-  --     'hrsh7th/vim-vsnip', 'hrsh7th/cmp-nvim-lsp-document-symbol', 'ray-x/lsp_signature.nvim',
-  --     'rafamadriz/friendly-snippets'
-  --   },
-  --   config = function()
-  --     require('config/nvim-cmp')
-  --   end
-  -- }
-  -- -- linting and more
-  -- use {
-  --   'jose-elias-alvarez/null-ls.nvim',
-  --   requires = { { 'nvim-lua/plenary.nvim' } },
-  --   config = function()
-  --     require('config/null-ls')
-  --   end
-  -- }
-  -- use {
-  --   "folke/trouble.nvim",
-  --   requires = "kyazdani42/nvim-web-devicons",
-  --   config = function()
-  --     require("trouble").setup {
-  --       -- your configuration comes here
-  --       -- or leave it empty to use the default settings
-  --       -- refer to the configuration section below
-  --     }
-  --   end
-  -- }
-  -- use {
-  --   'arkav/lualine-lsp-progress',
-  -- }
+  -- some language configs for the built-in language server
+  use {
+    'neovim/nvim-lspconfig',
+    requires = { 
+      'williamboman/mason.nvim', 
+      'williamboman/mason-lspconfig.nvim', 
+      'lvimuser/lsp-inlayhints.nvim',
+      'jose-elias-alvarez/typescript.nvim'
+    },
+    config = function()
+      require('config/lspconfig')
+    end
+  }
 
+  -- Autocompletion plugin
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'hrsh7th/cmp-vsnip',
+      'hrsh7th/vim-vsnip',
+      'hrsh7th/cmp-nvim-lsp-document-symbol',
+      'ray-x/lsp_signature.nvim',
+      'rafamadriz/friendly-snippets'
+    },
+    config = function()
+      require('config/nvim-cmp')
+    end
+  }
+  -- linting and more
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    requires = { { 'nvim-lua/plenary.nvim' } },
+    config = function()
+      require('config/null-ls')
+    end
+  }
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+  use {
+    'arkav/lualine-lsp-progress',
+  }
 
   -- better syntax highlighting
   use {
@@ -125,13 +135,13 @@ return require('packer').startup(function(use)
     end
   }
 
-  use {
-    'neoclide/coc.nvim',
-    branch = 'release',
-    config = function()
-      require('config/coc')
-    end
-  }
+  -- use {
+  --   'neoclide/coc.nvim',
+  --   branch = 'release',
+  --   config = function()
+  --     require('config/coc')
+  --   end
+  -- }
 
   -- fancy scrollbar with errors/warning markers
   use {
@@ -219,6 +229,10 @@ return require('packer').startup(function(use)
   use {
     'elihunter173/dirbuf.nvim'
   }
+
+  -- use {
+  --   'chaoren/vim-wordmotion'
+  -- }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

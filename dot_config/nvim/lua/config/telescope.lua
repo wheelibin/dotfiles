@@ -78,13 +78,31 @@ legendary.keymaps({
   { '<leader>fg', builtin.live_grep, description = 'Find text (grep)' },
   { '<leader>fb', legendary_toolbox.lazy(builtin.buffers, { path_display = { 'truncate' } }),
     description = 'Find buffers' },
-  { '<leader>fr', ':Telescope coc references path_display={"tail"}<cr>', description = 'Find references (LSP)' },
-  { '<leader>fe', ':Telescope coc workspace_diagnostics<cr>', description = 'Find errors (diagnostics) (LSP)' },
-  { '<leader>fs', ':Telescope coc workspace_symbols<cr>', description = 'Find symbols (LSP)' },
+  { '<leader>fr', legendary_toolbox.lazy(builtin.lsp_references, { path_display = { 'tail' } }),
+    description = 'Find references (LSP)' },
+  { '<leader>fe', builtin.diagnostics, description = 'Find errors (diagnostics) (LSP)' },
+  { '<leader>fs', builtin.lsp_workspace_symbols, description = 'Find symbols (LSP)' },
   { '<leader>fi', builtin.lsp_implementations, description = 'Find implementation(s) (LSP)' },
-  { '<leader>fd', ':Telescope coc definitions<cr>', description = 'Find definition(s) (LSP)' },
+  { '<leader>fd', builtin.lsp_definitions, description = 'Find definition(s) (LSP)' },
   { '<leader>fh', builtin.git_bcommits, description = 'File History (git)' },
   { '<leader>fw', legendary_toolbox.lazy(builtin.grep_string, { word_match = '-w', path_display = { 'truncate' } }),
     description = 'Find word under cursor' },
   { '<leader>tr', builtin.resume, description = 'Telescope Resume' }
 })
+
+-- legendary.keymaps({
+--   { '<leader>ff', legendary_toolbox.lazy(builtin.find_files, { path_display = { 'truncate' } }),
+--     description = 'Find files' },
+--   { '<leader>fg', builtin.live_grep, description = 'Find text (grep)' },
+--   { '<leader>fb', legendary_toolbox.lazy(builtin.buffers, { path_display = { 'truncate' } }),
+--     description = 'Find buffers' },
+--   { '<leader>fr', ':Telescope coc references path_display={"tail"}<cr>', description = 'Find references (LSP)' },
+--   { '<leader>fe', ':Telescope coc workspace_diagnostics<cr>', description = 'Find errors (diagnostics) (LSP)' },
+--   { '<leader>fs', ':Telescope coc workspace_symbols<cr>', description = 'Find symbols (LSP)' },
+--   { '<leader>fi', builtin.lsp_implementations, description = 'Find implementation(s) (LSP)' },
+--   { '<leader>fd', ':Telescope coc definitions<cr>', description = 'Find definition(s) (LSP)' },
+--   { '<leader>fh', builtin.git_bcommits, description = 'File History (git)' },
+--   { '<leader>fw', legendary_toolbox.lazy(builtin.grep_string, { word_match = '-w', path_display = { 'truncate' } }),
+--     description = 'Find word under cursor' },
+--   { '<leader>tr', builtin.resume, description = 'Telescope Resume' }
+-- })

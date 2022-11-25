@@ -1,8 +1,8 @@
 -- lspconfig
-local servers = { 'tsserver', 'sumneko_lua', 'clangd', 'pylsp', 'html', 'marksman', 'jsonls' }
+local servers = { 'sumneko_lua', 'clangd', 'pylsp', 'html', 'marksman', 'jsonls' }
 
 local legendary = require('legendary')
-local helpers = require('legendary.helpers')
+local legendary_toolbox = require('legendary.toolbox')
 
 legendary.keymaps({
   { '[d', vim.diagnostic.goto_prev, description = 'Prev Diagnostics message' },
@@ -48,7 +48,7 @@ local on_attach = function(client, bufnr)
       buffer = bufnr
     }, {
       '<leader>f',
-      helpers.lazy(vim.lsp.buf.format, { async = true }),
+      legendary_toolbox.lazy(vim.lsp.buf.format, { async = true }),
       description = 'Format buffer (LSP)',
       buffer = bufnr
     }
@@ -67,7 +67,7 @@ end
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 require("mason").setup()
 require("mason-lspconfig").setup({
@@ -85,32 +85,67 @@ lspconfig.sumneko_lua.setup({
   settings = { Lua = { diagnostics = { globals = { 'vim' } } } }
 })
 
-lspconfig.tsserver.setup({
-  settings = {
-    typescript = {
-      inlayHints = {
-        includeInlayParameterNameHints = 'all',
-        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-        includeInlayFunctionParameterTypeHints = true,
-        includeInlayVariableTypeHints = true,
-        includeInlayPropertyDeclarationTypeHints = true,
-        includeInlayFunctionLikeReturnTypeHints = true,
-        includeInlayEnumMemberValueHints = true,
+
+-- typescript specific config
+require('typescript').setup({
+  server = {
+    settings = {
+      typescript = {
+        inlayHints = {
+          includeInlayParameterNameHints = 'all',
+          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayVariableTypeHints = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayEnumMemberValueHints = true,
+        }
+      },
+      javascript = {
+        inlayHints = {
+          includeInlayParameterNameHints = 'all',
+          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayVariableTypeHints = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayEnumMemberValueHints = true,
+        }
       }
     },
-    javascript = {
-      inlayHints = {
-        includeInlayParameterNameHints = 'all',
-        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-        includeInlayFunctionParameterTypeHints = true,
-        includeInlayVariableTypeHints = true,
-        includeInlayPropertyDeclarationTypeHints = true,
-        includeInlayFunctionLikeReturnTypeHints = true,
-        includeInlayEnumMemberValueHints = true,
-      }
-    }
+    on_attach = on_attach,
+    capabilities = capabilities
   }
+
 })
+
+-- lspconfig.tsserver.setup({
+--   settings = {
+--     typescript = {
+--       inlayHints = {
+--         includeInlayParameterNameHints = 'all',
+--         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+--         includeInlayFunctionParameterTypeHints = true,
+--         includeInlayVariableTypeHints = true,
+--         includeInlayPropertyDeclarationTypeHints = true,
+--         includeInlayFunctionLikeReturnTypeHints = true,
+--         includeInlayEnumMemberValueHints = true,
+--       }
+--     },
+--     javascript = {
+--       inlayHints = {
+--         includeInlayParameterNameHints = 'all',
+--         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+--         includeInlayFunctionParameterTypeHints = true,
+--         includeInlayVariableTypeHints = true,
+--         includeInlayPropertyDeclarationTypeHints = true,
+--         includeInlayFunctionLikeReturnTypeHints = true,
+--         includeInlayEnumMemberValueHints = true,
+--       }
+--     }
+--   }
+-- })
+
 
 local sign = function(opts)
   vim.fn.sign_define(opts.name,
