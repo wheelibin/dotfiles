@@ -1,5 +1,7 @@
 -- lspconfig
-local servers = { 'sumneko_lua', 'clangd', 'pylsp', 'html', 'marksman', 'jsonls' }
+
+-- typescript is setup separately below
+local servers = { 'sumneko_lua', 'clangd', 'pylsp', 'html', 'marksman', 'jsonls', 'gopls' }
 
 local legendary = require('legendary')
 local legendary_toolbox = require('legendary.toolbox')
