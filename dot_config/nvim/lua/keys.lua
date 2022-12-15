@@ -10,10 +10,10 @@ legendary.keymaps({
   { '<Leader>bf', [[:bn<cr>]], description = 'Buffer forward' },
   { '<Leader>bb', [[:bp<cr>]], description = 'Buffer back' }, --
   -- window navigation
-  { '<M-left>', ':wincmd h<CR>', description = 'Goto window to the left' },
-  { '<M-down>', ':wincmd j<CR>', description = 'Goto window below' },
-  { '<M-up>', ':wincmd k<CR>', description = 'Goto window above' },
-  { '<M-right>', ':wincmd l<CR>', description = 'Goto window to the right' },
+  { '<S-left>', ':wincmd h<CR>', description = 'Goto window to the left' },
+  { '<S-down>', ':wincmd j<CR>', description = 'Goto window below' },
+  { '<S-up>', ':wincmd k<CR>', description = 'Goto window above' },
+  { '<S-right>', ':wincmd l<CR>', description = 'Goto window to the right' },
   { '<M-r>', ':wincmd r<CR>', description = 'Cycle through all windows' },
   { '<M-q>', ':wincmd q<CR>', description = 'Close current window' }, --
   -- window creation
@@ -31,8 +31,8 @@ legendary.keymaps({
   { '<Leader>p', '"+p', description = 'Paste from system clipboard' },
   { '<Leader>P', '"+P', description = 'Paste from system clipboard (before)' }, --
   -- move lines
-  { '<C-j>', { n = ':m .+1<CR>==', i = '<Esc>:m .+1<CR>==gi', v = ':m \'>+1<CR>gv=gv' }, description = 'Move line down' },
-  { '<C-k>', { n = ':m .-2<CR>==', i = '<Esc>:m .-2<CR>==gi', v = ':m \'<-2<CR>gv=gv' }, description = 'Move line up' },
+  { '<C-up>', { n = ':m .-2<CR>==', i = '<Esc>:m .-2<CR>==gi', v = ':m \'<-2<CR>gv=gv' }, description = 'Move line up' },
+  { '<C-down>', { n = ':m .+1<CR>==', i = '<Esc>:m .+1<CR>==gi', v = ':m \'>+1<CR>gv=gv' }, description = 'Move line down' },
 
   { '<leader><leader>', ':noh<CR>', description = 'Clear search highlighting' }
 })

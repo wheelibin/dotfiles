@@ -50,7 +50,11 @@ return require('packer').startup(function(use)
   -- status bar
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { { 'kyazdani42/nvim-web-devicons', opt = true }, { 'f-person/git-blame.nvim' } },
+    requires = {
+      { 'kyazdani42/nvim-web-devicons', opt = true },
+      { 'f-person/git-blame.nvim' },
+      { 'arkav/lualine-lsp-progress' }
+    },
     config = function()
       require('config/lualine')
     end
@@ -74,9 +78,9 @@ return require('packer').startup(function(use)
   -- some language configs for the built-in language server
   use {
     'neovim/nvim-lspconfig',
-    requires = { 
-      'williamboman/mason.nvim', 
-      'williamboman/mason-lspconfig.nvim', 
+    requires = {
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
       'lvimuser/lsp-inlayhints.nvim',
       'jose-elias-alvarez/typescript.nvim'
     },
@@ -121,9 +125,6 @@ return require('packer').startup(function(use)
         -- refer to the configuration section below
       }
     end
-  }
-  use {
-    'arkav/lualine-lsp-progress',
   }
 
   -- better syntax highlighting
@@ -181,12 +182,12 @@ return require('packer').startup(function(use)
     end
   }
 
-  use {
-    'rcarriga/nvim-notify',
-    config = function()
-      require('config/nvim-notify')
-    end
-  }
+  -- use {
+  --   'rcarriga/nvim-notify',
+  --   config = function()
+  --     require('config/nvim-notify')
+  --   end
+  -- }
 
   -- use {
   --   'windwp/nvim-autopairs',

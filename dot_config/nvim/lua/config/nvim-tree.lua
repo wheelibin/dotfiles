@@ -6,7 +6,11 @@ require('nvim-tree').setup({
   view = {
     mappings = {
       custom_only = false,
-      list = { { key = 'l', action = 'edit' }, { key = 'L', action = 'preview' }, { key = 'h', action = 'close_node' } }
+      list = {
+        { key = 'right', action = 'edit' },
+        { key = 'S+right', action = 'preview' },
+        { key = 'left', action = 'close_node' }
+      }
     }
   },
   update_focused_file = {
