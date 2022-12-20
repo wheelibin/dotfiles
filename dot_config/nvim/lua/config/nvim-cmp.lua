@@ -10,7 +10,14 @@ end
 local cmp = require('cmp')
 cmp.setup {
 
-  sources = { { name = 'nvim_lsp' }, { name = 'vsnip' }, { name = 'buffer' }, { name = 'path' } },
+  sources = { { name = 'nvim_lsp' }, { name = 'vsnip' }, {
+    name = 'buffer',
+    option = {
+      get_bufnrs = function()
+        return vim.api.nvim_list_bufs()
+      end
+    }
+  }, { name = 'path' } },
 
   window = { completion = cmp.config.window.bordered(), documentation = cmp.config.window.bordered() },
 

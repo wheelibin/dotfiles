@@ -10,10 +10,10 @@ legendary.keymaps({
   { '<Leader>bf', [[:bn<cr>]], description = 'Buffer forward' },
   { '<Leader>bb', [[:bp<cr>]], description = 'Buffer back' }, --
   -- window navigation
-  { '<S-left>', ':wincmd h<CR>', description = 'Goto window to the left' },
-  { '<S-down>', ':wincmd j<CR>', description = 'Goto window below' },
-  { '<S-up>', ':wincmd k<CR>', description = 'Goto window above' },
-  { '<S-right>', ':wincmd l<CR>', description = 'Goto window to the right' },
+  { '<M-left>', ':wincmd h<CR>', description = 'Goto window to the left' },
+  { '<M-down>', ':wincmd j<CR>', description = 'Goto window below' },
+  { '<M-up>', ':wincmd k<CR>', description = 'Goto window above' },
+  { '<M-right>', ':wincmd l<CR>', description = 'Goto window to the right' },
   { '<M-r>', ':wincmd r<CR>', description = 'Cycle through all windows' },
   { '<M-q>', ':wincmd q<CR>', description = 'Close current window' }, --
   -- window creation
