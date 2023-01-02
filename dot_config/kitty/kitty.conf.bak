@@ -1,23 +1,22 @@
-font_size 14 
-font_family MesloLGS NF
+font_size 18 
+# font_family MesloLGS NF
+font_family Fira Code
 
 macos_option_as_alt yes
-macos_thicken_font 0.25
+macos_thicken_font 0.2
 
-copy_on_select a1
-map shift+cmd+v paste_from_buffer a1
+map ctrl+shift+enter launch --cwd=current
+map ctrl+shift+left previous_window
+map ctrl+shift+right next_window
+
 
 enabled_layouts tall:bias=70;,stack
-# draw_minimal_borders no
-# inactive_border_color #000000
-# active_border_color #72cce8
-window_border_width 1
 
+window_border_width 1
 hide_window_decorations titlebar-only
 
 # BEGIN_KITTY_THEME
-# Catppuccin-Macchiato
+# One Half Light
 include current-theme.conf
 # END_KITTY_THEME
 
-# include sonokai-atlantis.conf
