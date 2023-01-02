@@ -82,7 +82,9 @@ return require('packer').startup(function(use)
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'lvimuser/lsp-inlayhints.nvim',
-      'jose-elias-alvarez/typescript.nvim'
+      'jose-elias-alvarez/typescript.nvim',
+      'ray-x/go.nvim',
+      'ray-x/guihua.lua' -- recommanded if need floating window support
     },
     config = function()
       require('config/lspconfig')

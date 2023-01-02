@@ -121,32 +121,16 @@ require('typescript').setup({
 
 })
 
--- lspconfig.tsserver.setup({
---   settings = {
---     typescript = {
---       inlayHints = {
---         includeInlayParameterNameHints = 'all',
---         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
---         includeInlayFunctionParameterTypeHints = true,
---         includeInlayVariableTypeHints = true,
---         includeInlayPropertyDeclarationTypeHints = true,
---         includeInlayFunctionLikeReturnTypeHints = true,
---         includeInlayEnumMemberValueHints = true,
---       }
---     },
---     javascript = {
---       inlayHints = {
---         includeInlayParameterNameHints = 'all',
---         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
---         includeInlayFunctionParameterTypeHints = true,
---         includeInlayVariableTypeHints = true,
---         includeInlayPropertyDeclarationTypeHints = true,
---         includeInlayFunctionLikeReturnTypeHints = true,
---         includeInlayEnumMemberValueHints = true,
---       }
---     }
---   }
--- })
+
+local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.go",
+  callback = function()
+   require('go.format').goimport()
+  end,
+  group = format_sync_grp,
+})
+require('go').setup()
 
 
 local sign = function(opts)
