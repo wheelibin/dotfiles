@@ -26,14 +26,33 @@ return require('packer').startup(function(use)
     end
   }
 
-  use {
-    'catppuccin/nvim',
-    as = 'catppuccin',
+  -- use {
+  --   'catppuccin/nvim',
+  --   as = 'catppuccin',
+  --   config = function()
+  --     require("catppuccin").setup()
+  --     vim.cmd('colorscheme catppuccin')
+  --   end
+  -- }
+
+-- use {
+--    'sonph/onehalf',  
+--    rtp = 'vim',
+--     config = function()
+--       vim.cmd('colorscheme onehalflight')
+--     end
+--   }
+
+-- Using Packer:
+use {
+  'Mofiqul/dracula.nvim',
     config = function()
-      require("catppuccin").setup()
-      vim.cmd('colorscheme catppuccin')
+      vim.cmd('colorscheme dracula')
     end
-  }
+
+}
+  
+
 
   -- file tree
   use {
@@ -82,9 +101,7 @@ return require('packer').startup(function(use)
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'lvimuser/lsp-inlayhints.nvim',
-      'jose-elias-alvarez/typescript.nvim',
-      'ray-x/go.nvim',
-      'ray-x/guihua.lua' -- recommanded if need floating window support
+      'jose-elias-alvarez/typescript.nvim'
     },
     config = function()
       require('config/lspconfig')
@@ -243,3 +260,4 @@ return require('packer').startup(function(use)
     require('packer').sync()
   end
 end)
+
