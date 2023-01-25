@@ -56,20 +56,20 @@ local on_attach = function(client, bufnr)
     }
   })
 
-  require('lsp-inlayhints').on_attach(client, bufnr)
+--  require('lsp-inlayhints').on_attach(client, bufnr)
 
-  require('lsp_signature').on_attach({
-    bind = true,
-    hint_enable = false,
-    timer_interval = 100
-  })
+  -- require('lsp_signature').on_attach({
+  --   bind = true,
+  --   hint_enable = false,
+  --   timer_interval = 100
+  -- })
 
 
 end
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+-- capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 require("mason").setup()
 require("mason-lspconfig").setup({

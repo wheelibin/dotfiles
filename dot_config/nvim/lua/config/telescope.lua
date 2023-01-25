@@ -63,11 +63,11 @@ telescope.setup {
   }
 }
 
-telescope.load_extension('fzf')
 pcall(function()
   telescope.load_extension('frecency')
+  telescope.load_extension('fzf')
 end)
-telescope.load_extension('coc')
+-- telescope.load_extension('coc')
 
 local legendary = require('legendary')
 local legendary_toolbox = require('legendary.toolbox')

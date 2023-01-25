@@ -14,7 +14,7 @@ end
 
 local config = {
   options = {
-    theme = 'dracula-nvim',
+    theme = 'auto',
     refresh = {
       tabline = 500,
     },
