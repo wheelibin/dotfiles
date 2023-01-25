@@ -121,18 +121,6 @@ require('typescript').setup({
 
 })
 
-
-local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.go",
-  callback = function()
-   require('go.format').goimport()
-  end,
-  group = format_sync_grp,
-})
-require('go').setup()
-
-
 local sign = function(opts)
   vim.fn.sign_define(opts.name,
     { texthl = opts.name, text = opts.text, numhl = '' })

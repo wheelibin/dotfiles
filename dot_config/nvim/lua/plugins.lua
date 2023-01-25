@@ -26,33 +26,14 @@ return require('packer').startup(function(use)
     end
   }
 
-  -- use {
-  --   'catppuccin/nvim',
-  --   as = 'catppuccin',
-  --   config = function()
-  --     require("catppuccin").setup()
-  --     vim.cmd('colorscheme catppuccin')
-  --   end
-  -- }
-
--- use {
---    'sonph/onehalf',  
---    rtp = 'vim',
---     config = function()
---       vim.cmd('colorscheme onehalflight')
---     end
---   }
-
--- Using Packer:
-use {
-  'Mofiqul/dracula.nvim',
+  -- Using Packer:
+  use {
+    'Mofiqul/dracula.nvim',
     config = function()
       vim.cmd('colorscheme dracula')
     end
 
-}
-  
-
+  }
 
   -- file tree
   use {
@@ -101,7 +82,7 @@ use {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'lvimuser/lsp-inlayhints.nvim',
-      'jose-elias-alvarez/typescript.nvim'
+      'jose-elias-alvarez/typescript.nvim',
     },
     config = function()
       require('config/lspconfig')
@@ -201,20 +182,19 @@ use {
     end
   }
 
-  -- use {
-  --   'rcarriga/nvim-notify',
-  --   config = function()
-  --     require('config/nvim-notify')
-  --   end
-  -- }
+  use {
+    'rcarriga/nvim-notify',
+    config = function()
+      require('config/nvim-notify')
+    end
+  }
 
-  -- use {
-  --   'windwp/nvim-autopairs',
-  --   -- config = function()
-  --   --   require('nvim-autopairs').setup {}
-  --   -- end
-  -- }
-
+  use {
+    'windwp/nvim-autopairs',
+    config = function()
+      require('nvim-autopairs').setup {}
+    end
+  }
 
   use {
     'ethanholz/nvim-lastplace'
@@ -250,9 +230,6 @@ use {
     'elihunter173/dirbuf.nvim'
   }
 
-  -- use {
-  --   'chaoren/vim-wordmotion'
-  -- }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
@@ -260,4 +237,3 @@ use {
     require('packer').sync()
   end
 end)
-
