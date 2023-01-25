@@ -1,5 +1,7 @@
 vim.g.mapleader = ' '
 
+vim.g.coq_settings = { auto_start = 'shut-up' }
+
 local opt = vim.opt
 
 -- disable word wrap
