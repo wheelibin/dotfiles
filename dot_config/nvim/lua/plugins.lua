@@ -40,6 +40,17 @@ local plugins = {
      end
    },
 
+   {
+'ms-jpq/chadtree',
+branch = 'chad',
+build = 'python3 -m chadtree deps',
+config = function()
+  local chadtree_settings = { theme = { text_colour_set = 'nerdtree_syntax_dark'} }
+vim.api.nvim_set_var("chadtree_settings", chadtree_settings)
+end
+},
+
+
 --   -- highlight cursor movement
 --   use 'DanilaMihailov/beacon.nvim'
 --
