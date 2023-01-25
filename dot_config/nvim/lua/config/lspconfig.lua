@@ -71,6 +71,9 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+local lsp = require "lspconfig"
+local coq = require "coq" -- add this
+
 require("mason").setup()
 require("mason-lspconfig").setup({
   automatic_installation = true
@@ -80,7 +83,7 @@ local lspconfig = require('lspconfig')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup { on_attach = on_attach, capabilities = capabilities }
+  lspconfig[lsp].setup(coq.lsp_ensure_capabilities( { on_attach = on_attach, capabilities = capabilities }))
 end
 
 lspconfig.sumneko_lua.setup({

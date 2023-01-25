@@ -84,6 +84,16 @@ local plugins = {
    },
 
 --   -- Autocompletion plugin
+   {
+     'ms-jpq/coq_nvim',
+     branch = 'coq',
+     dependencies = {
+       {'ms-jpq/coq.artifacts', branch =  'artifacts'}
+     },
+     config = function()
+       vim.g.coq_settings = { auto_start= true }
+     end
+   },
 --   use {
 --     'hrsh7th/nvim-cmp',
 --     requires = {
