@@ -11,7 +11,8 @@ null_ls.setup({
     null_ls.builtins.formatting.prettierd,
     null_ls.builtins.code_actions.gitsigns,
     require("typescript.extensions.null-ls.code-actions"),
-    null_ls.builtins.formatting.gofmt
+    null_ls.builtins.formatting.gofmt,
+    null_ls.builtins.formatting.lua_format
   },
   on_attach = function(client, bufnr)
     if client.supports_method('textDocument/formatting') then

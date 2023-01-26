@@ -1,4 +1,4 @@
--- bootstrap 
+-- bootstrap
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
 
- -- key mapping legend and discovery
+  -- key mapping legend and discovery
   {
     'mrjones2014/legendary.nvim',
     dependencies = { { 'stevearc/dressing.nvim' } },
@@ -23,227 +23,238 @@ local plugins = {
     end
   },
 
-    {
-     'Mofiqul/dracula.nvim',
-     config = function()
-       vim.cmd('colorscheme dracula')
-     end
+  {
+    'savq/melange-nvim',
+    config = function()
+      vim.opt.termguicolors = true
+      vim.cmd('colorscheme melange')
+    end
 
-   },
+  },
 
-   -- file tree
-    {
-     'kyazdani42/nvim-tree.lua',
-     dependencies = 'kyazdani42/nvim-web-devicons',
-     config = function()
-       require('config/nvim-tree')
-     end
-   },
+  -- file tree
+  {
+    'kyazdani42/nvim-tree.lua',
+    dependencies = 'kyazdani42/nvim-web-devicons',
+    config = function()
+      require('config/nvim-tree')
+    end
+  },
 
-   {
-'ms-jpq/chadtree',
-branch = 'chad',
-build = 'python3 -m chadtree deps',
-config = function()
-  local chadtree_settings = { theme = { text_colour_set = 'nerdtree_syntax_dark'} }
-vim.api.nvim_set_var("chadtree_settings", chadtree_settings)
-end
-},
+  {
+    'ms-jpq/chadtree',
+    branch = 'chad',
+    build = 'python3 -m chadtree deps',
+    config = function()
+      local chadtree_settings = { theme = { text_colour_set = 'nerdtree_syntax_dark' } }
+      vim.api.nvim_set_var("chadtree_settings", chadtree_settings)
+    end
+  },
+
+  --   -- highlight cursor movement
+  --   use 'DanilaMihailov/beacon.nvim'
+  --
+  -- status bar
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = {
+      { 'kyazdani42/nvim-web-devicons', lazy = true },
+      { 'f-person/git-blame.nvim' },
+      { 'arkav/lualine-lsp-progress' }
+    },
+    config = function()
+      require('config/lualine')
+    end
+  },
+  -- find files (fuzzy search/grep)
+  {
+    'nvim-telescope/telescope.nvim',
+    dependencies = {
+      { 'nvim-lua/plenary.nvim' },
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+      { 'nvim-telescope/telescope-frecency.nvim' },
+      { 'kkharji/sqlite.lua' }
+    },
+    config = function()
+      require('config/telescope')
+    end
+  },
+
+  -- some language configs for the built-in language server
+  {
+    'neovim/nvim-lspconfig',
+    dependencies = {
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
+      --       'lvimuser/lsp-inlayhints.nvim',
+      'jose-elias-alvarez/typescript.nvim',
+    },
+    config = function()
+      require('config/lspconfig')
+    end
+  },
+
+  --   -- Autocompletion plugin
+  {
+    'ms-jpq/coq_nvim',
+    branch = 'coq',
+    dependencies = {
+      { 'ms-jpq/coq.artifacts', branch = 'artifacts' }
+    },
+    config = function()
+      vim.g.coq_settings = {
+        auto_start = true,
+        display = {
+          preview = {
+            border = 'single',
+            positions = { north = 2, south = 3, west = 4, east = 1 }
+          }
+        }
+      }
+    end
+  },
+  --   use {
+  --     'hrsh7th/nvim-cmp',
+  --     requires = {
+  --       'hrsh7th/cmp-nvim-lsp',
+  --       'hrsh7th/cmp-buffer',
+  --       'hrsh7th/cmp-path',
+  --       'hrsh7th/cmp-cmdline',
+  --       'hrsh7th/cmp-vsnip',
+  --       'hrsh7th/vim-vsnip',
+  --       'hrsh7th/cmp-nvim-lsp-document-symbol',
+  --       'ray-x/lsp_signature.nvim',
+  --       'rafamadriz/friendly-snippets'
+  --     },
+  --     config = function()
+  --       require('config/nvim-cmp')
+  --     end
+  --   }
+
+  -- linting and more
+  {
+    'jose-elias-alvarez/null-ls.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('config/null-ls')
+    end
+  },
+
+  { "iamcco/markdown-preview.nvim",
+    build  = "cd app && npm install",
+    ft     = { "markdown" },
+    config = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+  },
 
 
---   -- highlight cursor movement
---   use 'DanilaMihailov/beacon.nvim'
---
-   -- status bar
-    {
-     'nvim-lualine/lualine.nvim',
-     dependencies = {
-       { 'kyazdani42/nvim-web-devicons', lazy = true },
-       { 'f-person/git-blame.nvim' },
-       { 'arkav/lualine-lsp-progress' }
-     },
-     config = function()
-       require('config/lualine')
-     end
-   },
-   -- find files (fuzzy search/grep)
-    {
-     'nvim-telescope/telescope.nvim',
-     dependencies = {
-       { 'nvim-lua/plenary.nvim' },
-       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-       { 'nvim-telescope/telescope-frecency.nvim' },
-       { 'kkharji/sqlite.lua' }
-     },
-     config = function()
-       require('config/telescope')
-     end
-   },
+  --   use {
+  --     "folke/trouble.nvim",
+  --     requires = "kyazdani42/nvim-web-devicons",
+  --     config = function()
+  --       require("trouble").setup {
+  --         -- your configuration comes here
+  --         -- or leave it empty to use the default settings
+  --         -- refer to the configuration section below
+  --       }
+  --     end
+  --   }
+  --
+  --   -- better syntax highlighting
+  {
+    'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
+    config = function()
+      require('config/treesitter')
+    end
+  },
 
-   -- some language configs for the built-in language server
-    {
-     'neovim/nvim-lspconfig',
-     dependencies = {
-       'williamboman/mason.nvim',
-       'williamboman/mason-lspconfig.nvim',
---       'lvimuser/lsp-inlayhints.nvim',
-       'jose-elias-alvarez/typescript.nvim',
-     },
-     config = function()
-       require('config/lspconfig')
-     end
-   },
+  -- fancy scrollbar with errors/warning markers
+  {
+    'petertriho/nvim-scrollbar',
+    config = function()
+      require('scrollbar').setup()
+    end
+  },
 
---   -- Autocompletion plugin
-   {
-     'ms-jpq/coq_nvim',
-     branch = 'coq',
-     dependencies = {
-       {'ms-jpq/coq.artifacts', branch =  'artifacts'}
-     },
-     config = function()
-       vim.g.coq_settings = { auto_start= true }
-     end
-   },
---   use {
---     'hrsh7th/nvim-cmp',
---     requires = {
---       'hrsh7th/cmp-nvim-lsp',
---       'hrsh7th/cmp-buffer',
---       'hrsh7th/cmp-path',
---       'hrsh7th/cmp-cmdline',
---       'hrsh7th/cmp-vsnip',
---       'hrsh7th/vim-vsnip',
---       'hrsh7th/cmp-nvim-lsp-document-symbol',
---       'ray-x/lsp_signature.nvim',
---       'rafamadriz/friendly-snippets'
---     },
---     config = function()
---       require('config/nvim-cmp')
---     end
---   }
---   -- linting and more
---   use {
---     'jose-elias-alvarez/null-ls.nvim',
---     requires = { { 'nvim-lua/plenary.nvim' } },
---     config = function()
---       require('config/null-ls')
---     end
---   }
---   use {
---     "folke/trouble.nvim",
---     requires = "kyazdani42/nvim-web-devicons",
---     config = function()
---       require("trouble").setup {
---         -- your configuration comes here
---         -- or leave it empty to use the default settings
---         -- refer to the configuration section below
---       }
---     end
---   }
---
---   -- better syntax highlighting
-    {
-     'nvim-treesitter/nvim-treesitter',
-     build = ':TSUpdate',
-     config = function()
-       require('config/treesitter')
-     end
-   },
---
---   -- use {
---   --   'neoclide/coc.nvim',
---   --   branch = 'release',
---   --   config = function()
---   --     require('config/coc')
---   --   end
---   -- }
---
---   -- fancy scrollbar with errors/warning markers
-    {
-     'petertriho/nvim-scrollbar',
-     config = function()
-       require('scrollbar').setup()
-     end
-   },
---
-    {
-     'TimUntersberger/neogit',
-     dependencies = { 'nvim-lua/plenary.nvim' },
-     config = function()
-       require('config/neogit')
-     end
-   },
---
-    {
-     'lukas-reineke/indent-blankline.nvim',
-     config = function()
-       require('indent_blankline').setup()
-     end
-   },
---
-    {
-     'lewis6991/gitsigns.nvim',
-     config = function()
-       require('config/gitsigns')
-     end
-   },
---
-   -- swiss army knife, see config to see which modules are enabled
-    {
-     'echasnovski/mini.nvim',
-     config = function()
-       require('config/mini')
-     end
-   },
---
-    {
-     'rcarriga/nvim-notify',
-     config = function()
-       require('config/nvim-notify')
-     end
-   },
---
---   use {
---     'windwp/nvim-autopairs',
---     config = function()
---       require('nvim-autopairs').setup {}
---     end
---   }
---
---   use {
---     'ethanholz/nvim-lastplace'
---   }
---
---   use {
---     'levouh/tint.nvim',
---     config = function()
---       require('tint').setup()
---     end
---   }
---
---   use {
---     'gennaro-tedesco/nvim-peekup'
---   }
---
---   use({
---     'mvllow/modes.nvim',
---     tag = 'v0.2.0',
---     config = function()
---       require('modes').setup()
---     end
---   })
---
---   use {
---     'ggandor/leap.nvim',
---     config = function()
---       require('config/leap')
---     end
---   }
---
-    {
-     'elihunter173/dirbuf.nvim'
-   }
+  {
+    'TimUntersberger/neogit',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('config/neogit')
+    end
+  },
+
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function()
+      require('indent_blankline').setup()
+    end
+  },
+
+  {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('config/gitsigns')
+    end
+  },
+
+  -- swiss army knife, see config to see which modules are enabled
+  {
+    'echasnovski/mini.nvim',
+    config = function()
+      require('config/mini')
+    end
+  },
+
+  {
+    'rcarriga/nvim-notify',
+    config = function()
+      require('config/nvim-notify')
+    end
+  },
+
+  {
+    'windwp/nvim-autopairs',
+    config = function()
+      require('nvim-autopairs').setup {}
+    end
+  },
+  --
+  --   use {
+  --     'ethanholz/nvim-lastplace'
+  --   }
+  --
+  --   use {
+  --     'levouh/tint.nvim',
+  --     config = function()
+  --       require('tint').setup()
+  --     end
+  --   }
+  --
+  --   use {
+  --     'gennaro-tedesco/nvim-peekup'
+  --   }
+  --
+  --   use({
+  --     'mvllow/modes.nvim',
+  --     tag = 'v0.2.0',
+  --     config = function()
+  --       require('modes').setup()
+  --     end
+  --   })
+  --
+  --   use {
+  --     'ggandor/leap.nvim',
+  --     config = function()
+  --       require('config/leap')
+  --     end
+  --   }
+  --
+  {
+    'elihunter173/dirbuf.nvim'
+  }
 
 
 
