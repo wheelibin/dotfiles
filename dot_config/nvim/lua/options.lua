@@ -46,3 +46,7 @@ opt.scrolloff = 4
 opt.cursorline = true
 
 opt.swapfile = false
+
+-- hide the tildes showing end of buffer
+opt.fcs = "eob: "
+
