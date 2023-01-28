@@ -16,6 +16,11 @@ local function delete_others(bufnr)
 end
 
 telescope.setup {
+  extensions = {
+    undo = {
+      -- telescope-undo.nvim config, see below
+    },
+  },
   defaults = {
     mappings = {
       i = {
@@ -66,8 +71,8 @@ telescope.setup {
 pcall(function()
   telescope.load_extension('frecency')
   telescope.load_extension('fzf')
+  telescope.load_extension("undo")
 end)
--- telescope.load_extension('coc')
 
 local legendary = require('legendary')
 local legendary_toolbox = require('legendary.toolbox')
@@ -87,7 +92,9 @@ legendary.keymaps({
   { '<leader>fh', builtin.git_bcommits, description = 'File History (git)' },
   { '<leader>fw', legendary_toolbox.lazy(builtin.grep_string, { word_match = '-w', path_display = { 'truncate' } }),
     description = 'Find word under cursor' },
-  { '<leader>tr', builtin.resume, description = 'Telescope Resume' }
+  { '<leader>tr', builtin.resume, description = 'Telescope Resume' },
+
+  { '<leader>fu', telescope.extensions.undo.undo, description = 'File History (git)' },
 })
 
 -- legendary.keymaps({
