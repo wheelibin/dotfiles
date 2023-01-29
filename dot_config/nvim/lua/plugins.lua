@@ -19,13 +19,26 @@ local plugins = {
     config = function()
       require('legendary').setup()
     end
-  }, {
-    'savq/melange-nvim',
+  },
+
+  -- {
+  --   'savq/melange-nvim',
+  --   config = function()
+  --     vim.opt.termguicolors = true
+  --     vim.cmd('colorscheme melange')
+  --   end
+  -- },
+
+  {
+    'AlexvZyl/nordic.nvim',
+    lazy = false,
+    priority = 1000,
     config = function()
-      vim.opt.termguicolors = true
-      vim.cmd('colorscheme melange')
+      require 'nordic'.load()
     end
-  }, {
+  },
+
+  {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
     dependencies = {
@@ -141,7 +154,11 @@ local plugins = {
     config = function()
       require 'mind'.setup()
     end
+  },
+  {
+    "luukvbaal/statuscol.nvim",
+    config = function() require("statuscol").setup({ setopt = true }) end
   }
 }
 
-require("lazy").setup(plugins, opts)
+require("lazy").setup(plugins)
