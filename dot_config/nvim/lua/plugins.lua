@@ -204,11 +204,10 @@ local plugins = {
   },
 
   {
-    'kevinhwang91/nvim-ufo', 
+    'kevinhwang91/nvim-ufo',
     dependencies = 'kevinhwang91/promise-async',
-    priority= 100,
     config = function()
-      vim.o.foldcolumn = '0' -- '0' is not bad
+      vim.o.foldcolumn = '1' -- '0' is not bad
       vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
       vim.o.foldlevelstart = 99
       vim.o.foldenable = true
@@ -222,6 +221,15 @@ local plugins = {
 
   },
 
+  {
+    "luukvbaal/statuscol.nvim",
+    config = function()
+      require("statuscol").setup({
+        foldfunc = "builtin",
+        setopt = true,
+      })
+    end
+  }
 }
 
 require("lazy").setup(plugins)

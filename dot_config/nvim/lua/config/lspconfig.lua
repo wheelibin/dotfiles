@@ -94,6 +94,7 @@ for _, lsp in ipairs(servers) do
 end
 
 require('ufo').setup()
+
 -- lspconfig.sumneko_lua.setup({
 --     settings = {Lua = {diagnostics = {globals = {'vim'}}}}
 -- })
