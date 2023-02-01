@@ -43,4 +43,4 @@ legendary.keymaps({
 })
 
 -- Add, delete, replace, find, highlight surrounding (like pair of parenthesis, quotes, etc.).
-require('mini.surround').setup()
+-- require('mini.surround').setup()

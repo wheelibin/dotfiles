@@ -21,22 +21,24 @@ local plugins = {
     end
   },
 
-  -- {
-  --   'savq/melange-nvim',
-  --   config = function()
-  --     vim.opt.termguicolors = true
-  --     vim.cmd('colorscheme melange')
-  --   end
-  -- },
-
   {
-    'AlexvZyl/nordic.nvim',
+    'savq/melange-nvim',
     lazy = false,
     priority = 1000,
     config = function()
-      require 'nordic'.load()
+      vim.opt.termguicolors = true
+      vim.cmd('colorscheme melange')
     end
   },
+
+  -- {
+  --   'AlexvZyl/nordic.nvim',
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     require 'nordic'.load()
+  --   end
+  -- },
 
   {
     "nvim-neo-tree/neo-tree.nvim",
@@ -48,7 +50,9 @@ local plugins = {
     config = function()
       require('config/neo-tree')
     end
-  }, {
+  },
+
+  {
     'nvim-lualine/lualine.nvim',
     dependencies = {
       { 'f-person/git-blame.nvim' }, { 'arkav/lualine-lsp-progress' }
@@ -56,28 +60,40 @@ local plugins = {
     config = function()
       require('config/lualine')
     end
-  }, {
+  },
+
+  {
     'nvim-telescope/telescope.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-      'nvim-telescope/telescope-frecency.nvim', 'kkharji/sqlite.lua',
+      {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        build = 'make'
+      },
+      'nvim-telescope/telescope-frecency.nvim',
+      'kkharji/sqlite.lua',
       "debugloop/telescope-undo.nvim",
     },
     config = function()
       require('config/telescope')
     end
-  }, {
+  },
+
+  {
     'neovim/nvim-lspconfig',
     dependencies = {
-      'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim',
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
       'lvimuser/lsp-inlayhints.nvim',
-      'jose-elias-alvarez/typescript.nvim', 'ray-x/lsp_signature.nvim'
+      -- 'jose-elias-alvarez/typescript.nvim',
+      'ray-x/lsp_signature.nvim'
     },
     config = function()
       require('config/lspconfig')
     end
-  }, {
+  },
+
+  {
     'ms-jpq/coq_nvim',
     branch = 'coq',
     dependencies = { { 'ms-jpq/coq.artifacts', branch = 'artifacts' } },
@@ -92,62 +108,84 @@ local plugins = {
         }
       }
     end
-  }, {
+  },
+
+  {
     'jose-elias-alvarez/null-ls.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       require('config/null-ls')
     end
-  }, {
+  },
+
+  {
     "iamcco/markdown-preview.nvim",
     build = "cd app && npm install",
     ft = { "markdown" },
     config = function()
       vim.g.mkdp_filetypes = { "markdown" }
     end
-  }, {
+  },
+
+  {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     config = function()
       require('config/treesitter')
     end
-  }, {
+  },
+
+  {
     'petertriho/nvim-scrollbar',
     config = function()
       require('scrollbar').setup()
     end
-  }, {
+  },
+
+  {
     'TimUntersberger/neogit',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       require('config/neogit')
     end
-  }, {
-    'lukas-reineke/indent-blankline.nvim',
-    config = function()
-      require('indent_blankline').setup()
-    end
-  }, {
+  },
+
+  -- {
+  --   'lukas-reineke/indent-blankline.nvim',
+  --   config = function()
+  --     require('indent_blankline').setup()
+  --   end
+  -- },
+
+  {
     'lewis6991/gitsigns.nvim',
     config = function()
       require('config/gitsigns')
     end
-  }, {
+  },
+
+  {
     'echasnovski/mini.nvim',
     config = function()
       require('config/mini')
     end
-  }, {
+  },
+
+  {
     'rcarriga/nvim-notify',
     config = function()
       require('config/nvim-notify')
     end
-  }, {
+  },
+
+  {
     'windwp/nvim-autopairs',
     config = function()
       require('nvim-autopairs').setup {}
     end
-  }, { 'elihunter173/dirbuf.nvim' }, {
+  },
+
+  { 'elihunter173/dirbuf.nvim' }, {
     'phaazon/mind.nvim',
     branch = 'v2.2',
     dependencies = { 'nvim-lua/plenary.nvim' },
@@ -155,10 +193,35 @@ local plugins = {
       require 'mind'.setup()
     end
   },
+
+  
   {
-    "luukvbaal/statuscol.nvim",
-    config = function() require("statuscol").setup({ setopt = true }) end
-  }
+    'ggandor/leap.nvim',
+    lazy=false,
+    config = function()
+      require('leap').add_default_mappings()
+    end
+  },
+
+  {
+    'kevinhwang91/nvim-ufo', 
+    dependencies = 'kevinhwang91/promise-async',
+    priority= 100,
+    config = function()
+      vim.o.foldcolumn = '0' -- '0' is not bad
+      vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+      vim.o.foldlevelstart = 99
+      vim.o.foldenable = true
+
+      -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
+      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+
+      -- see lspconfig for more
+    end
+
+  },
+
 }
 
 require("lazy").setup(plugins)

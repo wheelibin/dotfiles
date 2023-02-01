@@ -4,12 +4,11 @@ local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 null_ls.setup({
   sources = {
     null_ls.builtins.code_actions.eslint_d,
-    null_ls.builtins.diagnostics.eslint_d.with({
-      method = null_ls.methods.DIAGNOSTICS_ON_SAVE
-    }), null_ls.builtins.diagnostics.tsc,
+    null_ls.builtins.diagnostics.eslint_d,
+    null_ls.builtins.diagnostics.tsc,
     null_ls.builtins.formatting.prettierd,
     null_ls.builtins.code_actions.gitsigns,
-    require("typescript.extensions.null-ls.code-actions"),
+    -- require("typescript.extensions.null-ls.code-actions"),
     null_ls.builtins.formatting.gofmt,
     null_ls.builtins.formatting.lua_format.with({
       extra_args = {

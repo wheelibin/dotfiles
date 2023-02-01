@@ -50,5 +50,6 @@ opt.swapfile = false
 -- hide the tildes showing end of buffer
 opt.fcs = "eob: "
 
+-- opt.foldenable = true
 -- opt.foldcolumn = "auto"
 -- opt.foldmethod = "indent"

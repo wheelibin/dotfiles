@@ -1,7 +1,7 @@
 -- lspconfig
 -- typescript is setup separately below
 local servers = {
-    'sumneko_lua', 'clangd', 'pylsp', 'html', 'marksman', 'jsonls', 'gopls'
+     'clangd', 'pylsp', 'html', 'marksman', 'jsonls', 'gopls', 'tsserver'
 }
 
 local legendary = require('legendary')
@@ -70,8 +70,15 @@ end
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-local lsp = require "lspconfig"
-local coq = require "coq" -- add this
+local lsp = require("lspconfig")
+local coq = require("coq") 
+
+-- Tell the server the capability of foldingRange,
+-- Neovim hasn't added foldingRange to default capabilities, users must add it manually
+capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true
+}
 
 require("mason").setup()
 require("mason-lspconfig").setup({automatic_installation = true})
@@ -86,42 +93,43 @@ for _, lsp in ipairs(servers) do
     }))
 end
 
-lspconfig.sumneko_lua.setup({
-    settings = {Lua = {diagnostics = {globals = {'vim'}}}}
-})
+require('ufo').setup()
+-- lspconfig.sumneko_lua.setup({
+--     settings = {Lua = {diagnostics = {globals = {'vim'}}}}
+-- })
 
--- typescript specific config
-require('typescript').setup({
-    server = {
-        settings = {
-            typescript = {
-                inlayHints = {
-                    includeInlayParameterNameHints = 'all',
-                    includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-                    includeInlayFunctionParameterTypeHints = true,
-                    includeInlayVariableTypeHints = true,
-                    includeInlayPropertyDeclarationTypeHints = true,
-                    includeInlayFunctionLikeReturnTypeHints = true,
-                    includeInlayEnumMemberValueHints = true
-                }
-            },
-            javascript = {
-                inlayHints = {
-                    includeInlayParameterNameHints = 'all',
-                    includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-                    includeInlayFunctionParameterTypeHints = true,
-                    includeInlayVariableTypeHints = true,
-                    includeInlayPropertyDeclarationTypeHints = true,
-                    includeInlayFunctionLikeReturnTypeHints = true,
-                    includeInlayEnumMemberValueHints = true
-                }
-            }
-        },
-        on_attach = on_attach,
-        capabilities = capabilities
-    }
-
-})
+-- -- typescript specific config
+-- require('typescript').setup({
+--     server = {
+--         settings = {
+--             typescript = {
+--                 inlayHints = {
+--                     includeInlayParameterNameHints = 'all',
+--                     includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+--                     includeInlayFunctionParameterTypeHints = true,
+--                     includeInlayVariableTypeHints = true,
+--                     includeInlayPropertyDeclarationTypeHints = true,
+--                     includeInlayFunctionLikeReturnTypeHints = true,
+--                     includeInlayEnumMemberValueHints = true
+--                 }
+--             },
+--             javascript = {
+--                 inlayHints = {
+--                     includeInlayParameterNameHints = 'all',
+--                     includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+--                     includeInlayFunctionParameterTypeHints = true,
+--                     includeInlayVariableTypeHints = true,
+--                     includeInlayPropertyDeclarationTypeHints = true,
+--                     includeInlayFunctionLikeReturnTypeHints = true,
+--                     includeInlayEnumMemberValueHints = true
+--                 }
+--             }
+--         },
+--         on_attach = on_attach,
+--         capabilities = capabilities
+--     }
+--
+-- })
 
 local sign = function(opts)
     vim.fn.sign_define(opts.name,
@@ -139,6 +147,7 @@ vim.diagnostic.config({
 
 vim.lsp.handlers['textDocument/hover'] =
     vim.lsp.with(vim.lsp.handlers.hover, {border = 'rounded'})
-vim.lsp.handlers['textDocument/signatureHelp'] =
+
+    vim.lsp.handlers['textDocument/signatureHelp'] =
     vim.lsp.with(vim.lsp.handlers.signature_help,
                  {focusable = false, border = 'rounded'})
