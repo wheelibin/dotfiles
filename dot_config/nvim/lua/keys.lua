@@ -34,5 +34,12 @@ legendary.keymaps({
   { '<C-up>', { n = ':m .-2<CR>==', i = '<Esc>:m .-2<CR>==gi', v = ':m \'<-2<CR>gv=gv' }, description = 'Move line up' },
   { '<C-down>', { n = ':m .+1<CR>==', i = '<Esc>:m .+1<CR>==gi', v = ':m \'>+1<CR>gv=gv' }, description = 'Move line down' },
 
-  { '<leader><leader>', ':noh<CR>', description = 'Clear search highlighting' }
+  { '<leader><leader>', ':noh<CR>', description = 'Clear search highlighting' },
+
+
+  { ';', ':', modes = {'n', 'v'}, options = { noremap = true } },
+  { ':', ';', modes = {'n', 'v'}, options = { noremap = true } },
+
+  { 'S', 'ciw', modes = {'n'}, options = { noremap = true } },
 })
+
