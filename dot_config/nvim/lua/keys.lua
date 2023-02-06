@@ -8,7 +8,8 @@ legendary.keymaps({
 
   -- buffer switching
   { '<Leader>bf', [[:bn<cr>]], description = 'Buffer forward' },
-  { '<Leader>bb', [[:bp<cr>]], description = 'Buffer back' }, --
+  { '<Leader>bb', [[:bp<cr>]], description = 'Buffer back' }, 
+  { '<bs>', '<C-^>', description = 'Edit alternative file' },
   -- window navigation
   { '<M-left>', ':wincmd h<CR>', description = 'Goto window to the left' },
   { '<M-down>', ':wincmd j<CR>', description = 'Goto window below' },
@@ -36,10 +37,8 @@ legendary.keymaps({
 
   { '<leader><leader>', ':noh<CR>', description = 'Clear search highlighting' },
 
-
   { ';', ':', modes = {'n', 'v'}, options = { noremap = true } },
   { ':', ';', modes = {'n', 'v'}, options = { noremap = true } },
 
-  { 'S', 'ciw', modes = {'n'}, options = { noremap = true } },
 })
 
