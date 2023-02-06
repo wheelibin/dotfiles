@@ -85,7 +85,7 @@ local plugins = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'lvimuser/lsp-inlayhints.nvim',
-      -- 'jose-elias-alvarez/typescript.nvim',
+      'jose-elias-alvarez/typescript.nvim',
       'ray-x/lsp_signature.nvim'
     },
     config = function()
@@ -98,15 +98,7 @@ local plugins = {
     branch = 'coq',
     dependencies = { { 'ms-jpq/coq.artifacts', branch = 'artifacts' } },
     config = function()
-      vim.g.coq_settings = {
-        auto_start = true,
-        display = {
-          preview = {
-            border = 'single',
-            positions = { north = 2, south = 3, west = 4, east = 1 }
-          }
-        }
-      }
+      require('config/coq')
     end
   },
 
@@ -116,6 +108,11 @@ local plugins = {
     config = function()
       require('config/null-ls')
     end
+  },
+
+  {
+    'neoclide/coc.nvim', 
+    branch = 'release'
   },
 
   {
@@ -193,7 +190,6 @@ local plugins = {
       require 'mind'.setup()
     end
   },
-
   
   {
     'ggandor/leap.nvim',

@@ -1,7 +1,8 @@
 -- lspconfig
 -- typescript is setup separately below
 local servers = {
-     'clangd', 'pylsp', 'html', 'marksman', 'jsonls', 'gopls', 'tsserver'
+     'clangd', 'pylsp', 'html', 'marksman', 'jsonls', 'gopls'
+     -- , 'tsserver'
 }
 
 local legendary = require('legendary')
@@ -103,35 +104,35 @@ require('ufo').setup()
 -- require('typescript').setup({
 --     server = {
 --         settings = {
---             typescript = {
---                 inlayHints = {
---                     includeInlayParameterNameHints = 'all',
---                     includeInlayParameterNameHintsWhenArgumentMatchesName = false,
---                     includeInlayFunctionParameterTypeHints = true,
---                     includeInlayVariableTypeHints = true,
---                     includeInlayPropertyDeclarationTypeHints = true,
---                     includeInlayFunctionLikeReturnTypeHints = true,
---                     includeInlayEnumMemberValueHints = true
---                 }
---             },
---             javascript = {
---                 inlayHints = {
---                     includeInlayParameterNameHints = 'all',
---                     includeInlayParameterNameHintsWhenArgumentMatchesName = false,
---                     includeInlayFunctionParameterTypeHints = true,
---                     includeInlayVariableTypeHints = true,
---                     includeInlayPropertyDeclarationTypeHints = true,
---                     includeInlayFunctionLikeReturnTypeHints = true,
---                     includeInlayEnumMemberValueHints = true
---                 }
---             }
+--             -- typescript = {
+--             --     inlayHints = {
+--             --         includeInlayParameterNameHints = 'all',
+--             --         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+--             --         includeInlayFunctionParameterTypeHints = true,
+--             --         includeInlayVariableTypeHints = true,
+--             --         includeInlayPropertyDeclarationTypeHints = true,
+--             --         includeInlayFunctionLikeReturnTypeHints = true,
+--             --         includeInlayEnumMemberValueHints = true
+--             --     }
+--             -- },
+--             -- javascript = {
+--             --     inlayHints = {
+--             --         includeInlayParameterNameHints = 'all',
+--             --         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+--             --         includeInlayFunctionParameterTypeHints = true,
+--             --         includeInlayVariableTypeHints = true,
+--             --         includeInlayPropertyDeclarationTypeHints = true,
+--             --         includeInlayFunctionLikeReturnTypeHints = true,
+--             --         includeInlayEnumMemberValueHints = true
+--             --     }
+--             -- }
 --         },
 --         on_attach = on_attach,
 --         capabilities = capabilities
 --     }
 --
 -- })
-
+--
 local sign = function(opts)
     vim.fn.sign_define(opts.name,
                        {texthl = opts.name, text = opts.text, numhl = ''})
