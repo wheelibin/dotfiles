@@ -111,8 +111,11 @@ local plugins = {
   },
 
   {
-    'neoclide/coc.nvim', 
-    branch = 'release'
+    'neoclide/coc.nvim',
+    branch = 'release',
+    config = function()
+      require('config/coc')
+    end
   },
 
   {
@@ -190,10 +193,10 @@ local plugins = {
       require 'mind'.setup()
     end
   },
-  
+
   {
     'ggandor/leap.nvim',
-    lazy=false,
+    lazy = false,
     config = function()
       require('leap').add_default_mappings()
     end
