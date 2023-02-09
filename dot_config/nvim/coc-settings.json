@@ -1,4 +1,5 @@
 {
+  "coc.preferences.formatOnSave": true,
   "coc.preferences.formatOnType": true,
   "eslint.autoFixOnSave": true,
   "Lua.telemetry.enable": false,
