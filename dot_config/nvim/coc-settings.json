@@ -1,15 +1,11 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["*"],
-  "tsserver.formatOnType": true,
   "coc.preferences.formatOnType": true,
   "eslint.autoFixOnSave": true,
-  "eslint.filetypes": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
   "Lua.telemetry.enable": false,
+  "snippets.ultisnips.enable": false,
+  "yaml.format.enable": true,
+  "yaml.format.singleQuote": false,
+  "yaml.trace.server": "verbose",
   "suggest.floatConfig": {
     "border": true,
     "rounded": true,
@@ -33,6 +29,5 @@
     "rounded": true,
     "highlight": "StatusLine",
     "borderhighlight": "DiagnosticWarn"
-  },
-  "snippets.ultisnips.enable": false
+  }
 }
