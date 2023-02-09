@@ -2,7 +2,7 @@ local remap = vim.api.nvim_set_keymap
 local npairs = require('nvim-autopairs')
 
 vim.g.coq_settings = {
-  auto_start = true,
+  -- auto_start = true,
   display = {
     preview = {
       border = 'single',

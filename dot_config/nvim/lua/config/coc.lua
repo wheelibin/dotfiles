@@ -5,22 +5,22 @@ vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
 
 vim.g.coc_global_extensions = {
-  -- 'coc-css',
-  -- 'coc-eslint',
-  -- 'coc-html',
-  -- 'coc-json',
-  -- 'coc-go',
-  -- 'coc-lists',
-  -- 'coc-markdownlint',
+  'coc-css',
+  'coc-eslint',
+  'coc-html',
+  'coc-json',
+  'coc-go',
+  'coc-lists',
+  'coc-markdownlint',
   'coc-pairs',
   'coc-prettier',
-  -- 'coc-pyright',
-  -- 'coc-snippets',
-  -- 'coc-stylua',
-  -- 'coc-sumneko-lua',
-  -- 'coc-swagger',
+  'coc-pyright',
+  'coc-snippets',
+  'coc-stylua',
+  'coc-sumneko-lua',
+  'coc-swagger',
   'coc-tsserver',
-  -- 'coc-yaml',
+  'coc-yaml',
 }
 
 local expr_opts = { silent = true, expr = true, noremap = true }

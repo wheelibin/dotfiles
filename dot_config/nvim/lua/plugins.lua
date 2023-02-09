@@ -73,42 +73,43 @@ local plugins = {
       'nvim-telescope/telescope-frecency.nvim',
       'kkharji/sqlite.lua',
       "debugloop/telescope-undo.nvim",
+      "fannheyward/telescope-coc.nvim"
     },
     config = function()
       require('config/telescope')
     end
   },
 
-  {
-    'neovim/nvim-lspconfig',
-    dependencies = {
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-      'lvimuser/lsp-inlayhints.nvim',
-      'jose-elias-alvarez/typescript.nvim',
-      'ray-x/lsp_signature.nvim'
-    },
-    config = function()
-      require('config/lspconfig')
-    end
-  },
+  -- {
+  --   'neovim/nvim-lspconfig',
+  --   dependencies = {
+  --     'williamboman/mason.nvim',
+  --     'williamboman/mason-lspconfig.nvim',
+  --     'lvimuser/lsp-inlayhints.nvim',
+  --     'jose-elias-alvarez/typescript.nvim',
+  --     'ray-x/lsp_signature.nvim'
+  --   },
+  --   config = function()
+  --     require('config/lspconfig')
+  --   end
+  -- },
 
-  {
-    'ms-jpq/coq_nvim',
-    branch = 'coq',
-    dependencies = { { 'ms-jpq/coq.artifacts', branch = 'artifacts' } },
-    config = function()
-      require('config/coq')
-    end
-  },
+  -- {
+  --   'ms-jpq/coq_nvim',
+  --   branch = 'coq',
+  --   dependencies = { { 'ms-jpq/coq.artifacts', branch = 'artifacts' } },
+  --   config = function()
+  --     require('config/coq')
+  --   end
+  -- },
 
-  {
-    'jose-elias-alvarez/null-ls.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      require('config/null-ls')
-    end
-  },
+  -- {
+  --   'jose-elias-alvarez/null-ls.nvim',
+  --   dependencies = { 'nvim-lua/plenary.nvim' },
+  --   config = function()
+  --     require('config/null-ls')
+  --   end
+  -- },
 
   {
     'neoclide/coc.nvim',
