@@ -113,6 +113,7 @@ local plugins = {
 
   {
     'neoclide/coc.nvim',
+    priority = 500,
     branch = 'release',
     config = function()
       require('config/coc')
@@ -187,13 +188,13 @@ local plugins = {
   },
 
   { 'elihunter173/dirbuf.nvim' }, {
-    'phaazon/mind.nvim',
-    branch = 'v2.2',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      require 'mind'.setup()
-    end
-  },
+  'phaazon/mind.nvim',
+  branch = 'v2.2',
+  dependencies = { 'nvim-lua/plenary.nvim' },
+  config = function()
+    require 'mind'.setup()
+  end
+},
 
   {
     'ggandor/leap.nvim',
@@ -228,6 +229,19 @@ local plugins = {
         foldfunc = "builtin",
         setopt = true,
       })
+    end
+  },
+
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      -- "antoinemadec/FixCursorHold.nvim",
+      "nvim-neotest/neotest-go"
+    },
+    config = function()
+      require("config/neotest")
     end
   }
 }

@@ -7,15 +7,14 @@ require('gitsigns').setup({
       opts.buffer = bufnr
       vim.keymap.set(mode, l, r, opts)
     end
-
     -- Navigation
-    map('n', ']c', function()
+    map('n', '<M-C-S-PageDown>', function()
       if vim.wo.diff then return ']c' end
       vim.schedule(function() gs.next_hunk() end)
       return '<Ignore>'
     end, { expr = true })
 
-    map('n', '[c', function()
+    map('n', '<M-C-S-PageUp>', function()
       if vim.wo.diff then return '[c' end
       vim.schedule(function() gs.prev_hunk() end)
       return '<Ignore>'
