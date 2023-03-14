@@ -77,6 +77,7 @@ pcall(function()
   telescope.load_extension('fzf')
   telescope.load_extension("undo")
   telescope.load_extension("coc")
+  telescope.load_extension("advanced_git_search")
 end)
 
 local legendary = require('legendary')
@@ -103,19 +104,38 @@ local legendary_toolbox = require('legendary.toolbox')
 -- })
 
 legendary.keymaps({
-  { '<leader>ff', legendary_toolbox.lazy(builtin.find_files, { path_display = { 'truncate' } }),
-    description = 'Find files' },
-  { '<leader>fg', builtin.live_grep, description = 'Find text (grep)' },
-  { '<leader>fb', legendary_toolbox.lazy(builtin.buffers, { path_display = { 'truncate' } }),
-    description = 'Find buffers' },
+  {
+    '<leader>ff',
+    legendary_toolbox.lazy(builtin.find_files, { path_display = { 'truncate' } }),
+    description = 'Find files'
+  },
+  { '<leader>fg', builtin.live_grep,                                     description = 'Find text (grep)' },
+  {
+    '<leader>fb',
+    legendary_toolbox.lazy(builtin.buffers, { path_display = { 'truncate' } }),
+    description = 'Find buffers'
+  },
   { '<leader>fr', ':Telescope coc references path_display={"tail"}<cr>', description = 'Find references (LSP)' },
-  { '<leader>fe', ':Telescope coc workspace_diagnostics<cr>', description = 'Find errors (diagnostics) (LSP)' },
+  {
+    '<leader>fe',
+    ':Telescope coc workspace_diagnostics<cr>',
+    description =
+    'Find errors (diagnostics) (LSP)'
+  },
   { '<leader>fs', ':Telescope coc workspace_symbols<cr>', description = 'Find symbols (LSP)' },
-  { '<leader>fi', builtin.lsp_implementations, description = 'Find implementation(s) (LSP)' },
-  { '<leader>fd', ':Telescope coc definitions<cr>', description = 'Find definition(s) (LSP)' },
-  { '<leader>fh', builtin.git_bcommits, description = 'File History (git)' },
-  { '<leader>fw', legendary_toolbox.lazy(builtin.grep_string, { word_match = '-w', path_display = { 'truncate' } }),
-    description = 'Find word under cursor' },
-  { '<leader>tr', builtin.resume, description = 'Telescope Resume' },
-  { '<leader>fu', telescope.extensions.undo.undo, description = 'File History (git)' },
+  { '<leader>fi', builtin.lsp_implementations,            description = 'Find implementation(s) (LSP)' },
+  { '<leader>fd', ':Telescope coc definitions<cr>',       description = 'Find definition(s) (LSP)' },
+  -- { '<leader>fh', builtin.git_bcommits, description = 'File History (git)' },
+  {
+    '<leader>fw',
+    legendary_toolbox.lazy(builtin.grep_string, { word_match = '-w', path_display = { 'truncate' } }),
+    description = 'Find word under cursor'
+  },
+  { '<leader>tr', builtin.resume,                                                 description = 'Telescope Resume' },
+  { '<leader>fu', telescope.extensions.undo.undo,                                 description = 'Undo history' },
+  { '<leader>hf', telescope.extensions.advanced_git_search.diff_commit_file,      description = 'File History (git)' },
+  { '<leader>hl', telescope.extensions.advanced_git_search.diff_commit_line,      description = 'Line History (git)' },
+  { '<leader>hh', telescope.extensions.advanced_git_search.show_custom_functions,
+                                                                                    description =
+    'Git History Functions (git)' },
 })

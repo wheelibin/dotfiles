@@ -31,15 +31,6 @@ local plugins = {
     end
   },
 
-  -- {
-  --   'AlexvZyl/nordic.nvim',
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     require 'nordic'.load()
-  --   end
-  -- },
-
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
@@ -73,7 +64,8 @@ local plugins = {
       'nvim-telescope/telescope-frecency.nvim',
       'kkharji/sqlite.lua',
       "debugloop/telescope-undo.nvim",
-      "fannheyward/telescope-coc.nvim"
+      "fannheyward/telescope-coc.nvim",
+      "aaronhallaert/advanced-git-search.nvim"
     },
     config = function()
       require('config/telescope')
@@ -145,21 +137,6 @@ local plugins = {
   },
 
   {
-    'TimUntersberger/neogit',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      require('config/neogit')
-    end
-  },
-
-  -- {
-  --   'lukas-reineke/indent-blankline.nvim',
-  --   config = function()
-  --     require('indent_blankline').setup()
-  --   end
-  -- },
-
-  {
     'lewis6991/gitsigns.nvim',
     config = function()
       require('config/gitsigns')
@@ -177,13 +154,6 @@ local plugins = {
     'rcarriga/nvim-notify',
     config = function()
       require('config/nvim-notify')
-    end
-  },
-
-  {
-    'windwp/nvim-autopairs',
-    config = function()
-      require('nvim-autopairs').setup {}
     end
   },
 
@@ -205,34 +175,6 @@ local plugins = {
   },
 
   {
-    'kevinhwang91/nvim-ufo',
-    dependencies = 'kevinhwang91/promise-async',
-    config = function()
-      vim.o.foldcolumn = '1' -- '0' is not bad
-      vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-      vim.o.foldlevelstart = 99
-      vim.o.foldenable = true
-
-      -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
-      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
-
-      -- see lspconfig for more
-    end
-
-  },
-
-  {
-    "luukvbaal/statuscol.nvim",
-    config = function()
-      require("statuscol").setup({
-        foldfunc = "builtin",
-        setopt = true,
-      })
-    end
-  },
-
-  {
     "nvim-neotest/neotest",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -243,7 +185,15 @@ local plugins = {
     config = function()
       require("config/neotest")
     end
+  },
+
+  {
+    "tpope/vim-fugitive",
+    config = function()
+      require('config/fugitive')
+    end
   }
+
 }
 
 require("lazy").setup(plugins)
