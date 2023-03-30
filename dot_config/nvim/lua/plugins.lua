@@ -192,7 +192,15 @@ local plugins = {
     config = function()
       require('config/fugitive')
     end
-  }
+  },
+
+  -- {
+  --     "codethread/qmk.nvim",
+  --     config = function()
+  --       require('config/qmk')
+  --     end
+  --   }
+
 
 }
 
