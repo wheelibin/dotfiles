@@ -18,6 +18,19 @@ config.color_scheme = 'Melange Dark'
 -- fonts
 config.font = wezterm.font { family = 'Fira Code' }
 config.font_size = 20
+config.font_rules = {
+  -- disable italics
+  {
+    intensity = 'Normal',
+    italic = true,
+    font = wezterm.font { family = 'Fira Code' }
+  },
+  {
+    intensity = 'Normal',
+    italic = false,
+    font = wezterm.font { family = 'Fira Code' }
+  },
+}
 
 -- window appearance
 config.window_padding = {
