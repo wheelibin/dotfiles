@@ -157,14 +157,16 @@ local plugins = {
     end
   },
 
-  { 'elihunter173/dirbuf.nvim' }, {
-  'phaazon/mind.nvim',
-  branch = 'v2.2',
-  dependencies = { 'nvim-lua/plenary.nvim' },
-  config = function()
-    require 'mind'.setup()
-  end
-},
+  { 'elihunter173/dirbuf.nvim' },
+
+  {
+    'phaazon/mind.nvim',
+    branch = 'v2.2',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require 'mind'.setup()
+    end
+  },
 
   {
     'ggandor/leap.nvim',
@@ -194,12 +196,16 @@ local plugins = {
     end
   },
 
-  -- {
-  --     "codethread/qmk.nvim",
-  --     config = function()
-  --       require('config/qmk')
-  --     end
-  --   }
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end
+  }
 
 
 }
