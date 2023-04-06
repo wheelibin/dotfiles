@@ -43,8 +43,10 @@ config.enable_tab_bar = false
 
 -- key bindings
 config.keys = {
-  { key = 'h', mods = 'SHIFT|ALT', action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
-  { key = 'v', mods = 'SHIFT|ALT', action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' } },
+  { key = 'h',         mods = 'SHIFT|ALT',      action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+  { key = 'v',         mods = 'SHIFT|ALT',      action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' } },
+  { key = 'UpArrow',   mods = 'SHIFT|ALT|CTRL', action = wezterm.action.DisableDefaultAssignment },
+  { key = 'DownArrow', mods = 'SHIFT|ALT|CTRL', action = wezterm.action.DisableDefaultAssignment },
 }
 
 -- and finally, return the configuration to wezterm
