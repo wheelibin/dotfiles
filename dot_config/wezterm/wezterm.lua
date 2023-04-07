@@ -41,12 +41,64 @@ config.window_padding = {
 }
 config.enable_tab_bar = false
 
+
+
+-- smart splits
+--
+-- Equivalent to POSIX basename(3)
+-- Given "/foo/bar" returns "bar"
+-- Given "c:\\foo\\bar" returns "bar"
+local function basename(s)
+  return string.gsub(s, '(.*[/\\])(.*)', '%2')
+end
+
+local function is_vim(pane)
+  local process_name = basename(pane:get_foreground_process_name())
+  return process_name == 'nvim' or process_name == 'vim'
+end
+
+local direction_keys = {
+  Left = 'LeftArrow',
+  Down = 'DownArrow',
+  Up = 'UpArrow',
+  Right = 'RightArrow',
+  -- reverse lookup
+  LeftArrow = 'Left',
+  DownArrow = 'Down',
+  UpArrow = 'Up',
+  RightArrow = 'Right',
+}
+
+local function split_nav(key)
+  return {
+    key = key,
+    mods = 'ALT',
+    action = wezterm.action_callback(function(win, pane)
+      if is_vim(pane) then
+        -- pass the keys through to vim/nvim
+        win:perform_action({
+          SendKey = { key = key, mods = 'ALT' },
+        }, pane)
+      else
+        win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
+      end
+    end),
+  }
+end
+
 -- key bindings
 config.keys = {
   { key = 'h',         mods = 'SHIFT|ALT',      action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
   { key = 'v',         mods = 'SHIFT|ALT',      action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' } },
   { key = 'UpArrow',   mods = 'SHIFT|ALT|CTRL', action = wezterm.action.DisableDefaultAssignment },
   { key = 'DownArrow', mods = 'SHIFT|ALT|CTRL', action = wezterm.action.DisableDefaultAssignment },
+
+  -- move between split panes
+  split_nav('LeftArrow'),
+  split_nav('DownArrow'),
+  split_nav('UpArrow'),
+  split_nav('RightArrow'),
+
 }
 
 -- and finally, return the configuration to wezterm
