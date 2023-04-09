@@ -25,11 +25,6 @@ config.font_rules = {
     italic = true,
     font = wezterm.font { family = 'Fira Code' }
   },
-  {
-    intensity = 'Normal',
-    italic = false,
-    font = wezterm.font { family = 'Fira Code' }
-  },
 }
 
 -- window appearance
@@ -40,7 +35,7 @@ config.window_padding = {
   bottom = 0,
 }
 config.enable_tab_bar = false
-
+config.adjust_window_size_when_changing_font_size = false
 
 
 -- smart splits
