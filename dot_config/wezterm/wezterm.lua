@@ -64,10 +64,10 @@ local direction_keys = {
   RightArrow = 'Right',
 }
 
-local function split_nav(key)
+local function split_nav(key, mods)
   return {
     key = key,
-    mods = 'ALT',
+    mods = mods,
     action = wezterm.action_callback(function(win, pane)
       if is_vim(pane) then
         -- pass the keys through to vim/nvim
@@ -89,10 +89,10 @@ config.keys = {
   { key = 'DownArrow', mods = 'SHIFT|ALT|CTRL', action = wezterm.action.DisableDefaultAssignment },
 
   -- move between split panes
-  split_nav('LeftArrow'),
-  split_nav('DownArrow'),
-  split_nav('UpArrow'),
-  split_nav('RightArrow'),
+  split_nav('LeftArrow', 'ALT'),
+  split_nav('DownArrow', 'ALT'),
+  split_nav('UpArrow', 'ALT'),
+  split_nav('RightArrow', 'ALT'),
 
 }
 
