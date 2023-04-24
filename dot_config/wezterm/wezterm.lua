@@ -16,16 +16,10 @@ end
 config.color_scheme = 'Melange Dark'
 
 -- fonts
-config.font = wezterm.font { family = 'Fira Code' }
+-- config.font = wezterm.font { family = 'Fira Code' }
+config.font = wezterm.font { family = 'Hack' }
+-- config.font = wezterm.font { family = 'Source Code Pro' }
 config.font_size = 20
-config.font_rules = {
-  -- disable italics
-  {
-    intensity = 'Normal',
-    italic = true,
-    font = wezterm.font { family = 'Fira Code' }
-  },
-}
 
 -- window appearance
 config.window_padding = {
@@ -34,6 +28,11 @@ config.window_padding = {
   top = 0,
   bottom = 0,
 }
+config.inactive_pane_hsb = {
+  saturation = 0.3,
+  brightness = 0.8,
+}
+
 config.enable_tab_bar = false
 config.adjust_window_size_when_changing_font_size = false
 
