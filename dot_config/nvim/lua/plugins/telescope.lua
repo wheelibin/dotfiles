@@ -140,7 +140,7 @@ return {
       { '<leader>fs', ':Telescope coc workspace_symbols<cr>', description = 'Find symbols (LSP)' },
       { '<leader>fi', builtin.lsp_implementations,            description = 'Find implementation(s) (LSP)' },
       { '<leader>fd', ':Telescope coc definitions<cr>',       description = 'Find definition(s) (LSP)' },
-      -- { '<leader>fh', builtin.git_bcommits, description = 'File History (git)' },
+      { '<leader>fh', builtin.git_bcommits,                   description = 'File History (git)' },
       {
         '<leader>fw',
         legendary_toolbox.lazy(builtin.grep_string, { word_match = '-w', path_display = { 'truncate' } }),
