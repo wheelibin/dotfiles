@@ -59,6 +59,20 @@ legendary.keymaps({
   { '<leader><leader>', ':noh<CR>', description = 'Clear search highlighting' },
   { ';',                ':',        modes = { 'n', 'v' },                     options = { noremap = true } },
   { ':',                ';',        modes = { 'n', 'v' },                     options = { noremap = true } },
+  -- remap hjkl to colemak homerow equivalents
+  { 'm',                'h',        modes = { 'n', 'v' },                     options = { noremap = true } },
+  { 'n',                'j',        modes = { 'n', 'v' },                     options = { noremap = true } },
+  { 'e',                'k',        modes = { 'n', 'v' },                     options = { noremap = true } },
+  { 'i',                'l',        modes = { 'n', 'v' },                     options = { noremap = true } },
+  -- now we need to remap the keys we took for hjkl
+  -- insert mode
+  { 'h',                'i',        modes = { 'n', 'v' },                     options = { noremap = true } },
+  -- jump to next search
+  { 'j',                'n',        modes = { 'n', 'v' },                     options = { noremap = true } },
+  -- { 'k',                'm',        modes = { 'n', 'v' },                     options = { noremap = true } },
+  -- move to end of next word
+  { 'l',                'e',        modes = { 'n', 'v' },                     options = { noremap = true } },
+
   -- window resizing
   -- { '<C-M-S-j>', ':resize +2<CR>', description = 'Resize window - shorter' },
   -- { '<C-M-S-k>', ':resize -2<CR>', description = 'Resize window - taller' },
