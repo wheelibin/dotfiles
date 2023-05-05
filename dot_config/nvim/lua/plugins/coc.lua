@@ -39,13 +39,13 @@ return {
         description = 'Code docs'
       },
       {
-        '<M-C-S-Up>',
+        '<M-C-S-e>',
         "<Plug>(coc-diagnostic-prev)",
         description =
         'Prev Diagnostics message'
       },
       {
-        '<M-C-S-Down>',
+        '<M-C-S-n>',
         "<Plug>(coc-diagnostic-next)",
         description =
         'Next Diagnostics message'

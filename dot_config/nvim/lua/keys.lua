@@ -10,9 +10,9 @@ legendary.keymaps({
   },
 
   -- buffer switching
-  { '<Leader>bf',  [[:bn<cr>]],                  description = 'Buffer forward' },
-  { '<Leader>bb',  [[:bp<cr>]],                  description = 'Buffer back' },
-  { '<bs>',        '<C-^>',                      description = 'Edit alternative file' },
+  { '<Leader>bf', [[:bn<cr>]],                  description = 'Buffer forward' },
+  { '<Leader>bb', [[:bp<cr>]],                  description = 'Buffer back' },
+  { '<bs>',       '<C-^>',                      description = 'Edit alternative file' },
   -- -- window navigation
   -- currently handled by smart-splits
   -- { '<M-left>',    ':wincmd h<CR>',              description = 'Goto window to the left' },
@@ -20,13 +20,13 @@ legendary.keymaps({
   -- { '<M-up>',      ':wincmd k<CR>',              description = 'Goto window above' },
   -- { '<M-right>',   ':wincmd l<CR>',              description = 'Goto window to the right' },
 
-  { '<M-r>',       ':wincmd r<CR>',              description = 'Cycle through all windows' },
-  { '<M-q>',       ':wincmd q<CR>',              description = 'Close current window' },
+  { '<M-r>',      ':wincmd r<CR>',              description = 'Cycle through all windows' },
+  { '<M-q>',      ':wincmd q<CR>',              description = 'Close current window' },
   -- window creation
-  { '<M-S-left>',  ':wincmd v<CR>:wincmd h<CR>', description = 'New window to the right' },
-  { '<M-S-down>',  ':wincmd s<CR>',              description = 'New window below' },
-  { '<M-S-up>',    ':wincmd s<CR>:wincmd k<CR>', description = 'New window above' },
-  { '<M-S-right>', ':wincmd v<CR>',              description = 'New window to the left' },
+  { '<M-S-m>',    ':wincmd v<CR>:wincmd h<CR>', description = 'New window to the right' },
+  { '<M-S-n>',    ':wincmd s<CR>',              description = 'New window below' },
+  { '<M-S-e>',    ':wincmd s<CR>:wincmd k<CR>', description = 'New window above' },
+  { '<M-S-i>',    ':wincmd v<CR>',              description = 'New window to the left' },
   -- copy/paste system clipboard
   {
     '<Leader>y',
@@ -57,21 +57,6 @@ legendary.keymaps({
     description = 'Move line down',
   },
   { '<leader><leader>', ':noh<CR>', description = 'Clear search highlighting' },
-  { ';',                ':',        modes = { 'n', 'v' },                     options = { noremap = true } },
-  { ':',                ';',        modes = { 'n', 'v' },                     options = { noremap = true } },
-  -- remap hjkl to colemak homerow equivalents
-  { 'm',                'h',        modes = { 'n', 'v' },                     options = { noremap = true } },
-  { 'n',                'j',        modes = { 'n', 'v' },                     options = { noremap = true } },
-  { 'e',                'k',        modes = { 'n', 'v' },                     options = { noremap = true } },
-  { 'i',                'l',        modes = { 'n', 'v' },                     options = { noremap = true } },
-  -- now we need to remap the keys we took for hjkl
-  -- insert mode
-  { 'h',                'i',        modes = { 'n', 'v' },                     options = { noremap = true } },
-  -- jump to next search
-  { 'j',                'n',        modes = { 'n', 'v' },                     options = { noremap = true } },
-  -- { 'k',                'm',        modes = { 'n', 'v' },                     options = { noremap = true } },
-  -- move to end of next word
-  { 'l',                'e',        modes = { 'n', 'v' },                     options = { noremap = true } },
 
   -- window resizing
   -- { '<C-M-S-j>', ':resize +2<CR>', description = 'Resize window - shorter' },
