@@ -1,5 +1,6 @@
 -- Pull in the wezterm API
 local wezterm = require 'wezterm'
+local action = wezterm.action
 
 -- This table will hold the configuration.
 local config = {}
@@ -52,15 +53,15 @@ local function is_vim(pane)
 end
 
 local direction_keys = {
-  Left = 'LeftArrow',
-  Down = 'DownArrow',
-  Up = 'UpArrow',
-  Right = 'RightArrow',
+  Left = 'm',
+  Down = 'n',
+  Up = 'e',
+  Right = 'i',
   -- reverse lookup
-  LeftArrow = 'Left',
-  DownArrow = 'Down',
-  UpArrow = 'Up',
-  RightArrow = 'Right',
+  m = 'Left',
+  n = 'Down',
+  e = 'Up',
+  i = 'Right',
 }
 
 local function split_nav(key, mods)
@@ -81,17 +82,23 @@ local function split_nav(key, mods)
 end
 
 -- key bindings
+config.disable_default_key_bindings = true
+-- windows
+
 config.keys = {
-  { key = 'h',         mods = 'SHIFT|ALT',      action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
-  { key = 'v',         mods = 'SHIFT|ALT',      action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' } },
-  { key = 'UpArrow',   mods = 'SHIFT|ALT|CTRL', action = wezterm.action.DisableDefaultAssignment },
-  { key = 'DownArrow', mods = 'SHIFT|ALT|CTRL', action = wezterm.action.DisableDefaultAssignment },
+  { key = 'N',     mods = 'SHIFT|CTRL', action = action.SpawnWindow },
+  { key = 'Enter', mods = 'META',       action = action.TogglePaneZoomState },
+  { key = 'h',     mods = 'SHIFT|ALT',  action = action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+  { key = 'v',     mods = 'SHIFT|ALT',  action = action.SplitVertical { domain = 'CurrentPaneDomain' } },
+
+  -- paste from the clipboard
+  { key = 'v',     mods = 'SUPER',      action = action.PasteFrom 'Clipboard' },
 
   -- move between split panes
-  split_nav('LeftArrow', 'ALT'),
-  split_nav('DownArrow', 'ALT'),
-  split_nav('UpArrow', 'ALT'),
-  split_nav('RightArrow', 'ALT'),
+  split_nav('m', 'ALT'),
+  split_nav('n', 'ALT'),
+  split_nav('e', 'ALT'),
+  split_nav('i', 'ALT'),
 
 }
 
