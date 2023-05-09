@@ -65,3 +65,29 @@ legendary.keymaps({
   -- { '<C-M-S-h>', ':vertical resize -2<CR>', description = 'Resize window - narrower' }, --
 
 })
+
+local map = require('./utils').map
+map('n', ';', ':', { noremap = true })
+map('n', ':', ';', { noremap = true })
+
+-- remap hjkl to colemak homerow equivalents
+map('', 'm', 'h', {})
+map('', 'n', 'j', {})
+map('', 'e', 'k', {})
+map('', 'i', 'l', {})
+
+-- now we need to remap the keys we took for hjkl
+-- move insert at cursor to o
+map('', 'o', 'i', {})
+map('', 'O', 'I', {})
+
+-- now we need to move o, so h seems good as it's "below" so is fairly logical
+map('', 'h', 'o', {})
+map('', 'H', 'O', {})
+
+-- jump to next search
+map('', 'k', 'n', {})
+map('', 'K', 'N', {})
+
+-- move to end of next word
+map('', 'l', 'e', {})

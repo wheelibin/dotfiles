@@ -1,5 +1,3 @@
-local map = require('./utils').map
-
 vim.g.mapleader = ' '
 
 vim.g.coq_settings = { auto_start = 'shut-up' }
@@ -51,37 +49,3 @@ opt.swapfile = false
 
 -- hide the tildes showing end of buffer
 opt.fcs = "eob: "
-
-map('n', ';', ':', { noremap = true })
-map('n', ':', ';', { noremap = true })
-
--- remap hjkl to colemak homerow equivalents
-map('n', 'm', 'h', { noremap = true })
-map('n', 'n', 'j', { noremap = true })
-map('n', 'e', 'k', { noremap = true })
-map('n', 'i', 'l', { noremap = true })
-map('v', 'm', 'h', { noremap = true })
-map('v', 'n', 'j', { noremap = true })
-map('v', 'e', 'k', { noremap = true })
-map('v', 'i', 'l', { noremap = true })
-
--- now we need to remap the keys we took for hjkl
--- move insert at cursor to o
-map('n', 'o', 'i', { noremap = true })
-map('n', 'O', 'I', { noremap = true })
-map('v', 'o', 'i', { noremap = true })
-map('v', 'O', 'I', { noremap = true })
-
--- now we need to move o, so h seems good as it's "below" so is fairly logical
-map('n', 'h', 'o', { noremap = true })
-map('n', 'H', 'O', { noremap = true })
-map('v', 'h', 'o', { noremap = true })
-map('v', 'H', 'O', { noremap = true })
--- jump to next search
-map('n', 'k', 'n', { noremap = true })
-map('n', 'K', 'N', { noremap = true })
-map('v', 'k', 'n', { noremap = true })
-map('v', 'K', 'N', { noremap = true })
--- move to end of next word
-map('n', 'l', 'e', { noremap = true })
-map('v', 'l', 'e', { noremap = true })
