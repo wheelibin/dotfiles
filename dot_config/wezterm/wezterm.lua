@@ -18,7 +18,7 @@ config.color_scheme = 'Melange Dark'
 
 -- fonts
 -- config.font = wezterm.font { family = 'Fira Code' }
-config.font = wezterm.font { family = 'Hack' }
+-- config.font = wezterm.font { family = 'Hack' }
 -- config.font = wezterm.font { family = 'Source Code Pro' }
 config.font_size = 20
 
@@ -82,7 +82,7 @@ local function split_nav(key, mods)
 end
 
 -- key bindings
-config.disable_default_key_bindings = true
+-- config.disable_default_key_bindings = true
 -- windows
 
 config.keys = {
