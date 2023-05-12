@@ -14,6 +14,9 @@ return
       description = 'Nvim-Tree Toggle'
     })
     require("neo-tree").setup({
+      follow_current_file = true,
+      -- auto refresh
+      use_libuv_file_watcher = true,
       close_if_last_window = false,
       window = {
         mappings = {
