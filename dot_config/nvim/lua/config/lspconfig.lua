@@ -1,8 +1,8 @@
 -- lspconfig
 -- typescript is setup separately below
 local servers = {
-  'clangd', 'pylsp', 'html', 'marksman', 'jsonls', 'gopls'
-  -- , 'tsserver'
+  'clangd',  'html', 'marksman', 'jsonls', 'gopls','lua_ls',
+   'tsserver'
 }
 
 local legendary = require('legendary')
