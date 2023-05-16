@@ -11,12 +11,10 @@ return {
     { 'williamboman/mason-lspconfig.nvim' },
     { 'ray-x/lsp_signature.nvim' },
     { 'j-hui/fidget.nvim' },
+    { 'jose-elias-alvarez/typescript.nvim' },
     -- Autocompletion
     { 'ms-jpq/coq_nvim' },
     { 'ms-jpq/coq.artifacts' },
-    -- { 'hrsh7th/nvim-cmp' },   -- Required
-    -- { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-    -- { 'L3MON4D3/LuaSnip' },   -- Required
   },
   config = function()
 
@@ -35,7 +33,6 @@ return {
 
     local on_attach = function(client, bufnr)
 
-      -- vim.cmd(":COQNow -s")
 
       -- Enable completion triggered by <c-x><c-o>
       vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
