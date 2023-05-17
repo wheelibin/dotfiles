@@ -36,7 +36,7 @@ return {
     -- vim.cmd('hi! link MiniCursorword Visual')
 
     -- auto pairs (braces, quotes etc)
-    -- require('mini.pairs').setup()
+    require('mini.pairs').setup()
 
     -- remove buffers retaining window layout
     local miniBufRemove = require('mini.bufremove')

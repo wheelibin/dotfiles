@@ -17,7 +17,6 @@ return {
     { 'ms-jpq/coq.artifacts' },
   },
   config = function()
-
     local servers = {
       'clangd', 'html', 'marksman', 'jsonls', 'gopls', 'lua_ls',
       'tsserver'
@@ -27,13 +26,11 @@ return {
     local legendary_toolbox = require('legendary.toolbox')
 
     legendary.keymaps({
-      { '[d', vim.diagnostic.goto_prev, description = 'Prev Diagnostics message' },
-      { ']d', vim.diagnostic.goto_next, description = 'Next Diagnostics message' }
+      { '<M-C-S-n>', vim.diagnostic.goto_next, description = 'Next Diagnostics message' },
+      { '<M-C-S-e>', vim.diagnostic.goto_prev, description = 'Prev Diagnostics message' },
     })
 
     local on_attach = function(client, bufnr)
-
-
       -- Enable completion triggered by <c-x><c-o>
       vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -44,37 +41,37 @@ return {
           description = 'Go to declaration (LSP)',
           buffer = bufnr
         }, {
-          'gd',
-          vim.lsp.buf.definition,
-          description = 'Go to definition (LSP)',
-          buffer = bufnr
-        },
+        'gd',
+        vim.lsp.buf.definition,
+        description = 'Go to definition (LSP)',
+        buffer = bufnr
+      },
         {
           '<C-space>',
           vim.lsp.buf.hover,
           description = 'LSP Info',
           buffer = bufnr
         }, {
-          'gi',
-          vim.lsp.buf.implementation,
-          description = 'Go to implementation (LSP)',
-          buffer = bufnr
-        }, {
-          '<leader>rn',
-          vim.lsp.buf.rename,
-          description = 'Rename (LSP)',
-          buffer = bufnr
-        }, {
-          '<leader>ca',
-          vim.lsp.buf.code_action,
-          description = 'Code Action(s) (LSP)',
-          buffer = bufnr
-        }, {
-          '<leader>f',
-          legendary_toolbox.lazy(vim.lsp.buf.format, { async = true }),
-          description = 'Format buffer (LSP)',
-          buffer = bufnr
-        }
+        'gi',
+        vim.lsp.buf.implementation,
+        description = 'Go to implementation (LSP)',
+        buffer = bufnr
+      }, {
+        '<leader>rn',
+        vim.lsp.buf.rename,
+        description = 'Rename (LSP)',
+        buffer = bufnr
+      }, {
+        '<leader>ca',
+        vim.lsp.buf.code_action,
+        description = 'Code Action(s) (LSP)',
+        buffer = bufnr
+      }, {
+        '<leader>f',
+        legendary_toolbox.lazy(vim.lsp.buf.format, { async = true }),
+        description = 'Format buffer (LSP)',
+        buffer = bufnr
+      }
       })
 
       require('lsp-inlayhints').on_attach(client, bufnr)
@@ -84,7 +81,6 @@ return {
         hint_enable = false,
         timer_interval = 100
       })
-
     end
 
     -- Add additional capabilities supported by nvim-cmp
@@ -114,9 +110,6 @@ return {
       }))
     end
 
-    -- lspconfig.sumneko_lua.setup({
-    --     settings = {Lua = {diagnostics = {globals = {'vim'}}}}
-    -- })
 
     -- -- typescript specific config
     -- require('typescript').setup({
@@ -166,12 +159,10 @@ return {
     })
 
     vim.lsp.handlers['textDocument/hover'] =
-    vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
+        vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
 
     vim.lsp.handlers['textDocument/signatureHelp'] =
-    vim.lsp.with(vim.lsp.handlers.signature_help,
-      { focusable = false, border = 'rounded' })
-
-
+        vim.lsp.with(vim.lsp.handlers.signature_help,
+          { focusable = false, border = 'rounded' })
   end
 }
