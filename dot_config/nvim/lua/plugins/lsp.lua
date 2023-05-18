@@ -13,13 +13,20 @@ return {
     { 'j-hui/fidget.nvim' },
     { 'jose-elias-alvarez/typescript.nvim' },
     -- Autocompletion
-    { 'ms-jpq/coq_nvim' },
-    { 'ms-jpq/coq.artifacts' },
+    -- { 'ms-jpq/coq_nvim' },
+    -- { 'ms-jpq/coq.artifacts' },
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/cmp-buffer' },
+    { 'hrsh7th/cmp-path' },
+    { 'hrsh7th/cmp-cmdline' },
+    { 'hrsh7th/nvim-cmp' },
+    { 'hrsh7th/cmp-vsnip' },
+    { 'hrsh7th/vim-vsnip' }
   },
   config = function()
     local servers = {
       'clangd', 'html', 'marksman', 'jsonls', 'gopls', 'lua_ls',
-      'tsserver'
+      'tsserver', 'yamlls'
     }
 
     local legendary = require('legendary')
@@ -84,10 +91,10 @@ return {
     end
 
     -- Add additional capabilities supported by nvim-cmp
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
     local lsp = require("lspconfig")
-    local coq = require("coq")
+    -- local coq = require("coq")
     require("fidget").setup()
 
     -- Tell the server the capability of foldingRange,
@@ -101,15 +108,47 @@ return {
     require("mason-lspconfig").setup({ automatic_installation = true })
 
     local lspconfig = require('lspconfig')
-
     -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
     for _, lsp in ipairs(servers) do
-      lspconfig[lsp].setup(coq.lsp_ensure_capabilities({
+      lspconfig[lsp].setup({
         on_attach = on_attach,
         capabilities = capabilities
-      }))
+      })
     end
 
+    local cmp = require 'cmp'
+
+    cmp.setup({
+      snippet = {
+        -- REQUIRED - you must specify a snippet engine
+        expand = function(args)
+          vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+          -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+          -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+          -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+        end,
+      },
+      window = {
+        -- completion = cmp.config.window.bordered(),
+        -- documentation = cmp.config.window.bordered(),
+      },
+      mapping = cmp.mapping.preset.insert({
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      }),
+      sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+        { name = 'vsnip' }, -- For vsnip users.
+        -- { name = 'luasnip' }, -- For luasnip users.
+        -- { name = 'ultisnips' }, -- For ultisnips users.
+        -- { name = 'snippy' }, -- For snippy users.
+      }, {
+        { name = 'buffer' },
+      })
+    })
 
     -- -- typescript specific config
     -- require('typescript').setup({

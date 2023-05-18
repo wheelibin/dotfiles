@@ -88,6 +88,7 @@ map('', 'H', 'O', {})
 -- jump to next search
 map('', 'k', 'n', {})
 map('', 'K', 'N', {})
-
 -- move to end of next word
 map('', 'l', 'e', {})
+
+map('i', 'hh', '<Esc>')
