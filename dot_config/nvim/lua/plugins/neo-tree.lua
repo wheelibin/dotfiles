@@ -14,10 +14,11 @@ return
       description = 'Nvim-Tree Toggle'
     })
     require("neo-tree").setup({
-      follow_current_file = true,
-      -- auto refresh
-      use_libuv_file_watcher = true,
-      close_if_last_window = false,
+      enable_diagnostics = true,
+      filesystem = {
+        follow_current_file = true,
+        use_libuv_file_watcher = true,
+      },
       window = {
         mappings = {
           -- remap (m)ove to (mv)ove
