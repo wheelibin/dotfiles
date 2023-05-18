@@ -9,7 +9,6 @@ return {
     'nvim-telescope/telescope-frecency.nvim',
     'kkharji/sqlite.lua',
     "debugloop/telescope-undo.nvim",
-    -- "fannheyward/telescope-coc.nvim",
     "aaronhallaert/advanced-git-search.nvim"
   },
   config = function()
@@ -35,10 +34,6 @@ return {
         undo = {
           -- telescope-undo.nvim config, see below
         },
-        -- coc = {
-        --   -- theme = 'ivy',
-        --   prefer_locations = true, -- always use Telescope locations to preview definitions/declarations/implementations etc
-        -- }
       },
       defaults = {
         mappings = {
@@ -91,7 +86,6 @@ return {
       telescope.load_extension('frecency')
       telescope.load_extension('fzf')
       telescope.load_extension("undo")
-      -- telescope.load_extension("coc")
       telescope.load_extension("advanced_git_search")
     end)
 
@@ -99,23 +93,43 @@ return {
     local legendary_toolbox = require('legendary.toolbox')
 
     legendary.keymaps({
-      { '<leader>ff', legendary_toolbox.lazy(builtin.find_files, { path_display = { 'truncate' } }),
-        description = 'Find files' },
-      { '<leader>fg', builtin.live_grep, description = 'Find text (grep)' },
-      { '<leader>fb', legendary_toolbox.lazy(builtin.buffers, { path_display = { 'truncate' } }),
-        description = 'Find buffers' },
-      { '<leader>fr', legendary_toolbox.lazy(builtin.lsp_references, { path_display = { 'tail' } }),
-        description = 'Find references (LSP)' },
-      { '<leader>fe', builtin.diagnostics, description = 'Find errors (diagnostics) (LSP)' },
+      {
+        '<leader>ff',
+        legendary_toolbox.lazy(builtin.find_files, { path_display = { 'truncate' } }),
+        description = 'Find files'
+      },
+      { '<leader>fg', builtin.live_grep,             description = 'Find text (grep)' },
+      {
+        '<leader>fb',
+        legendary_toolbox.lazy(builtin.buffers, { path_display = { 'truncate' } }),
+        description = 'Find buffers'
+      },
+      {
+        '<leader>fr',
+        legendary_toolbox.lazy(builtin.lsp_references, { path_display = { 'tail' } }),
+        description = 'Find references (LSP)'
+      },
+      { '<leader>fe', builtin.diagnostics,           description = 'Find errors (diagnostics) (LSP)' },
       { '<leader>fs', builtin.lsp_workspace_symbols, description = 'Find symbols (LSP)' },
-      { '<leader>fi', builtin.lsp_implementations, description = 'Find implementation(s) (LSP)' },
-      { '<leader>fd', builtin.lsp_definitions, description = 'Find definition(s) (LSP)' },
-      { '<leader>fh', builtin.git_bcommits, description = 'File History (git)' },
-      { '<leader>fw', legendary_toolbox.lazy(builtin.grep_string, { word_match = '-w', path_display = { 'truncate' } }),
-        description = 'Find word under cursor' },
-      { '<leader>tr', builtin.resume, description = 'Telescope Resume' },
+      { '<leader>fi', builtin.lsp_implementations,   description = 'Find implementation(s) (LSP)' },
+      { '<leader>fd', builtin.lsp_definitions,       description = 'Find definition(s) (LSP)' },
+      { '<leader>fh', builtin.git_bcommits,          description = 'File History (git)' },
+      {
+        '<leader>fw',
+        legendary_toolbox.lazy(builtin.grep_string, { word_match = '-w', path_display = { 'truncate' } }),
+        description = 'Find word under cursor'
+      },
+      { '<leader>tr', builtin.resume,                                            description = 'Telescope Resume' },
+      { '<leader>fu', telescope.extensions.undo.undo,                            description = 'File History (git)' },
+      { '<leader>hf', telescope.extensions.advanced_git_search.diff_commit_file, description = 'File History (git)' },
+      { '<leader>hl', telescope.extensions.advanced_git_search.diff_commit_line, description = 'Line History (git)' },
+      {
+        '<leader>hh',
+        telescope.extensions.advanced_git_search.show_custom_functions,
+        description =
+        'Git History Functions (git)'
+      },
 
-      { '<leader>fu', telescope.extensions.undo.undo, description = 'File History (git)' },
     })
 
     -- legendary.keymaps({

@@ -19,6 +19,9 @@ return
         follow_current_file = true,
         use_libuv_file_watcher = true,
       },
+      buffers = {
+        follow_current_file = true
+      },
       window = {
         mappings = {
           -- remap (m)ove to (mv)ove
