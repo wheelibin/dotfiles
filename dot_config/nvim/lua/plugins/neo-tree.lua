@@ -25,7 +25,6 @@ return
           ["mv"] = "move",
           -- remove "e"
           ["e"] = "none"
-
         }
       }
     })

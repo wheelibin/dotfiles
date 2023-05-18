@@ -13,20 +13,22 @@ return {
     { 'j-hui/fidget.nvim' },
     { 'jose-elias-alvarez/typescript.nvim' },
     -- Autocompletion
-    -- { 'ms-jpq/coq_nvim' },
-    -- { 'ms-jpq/coq.artifacts' },
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-buffer' },
     { 'hrsh7th/cmp-path' },
     { 'hrsh7th/cmp-cmdline' },
     { 'hrsh7th/nvim-cmp' },
     { 'hrsh7th/cmp-vsnip' },
-    { 'hrsh7th/vim-vsnip' }
+    { 'hrsh7th/vim-vsnip' },
+
+    { 'jose-elias-alvarez/null-ls.nvim' },
+
   },
   config = function()
     local servers = {
       'clangd', 'html', 'marksman', 'jsonls', 'gopls', 'lua_ls',
-      'tsserver', 'yamlls'
+      -- 'tsserver',
+      'yamlls'
     }
 
     local legendary = require('legendary')
@@ -85,7 +87,7 @@ return {
 
       require('lsp_signature').on_attach({
         bind = true,
-        hint_enable = false,
+        hint_enable = true,
         timer_interval = 100
       })
     end
@@ -94,15 +96,7 @@ return {
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
     local lsp = require("lspconfig")
-    -- local coq = require("coq")
     require("fidget").setup()
-
-    -- Tell the server the capability of foldingRange,
-    -- Neovim hasn't added foldingRange to default capabilities, users must add it manually
-    capabilities.textDocument.foldingRange = {
-      dynamicRegistration = false,
-      lineFoldingOnly = true
-    }
 
     require("mason").setup()
     require("mason-lspconfig").setup({ automatic_installation = true })
@@ -129,8 +123,8 @@ return {
         end,
       },
       window = {
-        -- completion = cmp.config.window.bordered(),
-        -- documentation = cmp.config.window.bordered(),
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
       },
       mapping = cmp.mapping.preset.insert({
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -150,39 +144,61 @@ return {
       })
     })
 
-    -- -- typescript specific config
-    -- require('typescript').setup({
-    --     server = {
-    --         settings = {
-    --             -- typescript = {
-    --             --     inlayHints = {
-    --             --         includeInlayParameterNameHints = 'all',
-    --             --         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-    --             --         includeInlayFunctionParameterTypeHints = true,
-    --             --         includeInlayVariableTypeHints = true,
-    --             --         includeInlayPropertyDeclarationTypeHints = true,
-    --             --         includeInlayFunctionLikeReturnTypeHints = true,
-    --             --         includeInlayEnumMemberValueHints = true
-    --             --     }
-    --             -- },
-    --             -- javascript = {
-    --             --     inlayHints = {
-    --             --         includeInlayParameterNameHints = 'all',
-    --             --         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-    --             --         includeInlayFunctionParameterTypeHints = true,
-    --             --         includeInlayVariableTypeHints = true,
-    --             --         includeInlayPropertyDeclarationTypeHints = true,
-    --             --         includeInlayFunctionLikeReturnTypeHints = true,
-    --             --         includeInlayEnumMemberValueHints = true
-    --             --     }
-    --             -- }
-    --         },
-    --         on_attach = on_attach,
-    --         capabilities = capabilities
-    --     }
-    --
-    -- })
-    --
+    -- `/` cmdline setup.
+    cmp.setup.cmdline('/', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = 'buffer' }
+      }
+    })
+
+    -- `:` cmdline setup.
+    cmp.setup.cmdline(':', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = cmp.config.sources({
+        { name = 'path' }
+      }, {
+        {
+          name = 'cmdline',
+          option = {
+            ignore_cmds = { 'Man', '!' }
+          }
+        }
+      })
+    })
+
+    -- typescript specific config
+    require('typescript').setup({
+      server = {
+        -- settings = {
+        --   typescript = {
+        --     inlayHints = {
+        --       includeInlayParameterNameHints = 'all',
+        --       includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+        --       includeInlayFunctionParameterTypeHints = true,
+        --       includeInlayVariableTypeHints = true,
+        --       includeInlayPropertyDeclarationTypeHints = true,
+        --       includeInlayFunctionLikeReturnTypeHints = true,
+        --       includeInlayEnumMemberValueHints = true
+        --     }
+        --   },
+        --   javascript = {
+        --     inlayHints = {
+        --       includeInlayParameterNameHints = 'all',
+        --       includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+        --       includeInlayFunctionParameterTypeHints = true,
+        --       includeInlayVariableTypeHints = true,
+        --       includeInlayPropertyDeclarationTypeHints = true,
+        --       includeInlayFunctionLikeReturnTypeHints = true,
+        --       includeInlayEnumMemberValueHints = true
+        --     }
+        --   }
+        -- },
+        on_attach = on_attach,
+        capabilities = capabilities
+      }
+    })
+
     local sign = function(opts)
       vim.fn.sign_define(opts.name,
         { texthl = opts.name, text = opts.text, numhl = '' })
@@ -203,5 +219,41 @@ return {
     vim.lsp.handlers['textDocument/signatureHelp'] =
         vim.lsp.with(vim.lsp.handlers.signature_help,
           { focusable = false, border = 'rounded' })
+
+
+
+    local null_ls = require('null-ls')
+    local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+
+    null_ls.setup({
+      sources = {
+        -- null_ls.builtins.code_actions.eslint_d,
+        -- null_ls.builtins.diagnostics.eslint_d,
+        null_ls.builtins.diagnostics.tsc,
+        null_ls.builtins.formatting.prettierd,
+        -- null_ls.builtins.code_actions.gitsigns,
+        require("typescript.extensions.null-ls.code-actions"),
+        null_ls.builtins.formatting.gofmt,
+        null_ls.builtins.formatting.lua_format.with({
+          extra_args = {
+            "-i", "--no-keep-simple-function-one-line",
+            "--no-keep-simple-control-block-one-line", "--tab_width=2",
+            "--column_limit=120"
+          }
+        })
+      },
+      on_attach = function(client, bufnr)
+        if client.supports_method('textDocument/formatting') then
+          vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+          vim.api.nvim_create_autocmd('BufWritePre', {
+            group = augroup,
+            buffer = bufnr,
+            callback = function()
+              vim.lsp.buf.format({ bufnr = bufnr })
+            end
+          })
+        end
+      end
+    })
   end
 }
