@@ -26,9 +26,15 @@ return {
   },
   config = function()
     local servers = {
-      'clangd', 'html', 'marksman', 'jsonls', 'gopls', 'lua_ls',
+      -- 'clangd',
+      'html',
+      'marksman',
+      'jsonls',
+      'gopls',
+      'lua_ls',
       -- 'tsserver',
-      'yamlls'
+      'yamlls',
+      'bufls'
     }
 
     local legendary = require('legendary')
@@ -199,6 +205,9 @@ return {
       }
     })
 
+    require 'lspconfig'.bufls.setup {}
+
+
     local sign = function(opts)
       vim.fn.sign_define(opts.name,
         { texthl = opts.name, text = opts.text, numhl = '' })
@@ -228,8 +237,8 @@ return {
     null_ls.setup({
       sources = {
         null_ls.builtins.code_actions.eslint_d,
-        -- null_ls.builtins.diagnostics.eslint_d,
-        -- null_ls.builtins.diagnostics.tsc,
+        null_ls.builtins.diagnostics.eslint_d,
+        null_ls.builtins.diagnostics.tsc,
         null_ls.builtins.formatting.prettierd,
         -- null_ls.builtins.code_actions.gitsigns,
         require("typescript.extensions.null-ls.code-actions"),
