@@ -82,14 +82,15 @@ local function split_nav(key, mods)
 end
 
 -- key bindings
--- config.disable_default_key_bindings = true
--- windows
+config.disable_default_key_bindings = true
 
 config.keys = {
   { key = 'N',     mods = 'SHIFT|CTRL', action = action.SpawnWindow },
   { key = 'Enter', mods = 'META',       action = action.TogglePaneZoomState },
   { key = 'h',     mods = 'SHIFT|ALT',  action = action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
   { key = 'v',     mods = 'SHIFT|ALT',  action = action.SplitVertical { domain = 'CurrentPaneDomain' } },
+  { key = '-',     mods = 'SHIFT|CTRL', action = action.DecreaseFontSize },
+  { key = '+',     mods = 'SHIFT|CTRL', action = action.IncreaseFontSize },
 
   -- paste from the clipboard
   { key = 'v',     mods = 'SUPER',      action = action.PasteFrom 'Clipboard' },
