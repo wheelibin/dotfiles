@@ -10,6 +10,7 @@ return {
     },
     { 'williamboman/mason-lspconfig.nvim' },
     { 'ray-x/lsp_signature.nvim' },
+    { 'lvimuser/lsp-inlayhints.nvim' },
     { 'j-hui/fidget.nvim' },
     { 'jose-elias-alvarez/typescript.nvim' },
     -- Autocompletion
@@ -236,9 +237,9 @@ return {
 
     null_ls.setup({
       sources = {
-        null_ls.builtins.code_actions.eslint_d,
-        null_ls.builtins.diagnostics.eslint_d,
-        null_ls.builtins.diagnostics.tsc,
+        -- null_ls.builtins.code_actions.eslint_d,
+        -- null_ls.builtins.diagnostics.eslint_d,
+        -- null_ls.builtins.diagnostics.tsc,
         null_ls.builtins.formatting.prettierd,
         -- null_ls.builtins.code_actions.gitsigns,
         require("typescript.extensions.null-ls.code-actions"),
