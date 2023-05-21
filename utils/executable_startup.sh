@@ -1,8 +1,8 @@
-# enable window transparency
-picom --config ~/.config/picom/picom.conf -b
+# enable window transparency and shadows
+picom --config ~/.config/picom/picom.conf -b -c
 
 # caps lock as escape and ctrl
-xcape -e '#66=Escape' -t 100
+# xcape -e '#66=Escape' -t 100
 
 # set random wallpaper
 ~/utils/wallpaper-change.sh
