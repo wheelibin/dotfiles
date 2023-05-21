@@ -1,1 +1,1 @@
-feh --randomize --bg-fill ~/.wallpaper/*
+feh --randomize --bg-fill ~/.wallpaper/pink/*
