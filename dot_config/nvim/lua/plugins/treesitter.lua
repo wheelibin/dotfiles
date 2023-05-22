@@ -17,6 +17,10 @@ return {
         'python',
         'typescript',
         'tsx',
+        'vim',
+        'regex',
+        'markdown',
+        'markdown_inline',
         'yaml'
       },
 

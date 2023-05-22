@@ -14,15 +14,15 @@ return {
     -- https://github.com/nvim-lualine/lualine.nvim/wiki/Component-snippets#changing-filename-color-based-on--modified-status
     local custom_fname = require('lualine.components.filename'):extend()
     local highlight = require 'lualine.highlight'
-    local default_status_colors = { saved = '#292522', modified = '#422741' }
+    local status_colors = { saved = { bg = '#292522' }, modified = { bg = '#8B7449', fg = '#292522' } }
 
     function custom_fname:init(options)
       custom_fname.super.init(self, options)
       self.status_colors = {
         saved = highlight.create_component_highlight_group(
-          { bg = '#292522' }, 'filename_status_saved', self.options),
+          status_colors.saved, 'filename_status_saved', self.options),
         modified = highlight.create_component_highlight_group(
-          { bg = '#8B7449', fg = '#292522' }, 'filename_status_modified', self.options),
+          status_colors.modified, 'filename_status_modified', self.options),
       }
       if self.options.color == nil then self.options.color = '' end
     end
@@ -30,8 +30,8 @@ return {
     function custom_fname:update_status()
       local data = custom_fname.super.update_status(self)
       data = highlight.component_format_highlight(vim.bo.modified
-            and self.status_colors.modified
-            or self.status_colors.saved) .. data
+        and self.status_colors.modified
+        or self.status_colors.saved) .. data
       return data
     end
 
@@ -40,8 +40,6 @@ return {
     local config = {
       options = {
         theme = 'auto',
-        -- refresh = { tabline = 500 }
-        -- globalstatus = true
       },
       sections = {
         lualine_a = { 'mode' },
@@ -81,8 +79,24 @@ return {
         -- lualine_y = {},
         -- lualine_z = {}
       },
-      tabline = {
-        -- lualine_a = { get_current_dir },
+      -- tabline = {
+      --   -- lualine_a = { get_current_dir },
+      --   lualine_z = {
+      --     {
+      --       custom_fname,
+      --       file_status = true,
+      --       path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
+      --       -- fmt = format_filename
+      --     }
+      --   }
+      --   -- lualine_z = { 'buffers' }
+      -- },
+      winbar = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
         lualine_z = {
           {
             custom_fname,
@@ -91,7 +105,22 @@ return {
             -- fmt = format_filename
           }
         }
-        -- lualine_z = { 'buffers' }
+
+      },
+      inactive_winbar = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {
+          {
+            custom_fname,
+            file_status = true,
+            path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
+            -- fmt = format_filename
+          }
+        }
       },
       extensions = {}
     }

@@ -9,9 +9,9 @@ return {
       end,
     },
     { 'williamboman/mason-lspconfig.nvim' },
-    { 'ray-x/lsp_signature.nvim' },
-    { 'lvimuser/lsp-inlayhints.nvim' },
-    { 'j-hui/fidget.nvim' },
+    -- { 'ray-x/lsp_signature.nvim' },
+    -- { 'lvimuser/lsp-inlayhints.nvim' },
+    -- { 'j-hui/fidget.nvim' },
     { 'jose-elias-alvarez/typescript.nvim' },
     -- Autocompletion
     { 'hrsh7th/cmp-nvim-lsp' },
@@ -90,20 +90,20 @@ return {
       }
       })
 
-      require('lsp-inlayhints').on_attach(client, bufnr)
+      -- require('lsp-inlayhints').on_attach(client, bufnr)
 
-      require('lsp_signature').on_attach({
-        bind = true,
-        hint_enable = true,
-        timer_interval = 100
-      })
+      -- require('lsp_signature').on_attach({
+      --   bind = true,
+      --   hint_enable = true,
+      --   timer_interval = 100
+      -- })
     end
 
     -- Add additional capabilities supported by nvim-cmp
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
     local lsp = require("lspconfig")
-    require("fidget").setup()
+    -- require("fidget").setup()
 
     require("mason").setup()
     require("mason-lspconfig").setup({ automatic_installation = true })
