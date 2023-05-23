@@ -31,7 +31,7 @@ return {
       'html',
       'marksman',
       'jsonls',
-      'gopls',
+      -- 'gopls',
       'lua_ls',
       -- 'tsserver',
       'yamlls',
@@ -102,13 +102,16 @@ return {
     -- Add additional capabilities supported by nvim-cmp
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-    local lsp = require("lspconfig")
+
+
+    local lspconfig = require('lspconfig')
     -- require("fidget").setup()
 
     require("mason").setup()
     require("mason-lspconfig").setup({ automatic_installation = true })
+    local cfg = require 'go.lsp'.config() -- config() return the go.nvim gopls setup
+    lspconfig.gopls.setup(cfg)
 
-    local lspconfig = require('lspconfig')
     -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
     for _, lsp in ipairs(servers) do
       lspconfig[lsp].setup({

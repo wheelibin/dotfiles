@@ -13,8 +13,28 @@ return
       [[:Neotree source=filesystem reveal=true position=left toggle=true<cr>]],
       description = 'Nvim-Tree Toggle'
     })
+
     require("neo-tree").setup({
-      enable_diagnostics = true,
+      -- source_selector = {
+      --   winbar = true,
+      -- },
+      default_component_configs = {
+        git_status = {
+          symbols = {
+            -- Change type
+            added     = "",  -- or "✚", but this is redundant info if you use git_status_colors on the name
+            modified  = "",  -- or "", but this is redundant info if you use git_status_colors on the name
+            deleted   = "✖", -- this can only be used in the git_status source
+            renamed   = "", -- this can only be used in the git_status source
+            -- Status type
+            untracked = "?",
+            ignored   = "",
+            unstaged  = "u",
+            staged    = "s",
+            conflict  = "",
+          }
+        },
+      },
       filesystem = {
         follow_current_file = true,
         use_libuv_file_watcher = true,

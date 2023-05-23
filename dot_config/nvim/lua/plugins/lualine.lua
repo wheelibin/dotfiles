@@ -40,6 +40,7 @@ return {
     local config = {
       options = {
         theme = 'auto',
+        disabled_filetypes = { 'neo-tree' },
       },
       sections = {
         lualine_a = { 'mode' },
