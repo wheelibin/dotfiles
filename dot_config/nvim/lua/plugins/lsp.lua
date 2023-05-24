@@ -34,7 +34,7 @@ return {
       -- 'gopls',
       'lua_ls',
       -- 'tsserver',
-      'yamlls',
+      -- 'yamlls',
       'bufls'
     }
 
@@ -110,6 +110,8 @@ return {
     require("mason").setup()
     require("mason-lspconfig").setup({ automatic_installation = true })
     local cfg = require 'go.lsp'.config() -- config() return the go.nvim gopls setup
+    cfg.on_attach = on_attach
+    cfg.capabilities = capabilities
     lspconfig.gopls.setup(cfg)
 
     -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
