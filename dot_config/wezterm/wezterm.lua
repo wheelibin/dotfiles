@@ -14,7 +14,8 @@ end
 -- This is where you actually apply your config choices
 
 -- theme
-config.color_scheme = 'Melange Dark'
+-- config.color_scheme = 'Melange Dark'
+config.color_scheme = 'Catppuccin Mocha'
 
 -- fonts
 -- config.font = wezterm.font { family = 'Fira Code' }
@@ -30,7 +31,7 @@ config.window_padding = {
   bottom = 0,
 }
 config.inactive_pane_hsb = {
-  saturation = 0.3,
+  saturation = 0.6,
   brightness = 0.8,
 }
 
