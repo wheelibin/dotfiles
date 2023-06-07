@@ -1,6 +1,19 @@
 vim.g.mapleader = ' '
 
-vim.g.coq_settings = { auto_start = 'shut-up' }
+-- vim.g.coq_settings = {
+--   auto_start = "shut-up",
+--   ["keymap.pre_select"] = true,
+--   ["display.preview.border"] = {
+--     { "",  "NormalFloat" },
+--     { "",  "NormalFloat" },
+--     { "",  "NormalFloat" },
+--     { " ", "NormalFloat" },
+--     { "",  "NormalFloat" },
+--     { "",  "NormalFloat" },
+--     { "",  "NormalFloat" },
+--     { " ", "NormalFloat" }
+--   }
+-- }
 
 local opt = vim.opt
 
