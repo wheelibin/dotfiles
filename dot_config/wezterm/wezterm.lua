@@ -93,8 +93,11 @@ config.keys = {
   { key = '-',     mods = 'SHIFT|CTRL', action = action.DecreaseFontSize },
   { key = '+',     mods = 'SHIFT|CTRL', action = action.IncreaseFontSize },
 
-  -- paste from the clipboard
+  -- clipboard
+  { key = 'c',     mods = 'SUPER',      action = action.CopyTo 'Clipboard' },
+  { key = 'c',     mods = 'SHIFT|CTRL', action = action.CopyTo 'Clipboard' },
   { key = 'v',     mods = 'SUPER',      action = action.PasteFrom 'Clipboard' },
+  { key = 'v',     mods = 'SHIFT|CTRL', action = action.PasteFrom 'Clipboard' },
 
   -- move between split panes
   split_nav('m', 'ALT'),
