@@ -1,11 +1,13 @@
 return {
   'echasnovski/mini.nvim',
+  version = '*',
   config = function()
     local legendary = require('legendary')
 
     --
     -- enable individual modules
     --
+    require('mini.animate').setup()
 
     -- code commenting
     require('mini.comment').setup()

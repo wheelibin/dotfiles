@@ -12,8 +12,8 @@ return {
       { 'williamboman/mason-lspconfig.nvim' },
       { 'jose-elias-alvarez/typescript.nvim' },
       { 'jose-elias-alvarez/null-ls.nvim' },
-      { 'lvimuser/lsp-inlayhints.nvim' },
-      { 'j-hui/fidget.nvim' },
+      -- { 'lvimuser/lsp-inlayhints.nvim' },
+      { 'j-hui/fidget.nvim',                 tag = 'legacy' },
       -- Autocompletion
       -- { 'ms-jpq/coq_nvim' },
       -- { 'ms-jpq/coq.artifacts' }
@@ -95,7 +95,7 @@ return {
         }
         })
 
-        require('lsp-inlayhints').on_attach(client, bufnr)
+        -- require('lsp-inlayhints').on_attach(client, bufnr)
       end
 
       require("luasnip.loaders.from_vscode").lazy_load()
@@ -180,7 +180,7 @@ return {
       -- cfg.capabilities = capabilities
       -- lspconfig.gopls.setup(cfg)
 
-      require("lsp-inlayhints").setup()
+      -- require("lsp-inlayhints").setup()
 
       -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
       for _, lsp in ipairs(servers) do
