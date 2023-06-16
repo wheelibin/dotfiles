@@ -8,8 +8,6 @@ return {
     },
     'nvim-telescope/telescope-frecency.nvim',
     'kkharji/sqlite.lua',
-    "debugloop/telescope-undo.nvim",
-    "aaronhallaert/advanced-git-search.nvim"
   },
   config = function()
     local telescope = require('telescope')
@@ -85,8 +83,6 @@ return {
     pcall(function()
       telescope.load_extension('frecency')
       telescope.load_extension('fzf')
-      telescope.load_extension("undo")
-      telescope.load_extension("advanced_git_search")
     end)
 
     local legendary = require('legendary')
@@ -100,7 +96,7 @@ return {
       },
       { '<leader>fg', builtin.live_grep,             description = 'Find text (grep)' },
       {
-        '<leader>fb',
+        '<leader><space>',
         legendary_toolbox.lazy(builtin.buffers, { path_display = { 'truncate' } }),
         description = 'Find buffers'
       },
@@ -111,6 +107,7 @@ return {
       },
       { '<leader>fe', builtin.diagnostics,           description = 'Find errors (diagnostics) (LSP)' },
       { '<leader>fs', builtin.lsp_workspace_symbols, description = 'Find symbols (LSP)' },
+      { '<leader>ds', builtin.lsp_document_symbols, description = '[D]ocument [S]ymbols (LSP)' },
       { '<leader>fi', builtin.lsp_implementations,   description = 'Find implementation(s) (LSP)' },
       { '<leader>fd', builtin.lsp_definitions,       description = 'Find definition(s) (LSP)' },
       { '<leader>fh', builtin.git_bcommits,          description = 'File History (git)' },
@@ -119,57 +116,16 @@ return {
         legendary_toolbox.lazy(builtin.grep_string, { word_match = '-w', path_display = { 'truncate' } }),
         description = 'Find word under cursor'
       },
-      { '<leader>tr', builtin.resume,                                            description = 'Telescope Resume' },
-      { '<leader>fu', telescope.extensions.undo.undo,                            description = 'File History (git)' },
-      { '<leader>hf', telescope.extensions.advanced_git_search.diff_commit_file, description = 'File History (git)' },
-      { '<leader>hl', telescope.extensions.advanced_git_search.diff_commit_line, description = 'Line History (git)' },
-      {
-        '<leader>hh',
-        telescope.extensions.advanced_git_search.show_custom_functions,
-        description =
-        'Git History Functions (git)'
-      },
+      { '<leader>tr', builtin.resume, description = 'Telescope Resume' },
 
     })
 
-    -- legendary.keymaps({
-    --   {
-    --     '<leader>ff',
-    --     legendary_toolbox.lazy(builtin.find_files, { path_display = { 'truncate' } }),
-    --     description = 'Find files'
-    --   },
-    --   { '<leader>fg', builtin.live_grep,                                     description = 'Find text (grep)' },
-    --   {
-    --     '<leader>fb',
-    --     legendary_toolbox.lazy(builtin.buffers, { path_display = { 'truncate' } }),
-    --     description = 'Find buffers'
-    --   },
-    --   { '<leader>fr', ':Telescope coc references path_display={"tail"}<cr>', description = 'Find references (LSP)' },
-    --   {
-    --     '<leader>fe',
-    --     ':Telescope coc workspace_diagnostics<cr>',
-    --     description =
-    --     'Find errors (diagnostics) (LSP)'
-    --   },
-    --   { '<leader>fs', ':Telescope coc workspace_symbols<cr>', description = 'Find symbols (LSP)' },
-    --   { '<leader>fi', builtin.lsp_implementations,            description = 'Find implementation(s) (LSP)' },
-    --   { '<leader>fd', ':Telescope coc definitions<cr>',       description = 'Find definition(s) (LSP)' },
-    --   { '<leader>fh', builtin.git_bcommits,                   description = 'File History (git)' },
-    --   {
-    --     '<leader>fw',
-    --     legendary_toolbox.lazy(builtin.grep_string, { word_match = '-w', path_display = { 'truncate' } }),
-    --     description = 'Find word under cursor'
-    --   },
-    --   { '<leader>tr', builtin.resume,                                            description = 'Telescope Resume' },
-    --   { '<leader>fu', telescope.extensions.undo.undo,                            description = 'Undo history' },
-    --   { '<leader>hf', telescope.extensions.advanced_git_search.diff_commit_file, description = 'File History (git)' },
-    --   { '<leader>hl', telescope.extensions.advanced_git_search.diff_commit_line, description = 'Line History (git)' },
-    --   {
-    --     '<leader>hh',
-    --     telescope.extensions.advanced_git_search.show_custom_functions,
-    --     description =
-    --     'Git History Functions (git)'
-    --   },
-    -- })
+    vim.keymap.set('n', '<leader>/', function()
+      -- You can pass additional configuration to telescope to change theme, layout, etc.
+      require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+        winblend = 10,
+        previewer = false,
+      })
+    end, { desc = '[/] Fuzzily search in current buffer' })
   end
 }

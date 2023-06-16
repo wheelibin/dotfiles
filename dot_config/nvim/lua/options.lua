@@ -1,24 +1,9 @@
 vim.g.mapleader = ' '
 
--- vim.g.coq_settings = {
---   auto_start = "shut-up",
---   ["keymap.pre_select"] = true,
---   ["display.preview.border"] = {
---     { "",  "NormalFloat" },
---     { "",  "NormalFloat" },
---     { "",  "NormalFloat" },
---     { " ", "NormalFloat" },
---     { "",  "NormalFloat" },
---     { "",  "NormalFloat" },
---     { "",  "NormalFloat" },
---     { " ", "NormalFloat" }
---   }
--- }
-
 local opt = vim.opt
 
 -- disable word wrap
-opt.wrap = false
+-- opt.wrap = false
 
 -- Enable break indent
 opt.breakindent = true
@@ -28,7 +13,9 @@ opt.undofile = true
 
 -- line numbers
 opt.number = true
--- opt.relativenumber = true
+
+-- sync clipboard between nvim and OS
+opt.clipboard = 'unnamedplus'
 
 -- search flags
 opt.ignorecase = true
@@ -42,6 +29,8 @@ opt.tabstop = 2
 
 -- Decrease update time
 opt.updatetime = 250
+
+-- show sign column
 opt.signcolumn = 'yes'
 
 -- Set completeopt to have a better completion experience
@@ -59,6 +48,8 @@ opt.scrolloff = 4
 opt.cursorline = true
 
 opt.swapfile = false
+
+opt.virtualedit = 'none'
 
 -- hide the tildes showing end of buffer
 opt.fcs = "eob: "

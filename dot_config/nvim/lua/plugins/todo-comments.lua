@@ -3,9 +3,9 @@ return {
   dependencies = "nvim-lua/plenary.nvim",
   config = function()
     require("todo-comments").setup {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
+      highlight = {
+        pattern = [[.*<(KEYWORDS)\s*]], -- pattern or table of patterns, used for highlighting (vim regex)
+      },
     }
   end
 }

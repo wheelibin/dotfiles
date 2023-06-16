@@ -56,7 +56,7 @@ legendary.keymaps({
     },
     description = 'Move line down',
   },
-  { '<leader><leader>', ':noh<CR>', description = 'Clear search highlighting' },
+  { '<leader>c', ':noh<CR>', description = 'Clear search highlighting' },
 
   -- window resizing
   -- { '<C-M-S-j>', ':resize +2<CR>', description = 'Resize window - shorter' },
@@ -69,6 +69,10 @@ legendary.keymaps({
 local map = require('./utils').map
 map('n', ';', ':', { noremap = true })
 map('n', ':', ';', { noremap = true })
+
+-- Remap for dealing with word wrap
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- remap hjkl to colemak homerow equivalents
 map('', 'm', 'h', {})
@@ -93,5 +97,6 @@ map('', 'l', 'e', {})
 
 map('i', 'hh', '<Esc>')
 
--- map('n', '<C-e>', '<nop>')
--- map('n', 'E', '<nop>')
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+
+
