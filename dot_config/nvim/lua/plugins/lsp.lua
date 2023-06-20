@@ -119,7 +119,14 @@ return {
           { name = 'nvim_lsp' },
           { name = 'luasnip' }, -- For luasnip users.
         }, {
-          { name = 'buffer' },
+          {
+            name = 'buffer',
+            option = {
+              get_bufnrs = function()
+                return vim.api.nvim_list_bufs()
+              end
+            }
+          },
         })
       })
 
@@ -151,13 +158,6 @@ return {
       })
 
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-
-
-
-
-
-      -- local coq = require("coq")
 
       local lspconfig = require('lspconfig')
 

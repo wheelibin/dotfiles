@@ -56,7 +56,7 @@ legendary.keymaps({
     },
     description = 'Move line down',
   },
-  { '<leader>c', ':noh<CR>', description = 'Clear search highlighting' },
+  { '<leader><bs>', ':noh<CR>', description = 'Clear search highlighting' },
 
   -- window resizing
   -- { '<C-M-S-j>', ':resize +2<CR>', description = 'Resize window - shorter' },
@@ -98,5 +98,3 @@ map('', 'l', 'e', {})
 map('i', 'hh', '<Esc>')
 
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-
-
