@@ -15,7 +15,14 @@ end
 
 -- theme
 -- config.color_scheme = 'Melange Dark'
-config.color_scheme = 'Catppuccin Mocha'
+-- config.color_scheme = 'Catppuccin Mocha'
+-- config.color_scheme = 'Gruvbox Material'
+-- config.color_scheme = 'OneDark (base16)'
+-- config.color_scheme = 'Gruvbox Material (Gogh)'
+-- config.colors = {
+--   cursor_fg = '#2C2E34'
+-- }
+config.color_scheme = 'nightfox'
 
 -- fonts
 -- config.font = wezterm.font { family = 'Fira Code' }
