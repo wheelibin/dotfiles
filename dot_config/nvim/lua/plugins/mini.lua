@@ -7,7 +7,7 @@ return {
     --
     -- enable individual modules
     --
-    require('mini.animate').setup()
+    -- require('mini.animate').setup()
 
     -- code commenting
     require('mini.comment').setup()

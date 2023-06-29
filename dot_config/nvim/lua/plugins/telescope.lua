@@ -107,7 +107,7 @@ return {
       },
       { '<leader>fe', builtin.diagnostics,           description = 'Find errors (diagnostics) (LSP)' },
       { '<leader>fs', builtin.lsp_workspace_symbols, description = 'Find symbols (LSP)' },
-      { '<leader>ds', builtin.lsp_document_symbols, description = '[D]ocument [S]ymbols (LSP)' },
+      { '<leader>ds', builtin.lsp_document_symbols,  description = '[D]ocument [S]ymbols (LSP)' },
       { '<leader>fi', builtin.lsp_implementations,   description = 'Find implementation(s) (LSP)' },
       { '<leader>fd', builtin.lsp_definitions,       description = 'Find definition(s) (LSP)' },
       { '<leader>fh', builtin.git_bcommits,          description = 'File History (git)' },

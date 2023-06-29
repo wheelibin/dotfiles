@@ -13,13 +13,14 @@ return {
       { 'jose-elias-alvarez/typescript.nvim' },
       { 'jose-elias-alvarez/null-ls.nvim' },
       -- { 'lvimuser/lsp-inlayhints.nvim' },
-      { 'j-hui/fidget.nvim',                 tag = 'legacy' },
+      { 'j-hui/fidget.nvim',                  tag = 'legacy' },
       -- Autocompletion
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-buffer' },
       { 'hrsh7th/cmp-path' },
       { 'hrsh7th/cmp-cmdline' },
       { 'hrsh7th/nvim-cmp' },
+      { 'hrsh7th/cmp-nvim-lsp-signature-help' },
       {
         'L3MON4D3/LuaSnip',
         dependencies = { "rafamadriz/friendly-snippets" },
@@ -34,7 +35,8 @@ return {
         'gopls',
         'lua_ls',
         -- 'tsserver',
-        'bufls'
+        'bufls',
+        'sqlls'
       }
 
       local legendary = require('legendary')
@@ -118,6 +120,7 @@ return {
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
           { name = 'luasnip' }, -- For luasnip users.
+          { name = 'nvim_lsp_signature_help' }
         }, {
           {
             name = 'buffer',

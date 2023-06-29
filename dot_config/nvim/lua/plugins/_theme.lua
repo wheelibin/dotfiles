@@ -1,14 +1,14 @@
-return {
-  -- Theme inspired by Atom
-  'navarasu/onedark.nvim',
-  priority = 1000,
-  config = function()
-    require('onedark').setup {
-      style = 'warmer'
-    }
-    require('onedark').load()
-  end,
-}
+-- return {
+--   -- Theme inspired by Atom
+--   'navarasu/onedark.nvim',
+--   priority = 1000,
+--   config = function()
+--     require('onedark').setup {
+--       style = 'warmer'
+--     }
+--     require('onedark').load()
+--   end,
+-- }
 
 -- return {
 --   "sainnhe/gruvbox-material",
@@ -40,3 +40,11 @@ return {
 --     vim.cmd('colorscheme melange')
 --   end
 -- }
+
+return {
+  'EdenEast/nightfox.nvim',
+  config = function()
+    vim.cmd('colorscheme nightfox')
+  end
+
+}
