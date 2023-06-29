@@ -74,6 +74,15 @@ map('n', ':', ';', { noremap = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+--- center in page nav
+map("n", "<C-d>", "<C-d>zz", { noremap = true })
+map("n", "<C-u>", "<C-u>zz", { noremap = true })
+
+
+map('i', 'hh', '<Esc>')
+
+-- colemak specific mappings
+----------------------------
 -- remap hjkl to colemak homerow equivalents
 map('', 'm', 'h', {})
 map('', 'n', 'j', {})
@@ -89,12 +98,12 @@ map('', 'O', 'I', {})
 map('', 'h', 'o', {})
 map('', 'H', 'O', {})
 
--- jump to next search
-map('', 'k', 'n', {})
-map('', 'K', 'N', {})
+-- jump to next search (+centering)
+map('', 'k', 'nzzzv', {})
+map('', 'K', 'Nzzzv', {})
+
 -- move to end of next word
 map('', 'l', 'e', {})
-
-map('i', 'hh', '<Esc>')
+----------------------------
 
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
