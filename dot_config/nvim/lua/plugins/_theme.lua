@@ -1,3 +1,19 @@
+return {
+  'EdenEast/nightfox.nvim',
+
+  dependencies = {
+    -- just install others here
+    { 'catppuccin/nvim' },
+    { 'rebelot/kanagawa.nvim' },
+    { 'savq/melange-nvim' }
+  },
+  config = function()
+    vim.g.melange_enable_font_variants = 0
+    vim.cmd('colorscheme melange')
+  end
+
+}
+
 -- return {
 --   -- Theme inspired by Atom
 --   'navarasu/onedark.nvim',
@@ -14,7 +30,7 @@
 --   "sainnhe/gruvbox-material",
 --   config = function()
 --     vim.opt.termguicolors = true
---     vim.g.gruvbox_material_background = 'hard'
+--     -- vim.g.gruvbox_material_background = 'hard'
 --     vim.g.gruvbox_material_better_performance = 1
 --
 --     vim.cmd("colorscheme gruvbox-material")
@@ -26,7 +42,7 @@
 --   name = "catppuccin",
 --   config = function()
 --     vim.opt.termguicolors = true
---     vim.cmd("colorscheme catppuccin-mocha")
+--     vim.cmd("colorscheme catppuccin-macchiato")
 --   end
 -- }
 
@@ -41,10 +57,23 @@
 --   end
 -- }
 
-return {
-  'EdenEast/nightfox.nvim',
-  config = function()
-    vim.cmd('colorscheme nordfox')
-  end
 
-}
+
+-- return {
+--   'sainnhe/sonokai',
+--   config = function()
+--     vim.g.sonokai_style = 'atlantis'
+--     vim.g.sonokai_better_performance = 1
+--     vim.cmd('colorscheme sonokai')
+--   end
+--
+-- }
+
+-- return {
+--   "shaunsingh/nord.nvim",
+--   name = "nord",
+--   config = function()
+--     vim.opt.termguicolors = true
+--     vim.cmd("colorscheme nord")
+--   end
+-- }

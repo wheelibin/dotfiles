@@ -9,7 +9,7 @@ return {
     --
     -- require('mini.animate').setup()
 
-    require('mini.colors').setup()
+    -- require('mini.colors').setup()
 
     -- code commenting
     require('mini.comment').setup()
