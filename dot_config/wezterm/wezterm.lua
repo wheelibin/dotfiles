@@ -14,7 +14,7 @@ end
 -- This is where you actually apply your config choices
 
 -- theme
--- config.color_scheme = 'Melange Dark'
+config.color_scheme = 'Melange Dark'
 -- config.color_scheme = 'Catppuccin Mocha'
 -- config.color_scheme = 'Gruvbox Material'
 -- config.color_scheme = 'OneDark (base16)'
@@ -22,12 +22,17 @@ end
 -- config.colors = {
 --   cursor_fg = '#2C2E34'
 -- }
-config.color_scheme = 'nightfox'
+-- config.color_scheme = 'nordfox'
+-- config.color_scheme = 'Catppuccin Macchiato'
+-- config.color_scheme = 'Kanagawa (Gogh)'
 
 -- fonts
 -- config.font = wezterm.font { family = 'Fira Code' }
 -- config.font = wezterm.font { family = 'Hack' }
 -- config.font = wezterm.font { family = 'Source Code Pro' }
+-- config.font = wezterm.font { family = 'ProggyVector' }
+config.font = wezterm.font { family = 'Inconsolata' }
+
 config.font_size = 20
 
 -- window appearance
@@ -105,6 +110,7 @@ config.keys = {
   { key = 'c',     mods = 'SHIFT|CTRL', action = action.CopyTo 'Clipboard' },
   { key = 'v',     mods = 'SUPER',      action = action.PasteFrom 'Clipboard' },
   { key = 'v',     mods = 'SHIFT|CTRL', action = action.PasteFrom 'Clipboard' },
+  { key = 'k',     mods = 'SHIFT|CTRL', action = action.ClearScrollback 'ScrollbackOnly' },
 
   -- move between split panes
   split_nav('m', 'ALT'),
