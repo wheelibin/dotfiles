@@ -13,7 +13,7 @@ opt.undofile = true
 
 -- line numbers
 opt.number = true
-opt.relativenumber = true
+-- opt.relativenumber = true
 
 -- sync clipboard between nvim and OS
 opt.clipboard = 'unnamedplus'

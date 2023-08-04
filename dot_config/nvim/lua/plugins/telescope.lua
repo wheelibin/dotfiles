@@ -90,11 +90,11 @@ return {
 
     legendary.keymaps({
       {
-        '<leader>ff',
+        '<leader>fp',
         legendary_toolbox.lazy(builtin.find_files, { path_display = { 'truncate' } }),
         description = 'Find files'
       },
-      { '<leader>fg', builtin.live_grep,             description = 'Find text (grep)' },
+      { '<leader>fa', builtin.live_grep,             description = 'Find text (grep)' },
       {
         '<leader><space>',
         legendary_toolbox.lazy(builtin.buffers, { path_display = { 'truncate' } }),

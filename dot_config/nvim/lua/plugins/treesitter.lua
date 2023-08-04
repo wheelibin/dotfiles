@@ -11,6 +11,7 @@ return {
         'css',
         'html',
         'go',
+        'graphql',
         'javascript',
         'json',
         'lua',

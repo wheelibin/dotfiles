@@ -12,7 +12,7 @@ return {
       { 'williamboman/mason-lspconfig.nvim' },
       { 'jose-elias-alvarez/typescript.nvim' },
       { 'jose-elias-alvarez/null-ls.nvim' },
-      -- { 'lvimuser/lsp-inlayhints.nvim' },
+      { 'lvimuser/lsp-inlayhints.nvim' },
       { 'j-hui/fidget.nvim',                  tag = 'legacy' },
       -- Autocompletion
       { 'hrsh7th/cmp-nvim-lsp' },
@@ -33,6 +33,7 @@ return {
         'marksman',
         'jsonls',
         'gopls',
+        'graphql',
         'lua_ls',
         -- 'tsserver',
         'bufls',

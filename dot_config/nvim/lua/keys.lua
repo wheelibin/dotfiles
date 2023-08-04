@@ -81,6 +81,10 @@ map("n", "<C-u>", "<C-u>zz", { noremap = true })
 
 map('i', 'hh', '<Esc>')
 
+map('n', '<C-p>', '"0p', { noremap = true })
+map('n', '<C-P>', '"0P', { noremap = true })
+
+
 -- colemak specific mappings
 ----------------------------
 -- remap hjkl to colemak homerow equivalents
