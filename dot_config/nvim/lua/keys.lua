@@ -84,30 +84,33 @@ map('i', 'hh', '<Esc>')
 map('n', '<C-p>', '"0p', { noremap = true })
 map('n', '<C-P>', '"0P', { noremap = true })
 
+-- jump to next search (+centering)
+map('', 'n', 'nzzzv', {})
+map('', 'N', 'Nzzzv', {})
 
 -- colemak specific mappings
 ----------------------------
--- remap hjkl to colemak homerow equivalents
-map('', 'm', 'h', {})
-map('', 'n', 'j', {})
-map('', 'e', 'k', {})
-map('', 'i', 'l', {})
-
--- now we need to remap the keys we took for hjkl
--- move insert at cursor to o
-map('', 'o', 'i', {})
-map('', 'O', 'I', {})
-
--- now we need to move o, so h seems good as it's "below" so is fairly logical
-map('', 'h', 'o', {})
-map('', 'H', 'O', {})
-
--- jump to next search (+centering)
-map('', 'k', 'nzzzv', {})
-map('', 'K', 'Nzzzv', {})
-
--- move to end of next word
-map('', 'l', 'e', {})
+-- -- remap hjkl to colemak homerow equivalents
+-- map('', 'm', 'h', {})
+-- map('', 'n', 'j', {})
+-- map('', 'e', 'k', {})
+-- map('', 'i', 'l', {})
+--
+-- -- now we need to remap the keys we took for hjkl
+-- -- move insert at cursor to o
+-- map('', 'o', 'i', {})
+-- map('', 'O', 'I', {})
+--
+-- -- now we need to move o, so h seems good as it's "below" so is fairly logical
+-- map('', 'h', 'o', {})
+-- map('', 'H', 'O', {})
+--
+-- -- jump to next search (+centering)
+-- map('', 'k', 'n', {})
+-- map('', 'K', 'N', {})
+--
+-- -- move to end of next word
+-- map('', 'l', 'e', {})
 ----------------------------
 
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
