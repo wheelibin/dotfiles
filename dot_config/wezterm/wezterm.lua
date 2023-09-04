@@ -14,7 +14,7 @@ end
 -- This is where you actually apply your config choices
 
 -- theme
-config.color_scheme = 'Melange Dark'
+-- config.color_scheme = 'Melange Dark'
 -- config.color_scheme = 'Catppuccin Mocha'
 -- config.color_scheme = 'Gruvbox Material'
 -- config.color_scheme = 'OneDark (base16)'
@@ -22,7 +22,7 @@ config.color_scheme = 'Melange Dark'
 -- config.colors = {
 --   cursor_fg = '#2C2E34'
 -- }
--- config.color_scheme = 'nordfox'
+config.color_scheme = 'nordfox'
 -- config.color_scheme = 'Catppuccin Macchiato'
 -- config.color_scheme = 'Kanagawa (Gogh)'
 
@@ -31,7 +31,10 @@ config.color_scheme = 'Melange Dark'
 -- config.font = wezterm.font { family = 'Hack' }
 -- config.font = wezterm.font { family = 'Source Code Pro' }
 -- config.font = wezterm.font { family = 'ProggyVector' }
-config.font = wezterm.font { family = 'Inconsolata' }
+-- config.font = wezterm.font { family = 'Inconsolata' }
+config.font = wezterm.font { family = 'JetBrains Mono' }
+
+
 
 config.font_size = 20
 
