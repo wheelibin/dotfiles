@@ -98,7 +98,7 @@ local function split_nav(key, mods)
 end
 
 -- key bindings
-config.disable_default_key_bindings = true
+-- config.disable_default_key_bindings = true
 
 config.keys = {
   { key = 'N',     mods = 'SHIFT|CTRL', action = action.SpawnWindow },
