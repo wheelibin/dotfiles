@@ -12,6 +12,7 @@ return {
       { 'williamboman/mason-lspconfig.nvim' },
       { 'jose-elias-alvarez/typescript.nvim' },
       { 'jose-elias-alvarez/null-ls.nvim' },
+
       { 'lvimuser/lsp-inlayhints.nvim' },
       { 'j-hui/fidget.nvim',                  tag = 'legacy' },
       -- Autocompletion
@@ -251,8 +252,9 @@ return {
 
       null_ls.setup({
         sources = {
-          null_ls.builtins.code_actions.eslint_d,
+          -- null_ls.builtins.code_actions.eslint_d,
           null_ls.builtins.diagnostics.eslint_d,
+          null_ls.builtins.diagnostics.golangci_lint,
           -- null_ls.builtins.diagnostics.tsc,
           null_ls.builtins.formatting.prettierd,
           -- null_ls.builtins.code_actions.gitsigns,
@@ -264,7 +266,7 @@ return {
               "--no-keep-simple-control-block-one-line", "--tab_width=2",
               "--column_limit=120"
             }
-          })
+          }),
         },
         on_attach = function(client, bufnr)
           if client.supports_method('textDocument/formatting') then
