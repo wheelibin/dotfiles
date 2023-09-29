@@ -78,8 +78,8 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 map("n", "<C-d>", "<C-d>zz", { noremap = true })
 map("n", "<C-u>", "<C-u>zz", { noremap = true })
 
--- exit normal mode without leaving the home row
-map('i', 'nt', '<Esc>')
+-- exit insert mode
+map('i', 'hh', '<Esc>')
 
 map('n', '<C-p>', '"0p', { noremap = true })
 map('n', '<C-P>', '"0P', { noremap = true })
