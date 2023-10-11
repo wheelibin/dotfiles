@@ -46,10 +46,12 @@ opt.mouse = 'a'
 -- scroll offset
 opt.scrolloff = 4
 
+-- full line at cursor position
 opt.cursorline = true
 
 opt.swapfile = false
 
+-- cursor not allowed in whitespace
 opt.virtualedit = 'none'
 
 -- hide the tildes showing end of buffer

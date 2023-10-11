@@ -1,88 +1,40 @@
-local legendary = require('legendary')
-local toolbox = require('legendary.toolbox')
-local legendary_filters = require('legendary.filters')
+local map = require('../utils').map
 
-legendary.keymaps({
-  {
-    '<F2>',
-    toolbox.lazy(legendary.find, { filters = { legendary_filters.current_mode() } }),
-    description = 'Show Legendary'
-  },
+-- buffer switching
+map("n", '<bs>', '<C-^>', { desc = 'Edit alternative file' })
 
-  -- buffer switching
-  { '<Leader>bf', [[:bn<cr>]],                  description = 'Buffer forward' },
-  { '<Leader>bb', [[:bp<cr>]],                  description = 'Buffer back' },
-  { '<bs>',       '<C-^>',                      description = 'Edit alternative file' },
-  -- -- window navigation
-  -- currently handled by smart-splits
-  -- { '<M-left>',    ':wincmd h<CR>',              description = 'Goto window to the left' },
-  -- { '<M-down>',    ':wincmd j<CR>',              description = 'Goto window below' },
-  -- { '<M-up>',      ':wincmd k<CR>',              description = 'Goto window above' },
-  -- { '<M-right>',   ':wincmd l<CR>',              description = 'Goto window to the right' },
+-- windows
+map("n", '<M-q>', ':wincmd q<CR>', { desc = 'Close current window' })
 
-  { '<M-r>',      ':wincmd r<CR>',              description = 'Cycle through all windows' },
-  { '<M-q>',      ':wincmd q<CR>',              description = 'Close current window' },
-  -- window creation
-  { '<M-S-m>',    ':wincmd v<CR>:wincmd h<CR>', description = 'New window to the right' },
-  { '<M-S-n>',    ':wincmd s<CR>',              description = 'New window below' },
-  { '<M-S-e>',    ':wincmd s<CR>:wincmd k<CR>', description = 'New window above' },
-  { '<M-S-i>',    ':wincmd v<CR>',              description = 'New window to the left' },
-  -- copy/paste system clipboard
-  {
-    '<Leader>y',
-    '"+y',
-    mode = 'v',
-    description =
-    'Copy to system clipboard'
-  },
-  { '<Leader>p', '"+p', description = 'Paste from system clipboard' },
-  { '<Leader>P', '"+P', description = 'Paste from system clipboard (before)' },
-  -- move lines
-  {
-    '<C-up>',
-    {
-      n = ':m .-2<CR>==',
-      i = '<Esc>:m .-2<CR>==gi',
-      v = ':m \'<-2<CR>gv=gv',
-    },
-    description = 'Move line up',
-  },
-  {
-    '<C-down>',
-    {
-      n = ':m .+1<CR>==',
-      i = '<Esc>:m .+1<CR>==gi',
-      v = ':m \'>+1<CR>gv=gv',
-    },
-    description = 'Move line down',
-  },
-  { '<leader><bs>', ':noh<CR>', description = 'Clear search highlighting' },
+map("n", '<M-S-m>', ':wincmd v<CR>:wincmd h<CR>', { desc = 'New window left' })
+map("n", '<M-S-n>', ':wincmd s<CR>', { desc = 'New window below' })
+map("n", '<M-S-e>', ':wincmd s<CR>:wincmd k<CR>', { desc = 'New window above' })
+map("n", '<M-S-i>', ':wincmd v<CR>', { desc = 'New window right' })
 
-  -- window resizing
-  -- { '<C-M-S-j>', ':resize +2<CR>', description = 'Resize window - shorter' },
-  -- { '<C-M-S-k>', ':resize -2<CR>', description = 'Resize window - taller' },
-  -- { '<C-M-S-l>', ':vertical resize +2<CR>', description = 'Resize window - wider' },
-  -- { '<C-M-S-h>', ':vertical resize -2<CR>', description = 'Resize window - narrower' }, --
+-- move lines
+map("n", '<C-up>', ':m .-2<CR>==', { desc = 'Move line up' })
+map("i", '<C-up>', '<Esc>:m .-2<CR>==gi', { desc = 'Move line up' })
+map("v", '<C-up>', ':m \'<-2<CR>gv=gv', { desc = 'Move line up' })
+map("n", '<C-down>', ':m .+1<CR>==', { desc = 'Move line up' })
+map("i", '<C-down>', '<Esc>:m .+1<CR>==gi', { desc = 'Move line up' })
+map("v", '<C-down>', ':m \'>+1<CR>gv=gv', { desc = 'Move line up' })
 
-})
-
-local map = require('./utils').map
-map('n', ';', ':', { noremap = true })
-map('n', ':', ';', { noremap = true })
+map('n', ';', ':')
+map('n', ':', ';')
 
 -- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
+map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
 
 --- center in page nav
-map("n", "<C-d>", "<C-d>zz", { noremap = true })
-map("n", "<C-u>", "<C-u>zz", { noremap = true })
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
 
 -- exit insert mode
 map('i', 'hh', '<Esc>')
 
-map('n', '<C-p>', '"0p', { noremap = true })
-map('n', '<C-P>', '"0P', { noremap = true })
+map('n', '<C-p>', '"0p')
+map('n', '<C-P>', '"0P')
 
 -- jump to next search (+centering)
 map('', 'n', 'nzzzv', {})
@@ -113,4 +65,4 @@ map('', 'K', 'N', {})
 map('', 'l', 'e', {})
 --------------------------
 
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+-- vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
