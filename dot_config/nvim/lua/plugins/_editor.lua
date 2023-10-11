@@ -185,7 +185,7 @@ return {
         build = 'make'
       },
       'nvim-telescope/telescope-frecency.nvim',
-      'kkharji/sqlite.lua',
+      'nvim-telescope/telescope-ui-select.nvim',
     },
     keys = {
       {
@@ -290,6 +290,9 @@ return {
           undo = {
             -- telescope-undo.nvim config, see below
           },
+          ["ui-select"] = {
+            require("telescope.themes").get_dropdown {  }
+          }
         },
         defaults = {
           mappings = {
@@ -341,6 +344,7 @@ return {
       pcall(function()
         telescope.load_extension('frecency')
         telescope.load_extension('fzf')
+        telescope.load_extension("ui-select")
       end)
     end
   }

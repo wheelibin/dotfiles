@@ -1,4 +1,5 @@
 return {
+
   -- {
   --   "startup-nvim/startup.nvim",
   --   requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
@@ -6,6 +7,7 @@ return {
   --     require "startup".setup()
   --   end
   -- },
+
   {
     'petertriho/nvim-scrollbar',
     lazy = true,

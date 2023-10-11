@@ -48,7 +48,10 @@ return {
 
   {
     'neovim/nvim-lspconfig',
+    lazy = true,
+    event = "BufRead",
     dependencies = {
+      'nvim-telescope/telescope.nvim', -- for popups,
       -- LSP Support
       {
         'williamboman/mason.nvim',
@@ -101,7 +104,8 @@ return {
         map("n", 'gi', vim.lsp.buf.implementation, { desc = 'Goto implementation (LSP)', buffer = bufnr })
         map("n", '<C-space>', vim.lsp.buf.hover, { desc = 'LSP Info', buffer = bufnr })
         map("n", '<leader>rn', vim.lsp.buf.rename, { desc = 'Rename (LSP)', buffer = bufnr })
-        map("n", '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code Actions (LSP)', buffer = bufnr })
+        map({ "n", "v" }, '<leader>ca', function() vim.lsp.buf.code_action() end,
+          { desc = 'Code Actions (LSP)', buffer = bufnr })
         map("n", '<leader>f', function() vim.lsp.buf.format({ async = true }) end,
           { desc = 'Format buffer', buffer = bufnr })
 
