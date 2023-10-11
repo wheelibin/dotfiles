@@ -6,7 +6,7 @@ return {
     'folke/trouble.nvim',
     lazy = true,
     keys = {
-      { "<leader>t", "<cmd>troubletoggle workspace_diagnostics<cr>", description = "toggle trouble" }
+      { "<leader>t", "<cmd>troubletoggle workspace_diagnostics<cr>", desc = "toggle trouble" }
     },
     config = function()
       require("trouble").setup {}
@@ -42,7 +42,7 @@ return {
     "tpope/vim-fugitive",
     lazy = true,
     keys = {
-      { "<leader>g", ":G<cr>", description = "Git client" }
+      { "<leader>g", ":G<cr>", desc = "Git client" }
     },
   },
 
