@@ -22,7 +22,7 @@ end
 -- config.colors = {
 --   cursor_fg = '#2C2E34'
 -- }
-config.color_scheme = 'nordfox'
+config.color_scheme = 'nightfox'
 -- config.color_scheme = 'Catppuccin Macchiato'
 -- config.color_scheme = 'Kanagawa (Gogh)'
 
@@ -98,7 +98,7 @@ local function split_nav(key, mods)
 end
 
 -- key bindings
--- config.disable_default_key_bindings = true
+config.disable_default_key_bindings = true
 
 config.keys = {
   { key = 'N',     mods = 'SHIFT|CTRL', action = action.SpawnWindow },
