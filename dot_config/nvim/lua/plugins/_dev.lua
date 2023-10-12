@@ -291,6 +291,16 @@ return {
 
   {
     'nvim-treesitter/nvim-treesitter',
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter-context",
+      config = function()
+        require('treesitter-context').setup({
+          separator = "┈",
+        })
+        vim.cmd [[ hi! def link TreesitterContext LspInlayHint ]]
+        -- vim.cmd [[ hi TreesitterContext gui=italic ]]
+      end
+    },
     build = ':TSUpdate',
     config = function()
       require 'nvim-treesitter.configs'.setup {

@@ -78,11 +78,11 @@ return {
     end
   },
 
-  {
-    'Bekaboo/dropbar.nvim',
-    lazy = true,
-    event = "BufEnter"
-  },
+  -- {
+  --   'Bekaboo/dropbar.nvim',
+  --   lazy = true,
+  --   event = "BufEnter"
+  -- },
 
   {
     "folke/flash.nvim",
