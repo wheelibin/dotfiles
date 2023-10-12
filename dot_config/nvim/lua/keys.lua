@@ -23,8 +23,8 @@ map('n', ';', ':')
 map('n', ':', ';')
 
 -- Remap for dealing with word wrap
-map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
-map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
+--map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
+--map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
 
 --- center in page nav
 map("n", "<C-d>", "<C-d>zz")

@@ -1,6 +1,7 @@
 local map = require('../utils').map
 
 return {
+  "towolf/vim-helm",
   {
     "nvim-neo-tree/neo-tree.nvim",
     lazy = true,

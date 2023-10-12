@@ -3,7 +3,7 @@ vim.g.mapleader = ' '
 local opt = vim.opt
 
 -- disable word wrap
--- opt.wrap = false
+opt.wrap = false
 
 -- Enable break indent
 opt.breakindent = true
