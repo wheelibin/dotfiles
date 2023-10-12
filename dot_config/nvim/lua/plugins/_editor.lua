@@ -291,7 +291,7 @@ return {
             -- telescope-undo.nvim config, see below
           },
           ["ui-select"] = {
-            require("telescope.themes").get_dropdown {  }
+            require("telescope.themes").get_dropdown {}
           }
         },
         defaults = {

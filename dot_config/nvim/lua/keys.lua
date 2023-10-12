@@ -40,6 +40,9 @@ map('n', '<C-P>', '"0P')
 map('', 'n', 'nzzzv', {})
 map('', 'N', 'Nzzzv', {})
 
+map('n', '<leader><bs>', ':noh<CR>', { desc = 'Clear search highlighting' })
+map('', '<space>', '<nop>', { silent = true })
+
 -- colemak specific mappings
 --------------------------
 -- remap hjkl to colemak homerow equivalents
@@ -64,5 +67,3 @@ map('', 'K', 'N', {})
 -- move to end of next word
 map('', 'l', 'e', {})
 --------------------------
-
--- vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
