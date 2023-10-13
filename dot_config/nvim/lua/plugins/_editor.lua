@@ -78,11 +78,11 @@ return {
     end
   },
 
-  -- {
-  --   'Bekaboo/dropbar.nvim',
-  --   lazy = true,
-  --   event = "BufEnter"
-  -- },
+  {
+    'Bekaboo/dropbar.nvim',
+    lazy = true,
+    event = "BufEnter"
+  },
 
   {
     "folke/flash.nvim",
@@ -258,7 +258,7 @@ return {
       {
         "<leader>tr",
         mode = "n",
-        function() require('telescope.builtin').resume() end,
+        require('telescope.builtin').resume,
         desc = "Telescope resume"
       },
       {
@@ -266,6 +266,12 @@ return {
         mode = "n",
         function() require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown { winblend = 10, previewer = false, }) end,
         desc = "Fuzzy find in current buffer"
+      },
+      {
+        "<leader>ch",
+        mode = "n",
+        require('telescope.builtin').command_history,
+        desc = "Command History"
       },
 
     },
