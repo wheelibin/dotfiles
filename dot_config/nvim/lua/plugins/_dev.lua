@@ -297,7 +297,7 @@ return {
         require('treesitter-context').setup({
           separator = "┈",
         })
-        vim.cmd [[ hi! def link TreesitterContext LspInlayHint ]]
+        -- vim.cmd [[ hi! def link TreesitterContext LspInlayHint ]]
         -- vim.cmd [[ hi TreesitterContext gui=italic ]]
       end
     },
