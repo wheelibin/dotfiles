@@ -28,7 +28,7 @@ return {
             return '<Ignore>'
           end, { expr = true })
 
-          map('n', '<M-C-S-,>', function()
+          map('n', '<M-C-h>', function()
             if vim.wo.diff then return '[c' end
             vim.schedule(function() gs.prev_hunk() end)
             return '<Ignore>'
@@ -93,7 +93,7 @@ return {
       }
 
       map("n", '<M-C-S-n>', vim.diagnostic.goto_next, { desc = 'Next Diagnostics message' })
-      map("n", '<M-C-S-e>', vim.diagnostic.goto_prev, { desc = 'Previous Diagnostics message' })
+      map("n", '<M-C-n>', vim.diagnostic.goto_prev, { desc = 'Previous Diagnostics message' })
 
       local on_attach = function(client, bufnr)
         -- Enable completion triggered by <c-x><c-o>
@@ -290,111 +290,37 @@ return {
   },
 
   {
-    'nvim-treesitter/nvim-treesitter',
+    'mfussenegger/nvim-dap',
     dependencies = {
-      "nvim-treesitter/nvim-treesitter-context",
-      config = function()
-        require('treesitter-context').setup({
-          separator = "┈",
-        })
-        -- vim.cmd [[ hi! def link TreesitterContext LspInlayHint ]]
-        -- vim.cmd [[ hi TreesitterContext gui=italic ]]
-      end
+      { 'leoluz/nvim-dap-go' }
     },
-    build = ':TSUpdate',
     config = function()
-      require 'nvim-treesitter.configs'.setup {
-        -- A list of parser names, or "all"
-        ensure_installed = {
-          'bash',
-          'c',
-          'cpp',
-          'css',
-          'html',
-          'go',
-          'graphql',
-          'javascript',
-          'json',
-          'lua',
-          'python',
-          'typescript',
-          'tsx',
-          'vim',
-          'regex',
-          'markdown',
-          'markdown_inline',
-          'yaml'
-        },
-
-        -- Install parsers synchronously (only applied to `ensure_installed`)
-        sync_install = false,
-
-        -- List of parsers to ignore installing (for "all")
-        -- ignore_install = { "javascript" },
-
-        highlight = {
-          -- `false` will disable the whole extension
-          enable = true,
-          -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
-          -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
-          -- the name of the parser)
-          -- list of language that will be disabled
-          -- disable = { "c", "rust" },
-
-          -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-          -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-          -- Using this option may slow down your editor, and you may see some duplicate highlights.
-          -- Instead of true it can also be a list of languages
-          additional_vim_regex_highlighting = false
-        },
-
-        indent = { enable = true },
-        -- incremental_selection = {
-        --   enable = true,
-        --   keymaps = {
-        --     init_selection = '<c-space>',
-        --     node_incremental = '<c-space>',
-        --     scope_incremental = '<c-s>',
-        --     node_decremental = '<M-space>',
-        --   },
-        -- },
-
-      }
+      require('dap-go').setup()
+      vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
+      vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
+      vim.keymap.set('n', '<F11>', function() require('dap').step_into() end)
+      vim.keymap.set('n', '<F12>', function() require('dap').step_out() end)
+      vim.keymap.set('n', '<Leader>b', function() require('dap').toggle_breakpoint() end)
+      vim.keymap.set('n', '<Leader>B', function() require('dap').set_breakpoint() end)
+      vim.keymap.set('n', '<Leader>lp',
+        function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
+      vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end)
+      vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
+      vim.keymap.set({ 'n', 'v' }, '<Leader>dh', function()
+        require('dap.ui.widgets').hover()
+      end)
+      vim.keymap.set({ 'n', 'v' }, '<Leader>dp', function()
+        require('dap.ui.widgets').preview()
+      end)
+      vim.keymap.set('n', '<Leader>df', function()
+        local widgets = require('dap.ui.widgets')
+        widgets.centered_float(widgets.frames)
+      end)
+      vim.keymap.set('n', '<Leader>ds', function()
+        local widgets = require('dap.ui.widgets')
+        widgets.centered_float(widgets.scopes)
+      end)
     end
   }
-
-  -- {
-  --   'mfussenegger/nvim-dap',
-  --   dependencies = {
-  --     { 'leoluz/nvim-dap-go' }
-  --   },
-  --   config = function()
-  --     require('dap-go').setup()
-  --     vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
-  --     vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
-  --     vim.keymap.set('n', '<F11>', function() require('dap').step_into() end)
-  --     vim.keymap.set('n', '<F12>', function() require('dap').step_out() end)
-  --     vim.keymap.set('n', '<Leader>b', function() require('dap').toggle_breakpoint() end)
-  --     vim.keymap.set('n', '<Leader>B', function() require('dap').set_breakpoint() end)
-  --     vim.keymap.set('n', '<Leader>lp',
-  --       function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
-  --     vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end)
-  --     vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
-  --     vim.keymap.set({ 'n', 'v' }, '<Leader>dh', function()
-  --       require('dap.ui.widgets').hover()
-  --     end)
-  --     vim.keymap.set({ 'n', 'v' }, '<Leader>dp', function()
-  --       require('dap.ui.widgets').preview()
-  --     end)
-  --     vim.keymap.set('n', '<Leader>df', function()
-  --       local widgets = require('dap.ui.widgets')
-  --       widgets.centered_float(widgets.frames)
-  --     end)
-  --     vim.keymap.set('n', '<Leader>ds', function()
-  --       local widgets = require('dap.ui.widgets')
-  --       widgets.centered_float(widgets.scopes)
-  --     end)
-  --   end
-  -- }
 
 }

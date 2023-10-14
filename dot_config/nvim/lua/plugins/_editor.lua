@@ -80,8 +80,13 @@ return {
 
   {
     'Bekaboo/dropbar.nvim',
-    lazy = true,
-    event = "BufEnter"
+    -- optional, but required for fuzzy finder support
+    dependencies = {
+      'nvim-telescope/telescope-fzf-native.nvim'
+    },
+    config = function()
+      map("n", "<leader>d", require('dropbar.api').pick, { desc = 'Dropbar pick mode' })
+    end
   },
 
   {
@@ -198,7 +203,7 @@ return {
       {
         "<leader>fa",
         mode = "n",
-        function() require('telescope.builtin').live_grep() end,
+        require('telescope.builtin').live_grep,
         desc = "Find text (grep)"
       },
       {
@@ -216,37 +221,37 @@ return {
       {
         "<leader>fe",
         mode = "n",
-        function() require('telescope.builtin').diagnostics() end,
+        require('telescope.builtin').diagnostics,
         desc = "Find errors (diagnostics) (LSP)"
       },
       {
         "<leader>fs",
         mode = "n",
-        function() require('telescope.builtin').lsp_workspace_symbols() end,
+        require('telescope.builtin').lsp_workspace_symbols,
         desc = "Find symbols (LSP)"
       },
       {
         "<leader>ds",
         mode = "n",
-        function() require('telescope.builtin').lsp_document_symbols() end,
+        require('telescope.builtin').lsp_document_symbols,
         desc = "Find document symbols (LSP)"
       },
       {
         "<leader>fi",
         mode = "n",
-        function() require('telescope.builtin').lsp_implementations() end,
+        require('telescope.builtin').lsp_implementations,
         desc = "Find implementations (LSP)"
       },
       {
         "<leader>fd",
         mode = "n",
-        function() require('telescope.builtin').lsp_definitions() end,
+        require('telescope.builtin').lsp_definitions,
         desc = "Find definitions (LSP)"
       },
       {
         "<leader>fh",
         mode = "n",
-        function() require('telescope.builtin').git_bcommits() end,
+        require('telescope.builtin').git_bcommits,
         desc = "File history (git)"
       },
       {
@@ -254,6 +259,18 @@ return {
         mode = "n",
         function() require('telescope.builtin').grep_string({ word_match = '-w', path_display = { 'truncate' } }) end,
         desc = "Find word under cursor"
+      },
+      {
+        "<leader>fj",
+        mode = "n",
+        require('telescope.builtin').jumplist,
+        desc = "Find jump point"
+      },
+      {
+        "<leader>re",
+        mode = "n",
+        require('telescope.builtin').registers,
+        desc = "View registers"
       },
       {
         "<leader>tr",
@@ -353,6 +370,81 @@ return {
         telescope.load_extension('fzf')
         telescope.load_extension("ui-select")
       end)
+    end
+  },
+
+  {
+    'nvim-treesitter/nvim-treesitter',
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter-context",
+      config = function()
+        require('treesitter-context').setup({
+          separator = "┈",
+        })
+        map('n', '<leader>c', require("treesitter-context").go_to_context)
+        -- vim.cmd [[ hi! def link TreesitterContext LspInlayHint ]]
+        -- vim.cmd [[ hi TreesitterContext gui=italic ]]
+      end
+    },
+    build = ':TSUpdate',
+    config = function()
+      require 'nvim-treesitter.configs'.setup {
+        -- A list of parser names, or "all"
+        ensure_installed = {
+          'bash',
+          'c',
+          'cpp',
+          'css',
+          'html',
+          'go',
+          'graphql',
+          'javascript',
+          'json',
+          'lua',
+          'python',
+          'typescript',
+          'tsx',
+          'vim',
+          'regex',
+          'markdown',
+          'markdown_inline',
+          'yaml'
+        },
+
+        -- Install parsers synchronously (only applied to `ensure_installed`)
+        sync_install = false,
+
+        -- List of parsers to ignore installing (for "all")
+        -- ignore_install = { "javascript" },
+
+        highlight = {
+          -- `false` will disable the whole extension
+          enable = true,
+          -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
+          -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
+          -- the name of the parser)
+          -- list of language that will be disabled
+          -- disable = { "c", "rust" },
+
+          -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+          -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+          -- Using this option may slow down your editor, and you may see some duplicate highlights.
+          -- Instead of true it can also be a list of languages
+          additional_vim_regex_highlighting = false
+        },
+
+        indent = { enable = true },
+        -- incremental_selection = {
+        --   enable = true,
+        --   keymaps = {
+        --     init_selection = '<c-space>',
+        --     node_incremental = '<c-space>',
+        --     scope_incremental = '<c-s>',
+        --     node_decremental = '<M-space>',
+        --   },
+        -- },
+
+      }
     end
   }
 }
