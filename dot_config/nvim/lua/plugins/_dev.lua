@@ -294,7 +294,12 @@ return {
     lazy = true,
     dependencies = {
       { 'leoluz/nvim-dap-go' },
-      { 'theHamsta/nvim-dap-virtual-text' },
+      {
+        'theHamsta/nvim-dap-virtual-text',
+        config = function()
+          require('nvim-dap-virtual-text').setup()
+        end
+      },
       {
         'mfussenegger/nvim-dap',
         config = function()
