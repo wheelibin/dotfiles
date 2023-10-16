@@ -11,6 +11,10 @@ map("n", '<M-S-n>', ':wincmd s<CR>', { desc = 'New window below' })
 map("n", '<M-S-e>', ':wincmd s<CR>:wincmd k<CR>', { desc = 'New window above' })
 map("n", '<M-S-i>', ':wincmd v<CR>', { desc = 'New window right' })
 
+-- resize windows
+map("n", '<C-M-S-m>', ':5wincmd ><CR>', { desc = 'Make window narrower' })
+map("n", '<C-M-S-k>', ':5wincmd <<CR>', { desc = 'Make window wider' })
+
 -- move lines
 map("n", '<C-up>', ':m .-2<CR>==', { desc = 'Move line up' })
 map("i", '<C-up>', '<Esc>:m .-2<CR>==gi', { desc = 'Move line up' })
