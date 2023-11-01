@@ -6,7 +6,7 @@ return {
     priority = 1000,
     config = function()
       -- vim.g.melange_enable_font_variants = 0
-      vim.cmd('colorscheme nightfox')
+      -- vim.cmd('colorscheme nightfox')
     end
   },
 
@@ -27,6 +27,15 @@ return {
     name = 'theme: melange',
     priority = 1000,
     lazy = true,
+  },
+  {
+    'wuelnerdotexe/vim-enfocado',
+    name = 'theme: enfocado',
+    priority = 1000,
+    config = function()
+      vim.g.enfocado_style = 'neon'
+      vim.cmd('colorscheme enfocado')
+    end
   }
 
 }
