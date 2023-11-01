@@ -29,10 +29,12 @@ config.color_scheme = 'nightfox'
 -- fonts
 -- config.font = wezterm.font { family = 'Fira Code' }
 -- config.font = wezterm.font { family = 'Hack' }
--- config.font = wezterm.font { family = 'Source Code Pro' }
+config.font = wezterm.font { family = 'Source Code Pro' }
 -- config.font = wezterm.font { family = 'ProggyVector' }
 -- config.font = wezterm.font { family = 'Inconsolata' }
-config.font = wezterm.font { family = 'JetBrains Mono' }
+-- config.font = wezterm.font { family = 'JetBrains Mono' }
+-- config.font = wezterm.font { family = 'Victor Mono' }
+-- config.font = wezterm.font { family = 'IBM Plex Mono' }
 
 
 
