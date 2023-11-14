@@ -12,3 +12,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- set custom file highlighting
 vim.api.nvim_create_autocmd("BufReadPost", { pattern = "Tiltfile", command = [[set filetype=python]] })
 vim.api.nvim_create_autocmd("BufReadPost", { pattern = "Dockerfile*", command = [[set filetype=dockerfile]] })
+
+
+vim.api.nvim_create_autocmd("BufReadPost", { pattern = "*.gql.tmpl", command = [[set filetype=graphql]] })

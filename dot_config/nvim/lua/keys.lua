@@ -68,8 +68,8 @@ map('', 'h', 'o', {})
 map('', 'H', 'O', {})
 
 -- jump to next search (+centering)
-map('', 'k', 'n', {})
-map('', 'K', 'N', {})
+map('', 'k', 'nzz', {})
+map('', 'K', 'Nzz', {})
 
 -- move to end of next word
 map('', 'l', 'e', {})

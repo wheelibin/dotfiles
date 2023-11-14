@@ -33,6 +33,8 @@ return {
             vim.schedule(function() gs.prev_hunk() end)
             return '<Ignore>'
           end, { expr = true })
+
+          map('n', '<leader>hr', gs.reset_hunk)
         end
       })
     end

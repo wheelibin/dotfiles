@@ -56,3 +56,8 @@ opt.virtualedit = 'none'
 
 -- hide the tildes showing end of buffer
 opt.fcs = "eob: "
+
+
+-- opt.foldmethod = "expr"
+-- opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- opt.foldmethod = "indent"
