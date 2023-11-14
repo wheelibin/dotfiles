@@ -20,7 +20,9 @@ return {
     'rebelot/kanagawa.nvim',
     name = 'theme: kanagawa',
     priority = 1000,
-    lazy = true,
+    config = function()
+      vim.cmd('colorscheme kanagawa')
+    end
   },
   {
     'savq/melange-nvim',
@@ -34,7 +36,6 @@ return {
     priority = 1000,
     config = function()
       vim.g.enfocado_style = 'neon'
-      vim.cmd('colorscheme enfocado')
     end
   }
 
