@@ -22,9 +22,9 @@ end
 -- config.colors = {
 --   cursor_fg = '#2C2E34'
 -- }
-config.color_scheme = 'nightfox'
+-- config.color_scheme = 'nightfox'
 -- config.color_scheme = 'Catppuccin Macchiato'
--- config.color_scheme = 'Kanagawa (Gogh)'
+config.color_scheme = 'Kanagawa (Gogh)'
 
 -- fonts
 -- config.font = wezterm.font { family = 'Fira Code' }
@@ -36,7 +36,9 @@ config.font = wezterm.font { family = 'Source Code Pro' }
 -- config.font = wezterm.font { family = 'Victor Mono' }
 -- config.font = wezterm.font { family = 'IBM Plex Mono' }
 
-
+config.colors = {
+  cursor_fg = '#2C2E34'
+}
 
 config.font_size = 20
 
@@ -48,8 +50,8 @@ config.window_padding = {
   bottom = 0,
 }
 config.inactive_pane_hsb = {
-  saturation = 0.6,
-  brightness = 0.8,
+  saturation = 0.5,
+  brightness = 0.6,
 }
 
 config.enable_tab_bar = false
