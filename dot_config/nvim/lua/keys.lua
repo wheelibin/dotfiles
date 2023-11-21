@@ -45,7 +45,6 @@ map('', 'n', 'nzzzv', {})
 map('', 'N', 'Nzzzv', {})
 
 map('n', '<leader><bs>', ':noh<CR>', { desc = 'Clear search highlighting' })
-map('', '<space>', '<nop>', { silent = true })
 
 -- paste from reg 0 (pastes yanked content even after delete)
 map('', '<leader>p', '=0p')
