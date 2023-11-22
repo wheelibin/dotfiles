@@ -22,9 +22,9 @@ end
 -- config.colors = {
 --   cursor_fg = '#2C2E34'
 -- }
--- config.color_scheme = 'nightfox'
+config.color_scheme = 'Everforest Dark (Gogh)'
 -- config.color_scheme = 'Catppuccin Macchiato'
-config.color_scheme = 'Kanagawa (Gogh)'
+-- config.color_scheme = 'Kanagawa (Gogh)'
 
 -- fonts
 -- config.font = wezterm.font { family = 'Fira Code' }
