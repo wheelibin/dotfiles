@@ -31,8 +31,8 @@ map('n', ':', ';')
 --map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
 
 --- center in page nav
-map("n", "<C-d>", "<C-d>zz")
-map("n", "<C-u>", "<C-u>zz")
+-- map("n", "<C-d>", "<C-d>zz")
+-- map("n", "<C-u>", "<C-u>zz")
 
 -- exit insert mode
 map('i', 'hh', '<Esc>')
@@ -41,8 +41,8 @@ map('n', '<C-p>', '"0p')
 map('n', '<C-P>', '"0P')
 
 -- jump to next search (+centering)
-map('', 'n', 'nzzzv', {})
-map('', 'N', 'Nzzzv', {})
+-- map('', 'n', 'nzzzv', {})
+-- map('', 'N', 'Nzzzv', {})
 
 map('n', '<leader><bs>', ':noh<CR>', { desc = 'Clear search highlighting' })
 
@@ -66,9 +66,13 @@ map('', 'O', 'I', {})
 map('', 'h', 'o', {})
 map('', 'H', 'O', {})
 
+-- jump to next search
+-- map('', 'k', 'n', {})
+-- map('', 'K', 'N', {})
+
 -- jump to next search (+centering)
-map('', 'k', 'nzz', {})
-map('', 'K', 'Nzz', {})
+map('', 'k', 'nzzzv', {})
+map('', 'K', 'Nzzzv', {})
 
 -- move to end of next word
 map('', 'l', 'e', {})

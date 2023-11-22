@@ -58,6 +58,7 @@ opt.virtualedit = 'none'
 opt.fcs = "eob: "
 
 
--- opt.foldmethod = "expr"
--- opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldenable = false
 -- opt.foldmethod = "indent"

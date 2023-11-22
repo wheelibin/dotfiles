@@ -4,6 +4,7 @@ return {
   "towolf/vim-helm",
   {
     "ibhagwan/fzf-lua",
+    lazy = true,
     -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
@@ -95,6 +96,19 @@ return {
         function() require('fzf-lua').resume() end,
         desc = "Telescope resume"
       },
+      {
+        "<leader>fm",
+        mode = "n",
+        function() require('fzf-lua').keymaps() end,
+        desc = "Find keymaps"
+      },
+      {
+        "<leader>fc",
+        mode = "n",
+        function() require('fzf-lua').colorschemes() end,
+        desc = "Find colorschemes"
+      },
+
       -- {
       --   "<leader>/",
       --   mode = "n",

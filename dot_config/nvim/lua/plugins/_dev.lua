@@ -26,15 +26,15 @@ return {
             if vim.wo.diff then return ']c' end
             vim.schedule(function() gs.next_hunk() end)
             return '<Ignore>'
-          end, { expr = true })
+          end, { expr = true, desc = "Goto next change/hunk (GIT)" })
 
           map('n', '<M-C-h>', function()
             if vim.wo.diff then return '[c' end
             vim.schedule(function() gs.prev_hunk() end)
             return '<Ignore>'
-          end, { expr = true })
+          end, { expr = true, desc = "Goto previous change/hunk (GIT)" })
 
-          map('n', '<leader>hr', gs.reset_hunk)
+          map('n', '<leader>hr', gs.reset_hunk, { desc = "Reset change/hunk (GIT)" })
         end
       })
     end
@@ -102,7 +102,7 @@ return {
         map("n", 'gD', vim.lsp.buf.declaration, { desc = 'Goto declaration (LSP)', buffer = bufnr })
         map("n", 'gd', vim.lsp.buf.definition, { desc = 'Goto definition (LSP)', buffer = bufnr })
         map("n", 'gi', vim.lsp.buf.implementation, { desc = 'Goto implementation (LSP)', buffer = bufnr })
-        map("n", '<C-h>', vim.lsp.buf.hover, { desc = 'LSP Info', buffer = bufnr })
+        map("n", '<C-Space>', vim.lsp.buf.hover, { desc = 'LSP Hover Info', buffer = bufnr })
         map("n", '<leader>rn', vim.lsp.buf.rename, { desc = 'Rename (LSP)', buffer = bufnr })
         map({ "n", "v" }, '<leader>ca', function() vim.lsp.buf.code_action() end,
           { desc = 'Code Actions (LSP)', buffer = bufnr })
