@@ -104,8 +104,10 @@ return {
         map("n", 'gi', vim.lsp.buf.implementation, { desc = 'Goto implementation (LSP)', buffer = bufnr })
         map("n", '<C-Space>', vim.lsp.buf.hover, { desc = 'LSP Hover Info', buffer = bufnr })
         map("n", '<leader>rn', vim.lsp.buf.rename, { desc = 'Rename (LSP)', buffer = bufnr })
-        map({ "n", "v" }, '<leader>ca', function() vim.lsp.buf.code_action() end,
-          { desc = 'Code Actions (LSP)', buffer = bufnr })
+
+        -- code actions currently handled by fzf-lua
+        -- map({ "n", "v" }, '<leader>ca', function() vim.lsp.buf.code_action() end, { desc = 'Code Actions (LSP)', buffer = bufnr })
+
         map("n", '<leader>f', function() vim.lsp.buf.format({ async = true }) end,
           { desc = 'Format buffer', buffer = bufnr })
       end

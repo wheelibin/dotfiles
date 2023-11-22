@@ -108,6 +108,12 @@ return {
         function() require('fzf-lua').colorschemes() end,
         desc = "Find colorschemes"
       },
+      {
+        "<leader>ca",
+        mode = "n",
+        function() require('fzf-lua').lsp_code_actions() end,
+        desc = "Code Actions (LSP)"
+      },
 
       -- {
       --   "<leader>/",

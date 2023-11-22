@@ -14,7 +14,10 @@ return {
     'catppuccin/nvim',
     name = 'theme: catppuccin',
     priority = 1000,
-    -- lazy = true,
+    config = function()
+      vim.cmd('colorscheme catppuccin-macchiato')
+    end
+   -- lazy = true,
   },
   {
     'rebelot/kanagawa.nvim',
@@ -52,7 +55,7 @@ return {
       -- " For better performance
       vim.g.everforest_better_performance = 1
 
-      vim.cmd('colorscheme everforest')
+      -- vim.cmd('colorscheme everforest')
     end
   }
 
