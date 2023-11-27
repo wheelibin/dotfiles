@@ -13,6 +13,12 @@ return {
     end,
     keys = {
       {
+        "<leader>c",
+        mode = "n",
+        function() require('fzf-lua').commands() end,
+        desc = "Commands"
+      },
+      {
         "<leader>fp",
         mode = "n",
         function() require('fzf-lua').files({ path_shorten = 6 }) end,
@@ -55,13 +61,13 @@ return {
         desc = "Find document symbols (LSP)"
       },
       {
-        "<leader>fi",
+        "gi",
         mode = "n",
         function() require('fzf-lua').lsp_implementations() end,
         desc = "Find implementations (LSP)"
       },
       {
-        "<leader>fd",
+        "gd",
         mode = "n",
         function() require('fzf-lua').lsp_definitions() end,
         desc = "Find definitions (LSP)"
@@ -71,6 +77,12 @@ return {
         mode = "n",
         function() require('fzf-lua').git_bcommits() end,
         desc = "File history (git)"
+      },
+      {
+        "<leader>fc",
+        mode = "n",
+        function() require('fzf-lua').git_commits() end,
+        desc = "Git history (git)"
       },
       {
         "<leader>fw",
@@ -102,17 +114,23 @@ return {
         function() require('fzf-lua').keymaps() end,
         desc = "Find keymaps"
       },
-      {
-        "<leader>fc",
-        mode = "n",
-        function() require('fzf-lua').colorschemes() end,
-        desc = "Find colorschemes"
-      },
+      -- {
+      --   "<leader>fc",
+      --   mode = "n",
+      --   function() require('fzf-lua').colorschemes() end,
+      --   desc = "Find colorschemes"
+      -- },
       {
         "<leader>ca",
         mode = "n",
         function() require('fzf-lua').lsp_code_actions() end,
         desc = "Code Actions (LSP)"
+      },
+      {
+        "<leader>d",
+        mode = "n",
+        function() require('fzf-lua').dap_commands() end,
+        desc = "Debug (DAP)"
       },
 
       -- {
@@ -511,7 +529,7 @@ return {
         require('treesitter-context').setup({
           separator = "┈",
         })
-        map('n', '<leader>c', require("treesitter-context").go_to_context)
+        -- map('n', '<leader>c', require("treesitter-context").go_to_context)
         -- vim.cmd [[ hi! def link TreesitterContext LspInlayHint ]]
         -- vim.cmd [[ hi TreesitterContext gui=italic ]]
       end
