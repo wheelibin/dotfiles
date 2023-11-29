@@ -66,12 +66,12 @@ return {
         function() require('fzf-lua').lsp_implementations() end,
         desc = "Find implementations (LSP)"
       },
-      {
-        "gd",
-        mode = "n",
-        function() require('fzf-lua').lsp_definitions() end,
-        desc = "Find definitions (LSP)"
-      },
+      -- {
+      --   "gd",
+      --   mode = "n",
+      --   function() require('fzf-lua').lsp_definitions() end,
+      --   desc = "Find definitions (LSP)"
+      -- },
       {
         "<leader>fh",
         mode = "n",
