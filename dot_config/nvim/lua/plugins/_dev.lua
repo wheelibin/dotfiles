@@ -310,6 +310,22 @@ return {
         dapui.close()
       end
     end
+  },
+
+  {
+    "rest-nvim/rest.nvim",
+    dependencies = { { "nvim-lua/plenary.nvim" } },
+    lazy = true,
+    keys = {
+      { "<leader>x", "<Plug>RestNvim", desc = "Execute request" }
+    },
+
+    config = function()
+      require("rest-nvim").setup({
+        --- Get the same options from Packer setup
+        result_split_in_place = true
+      })
+    end
   }
 
 }

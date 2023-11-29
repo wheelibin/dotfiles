@@ -114,6 +114,12 @@ return {
         function() require('fzf-lua').keymaps() end,
         desc = "Find keymaps"
       },
+      {
+        "<leader>ft",
+        mode = "n",
+        function() require('fzf-lua').tabs() end,
+        desc = "Find tabs"
+      },
       -- {
       --   "<leader>fc",
       --   mode = "n",
@@ -544,6 +550,7 @@ return {
           'cpp',
           'css',
           'html',
+          'http',
           'go',
           'graphql',
           'javascript',
