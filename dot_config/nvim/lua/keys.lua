@@ -23,6 +23,8 @@ map("n", '<C-down>', ':m .+1<CR>==', { desc = 'Move line up' })
 map("i", '<C-down>', '<Esc>:m .+1<CR>==gi', { desc = 'Move line up' })
 map("v", '<C-down>', ':m \'>+1<CR>gv=gv', { desc = 'Move line up' })
 
+map("n", "<leader>tn", ":tabnext<CR>", { desc = "Tab next" })
+
 map('n', ';', ':')
 map('n', ':', ';')
 
