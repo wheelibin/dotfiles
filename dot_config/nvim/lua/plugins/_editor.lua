@@ -13,12 +13,6 @@ return {
     end,
     keys = {
       {
-        "<leader>c",
-        mode = "n",
-        function() require('fzf-lua').commands() end,
-        desc = "Commands"
-      },
-      {
         "<leader>fp",
         mode = "n",
         function() require('fzf-lua').files({ path_shorten = 6 }) end,
@@ -82,7 +76,7 @@ return {
         "<leader>fc",
         mode = "n",
         function() require('fzf-lua').git_commits() end,
-        desc = "Git history (git)"
+        desc = "Find Commits (git)"
       },
       {
         "<leader>fw",
@@ -90,12 +84,6 @@ return {
         function() require('fzf-lua').grep_cword() end,
         desc = "Find word under cursor"
       },
-      -- {
-      --   "<leader>fj",
-      --   mode = "n",
-      --   require('telescope.builtin').jumplist,
-      --   desc = "Find jump point"
-      -- },
       {
         "<leader>re",
         mode = "n",
@@ -120,12 +108,6 @@ return {
         function() require('fzf-lua').tabs() end,
         desc = "Find tabs"
       },
-      -- {
-      --   "<leader>fc",
-      --   mode = "n",
-      --   function() require('fzf-lua').colorschemes() end,
-      --   desc = "Find colorschemes"
-      -- },
       {
         "<leader>ca",
         mode = "n",
@@ -328,204 +310,20 @@ return {
           local Terminal = require('toggleterm.terminal').Terminal
           Terminal:new({ cmd = "lazygit", hidden = true, direction = "float" }):toggle()
         end
+      },
+      {
+        "<leader>el",
+        mode = "n",
+        function()
+          local trim_spaces = true
+          require("toggleterm").send_lines_to_terminal("single_line", trim_spaces, { args = vim.v.count })
+        end
       }
     },
     config = function()
       require("toggleterm").setup {}
     end
   },
-
-  -- {
-  --   'nvim-telescope/telescope.nvim',
-  --   lazy = true,
-  --   dependencies = {
-  --     'nvim-lua/plenary.nvim',
-  --     {
-  --       'nvim-telescope/telescope-fzf-native.nvim',
-  --       build = 'make'
-  --     },
-  --     'nvim-telescope/telescope-frecency.nvim',
-  --     'nvim-telescope/telescope-ui-select.nvim',
-  --   },
-  --   keys = {
-  --     -- {
-  --     --   "<leader>fp",
-  --     --   mode = "n",
-  --     --   function() require('telescope.builtin').find_files({ path_display = { 'truncate' } }) end,
-  --     --   desc = "Find files"
-  --     -- },
-  --     -- {
-  --     --   "<leader>fa",
-  --     --   mode = "n",
-  --     --   require('telescope.builtin').live_grep,
-  --     --   desc = "Find text (grep)"
-  --     -- },
-  --     -- {
-  --     --   "<leader><space>",
-  --     --   mode = "n",
-  --     --   function() require('telescope.builtin').buffers({ path_display = { 'truncate' } }) end,
-  --     --   desc = "Find buffers"
-  --     -- },
-  --     -- {
-  --     --   "<leader>fr",
-  --     --   mode = "n",
-  --     --   function() require('telescope.builtin').lsp_references({ path_display = { 'tail' } }) end,
-  --     --   desc = "Find references (LSP)"
-  --     -- },
-  --     -- {
-  --     --   "<leader>fe",
-  --     --   mode = "n",
-  --     --   require('telescope.builtin').diagnostics,
-  --     --   desc = "Find errors (diagnostics) (LSP)"
-  --     -- },
-  --     -- {
-  --     --   "<leader>fs",
-  --     --   mode = "n",
-  --     --   require('telescope.builtin').lsp_workspace_symbols,
-  --     --   desc = "Find symbols (LSP)"
-  --     -- },
-  --     -- {
-  --     --   "<leader>ds",
-  --     --   mode = "n",
-  --     --   require('telescope.builtin').lsp_document_symbols,
-  --     --   desc = "Find document symbols (LSP)"
-  --     -- },
-  --     -- {
-  --     --   "<leader>fi",
-  --     --   mode = "n",
-  --     --   require('telescope.builtin').lsp_implementations,
-  --     --   desc = "Find implementations (LSP)"
-  --     -- },
-  --     -- {
-  --     --   "<leader>fd",
-  --     --   mode = "n",
-  --     --   require('telescope.builtin').lsp_definitions,
-  --     --   desc = "Find definitions (LSP)"
-  --     -- },
-  --     -- {
-  --     --   "<leader>fh",
-  --     --   mode = "n",
-  --     --   require('telescope.builtin').git_bcommits,
-  --     --   desc = "File history (git)"
-  --     -- },
-  --     -- {
-  --     --   "<leader>fw",
-  --     --   mode = "n",
-  --     --   function() require('telescope.builtin').grep_string({ word_match = '-w', path_display = { 'truncate' } }) end,
-  --     --   desc = "Find word under cursor"
-  --     -- },
-  --     {
-  --       "<leader>fj",
-  --       mode = "n",
-  --       require('telescope.builtin').jumplist,
-  --       desc = "Find jump point"
-  --     },
-  --     -- {
-  --     --   "<leader>re",
-  --     --   mode = "n",
-  --     --   require('telescope.builtin').registers,
-  --     --   desc = "View registers"
-  --     -- },
-  --     -- {
-  --     --   "<leader>tr",
-  --     --   mode = "n",
-  --     --   require('telescope.builtin').resume,
-  --     --   desc = "Telescope resume"
-  --     -- },
-  --     {
-  --       "<leader>/",
-  --       mode = "n",
-  --       function() require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown { winblend = 10, previewer = false, }) end,
-  --       desc = "Fuzzy find in current buffer"
-  --     },
-  --     {
-  --       "<leader>ch",
-  --       mode = "n",
-  --       require('telescope.builtin').command_history,
-  --       desc = "Command History"
-  --     },
-  --
-  --   },
-  --   config = function()
-  --     local telescope = require('telescope')
-  --     local actions = require("telescope.actions")
-  --     local action_state = require("telescope.actions.state")
-  --
-  --     local function delete_others(bufnr)
-  --       local current_picker = action_state.get_current_picker(bufnr)
-  --
-  --       local selected = current_picker:get_selection_row()
-  --       -- select all buffers
-  --       actions.select_all(bufnr)
-  --       -- deselect the current row
-  --       current_picker:toggle_selection(selected)
-  --       -- delete selected buffers
-  --       actions.delete_buffer(bufnr)
-  --     end
-  --
-  --     telescope.setup {
-  --       extensions = {
-  --         undo = {
-  --           -- telescope-undo.nvim config, see below
-  --         },
-  --         ["ui-select"] = {
-  --           require("telescope.themes").get_dropdown {}
-  --         }
-  --       },
-  --       defaults = {
-  --         mappings = {
-  --           i = {
-  --             -- just close immediately on ESC rather than going to normal mode in the input
-  --             ["<esc>"] = actions.close
-  --           },
-  --         },
-  --         layout_config = {
-  --           -- vertical = { width = 0.5 }
-  --           -- other layout configuration here
-  --         },
-  --       },
-  --       pickers = {
-  --         buffers = {
-  --           show_all_buffers = true,
-  --           sort_lastused = true,
-  --           theme = "dropdown",
-  --           previewer = false,
-  --           mappings = {
-  --             i = {
-  --               -- close the selected buffer directly from the picker
-  --               ["<M-x>"] = "delete_buffer",
-  --               -- close all buffers except the currently highlighted row
-  --               ["<M-X>"] = delete_others,
-  --             }
-  --           }
-  --         },
-  --         find_files = {
-  --           hidden = true
-  --         },
-  --         live_grep = {
-  --           mappings = {
-  --             i = {
-  --               ["<M-r>"] = function(bufnr)
-  --                 local find_string = action_state.get_current_line()
-  --                 vim.ui.input({ prompt = "Replace string " .. find_string }, function(replace_string)
-  --                   actions.send_selected_to_qflist(bufnr)
-  --                   actions.open_qflist(bufnr)
-  --                   vim.cmd('cdo s%' .. find_string .. '%' .. replace_string .. '%gc')
-  --                 end)
-  --               end
-  --             }
-  --           }
-  --         }
-  --       }
-  --     }
-  --
-  --     pcall(function()
-  --       telescope.load_extension('frecency')
-  --       telescope.load_extension('fzf')
-  --       telescope.load_extension("ui-select")
-  --     end)
-  --   end
-  -- },
 
   {
     'nvim-treesitter/nvim-treesitter',
@@ -535,7 +333,7 @@ return {
         require('treesitter-context').setup({
           separator = "┈",
         })
-        -- map('n', '<leader>c', require("treesitter-context").go_to_context)
+        map('n', '<leader>c', require("treesitter-context").go_to_context)
         -- vim.cmd [[ hi! def link TreesitterContext LspInlayHint ]]
         -- vim.cmd [[ hi TreesitterContext gui=italic ]]
       end
