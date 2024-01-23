@@ -85,6 +85,12 @@ return {
         desc = "Find word under cursor"
       },
       {
+        "<leader>fw",
+        mode = "v",
+        function() require('fzf-lua').grep_visual() end,
+        desc = "Find selection"
+      },
+      {
         "<leader>re",
         mode = "n",
         function() require('fzf-lua').registers() end,
@@ -119,6 +125,12 @@ return {
         mode = "n",
         function() require('fzf-lua').dap_commands() end,
         desc = "Debug (DAP)"
+      },
+      {
+        "<leader>/",
+        mode = "n",
+        function() require('fzf-lua').lgrep_curbuf() end,
+        desc = "Fuzzy find in current buffer"
       },
 
       -- {
@@ -268,7 +280,10 @@ return {
       -- highlight word under cursor
       require('mini.cursorword').setup({ delay = 400 })
 
-      require('mini.animate').setup({ scroll = { timing = function() return 2 end } })
+      require('mini.animate').setup({
+        scroll = { timing = function() return 2 end },
+        resize = { enable = false }
+      })
 
       -- remove buffers retaining window layout
       require('mini.bufremove').setup()

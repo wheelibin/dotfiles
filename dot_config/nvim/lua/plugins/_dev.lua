@@ -90,6 +90,7 @@ return {
         'gopls',
         'graphql',
         'lua_ls',
+        'pylsp',
         -- 'tsserver',
         'bufls',
         'sqlls'
