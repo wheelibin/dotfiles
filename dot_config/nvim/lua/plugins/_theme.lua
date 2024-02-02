@@ -6,7 +6,7 @@ return {
     priority = 1000,
     config = function()
       -- vim.g.melange_enable_font_variants = 0
-      -- vim.cmd('colorscheme nightfox')
+      vim.cmd('colorscheme nordfox')
     end
   },
 
@@ -15,9 +15,9 @@ return {
     name = 'theme: catppuccin',
     priority = 1000,
     config = function()
-      vim.cmd('colorscheme catppuccin-macchiato')
+      -- vim.cmd('colorscheme catppuccin-macchiato')
     end
-   -- lazy = true,
+    -- lazy = true,
   },
   {
     'rebelot/kanagawa.nvim',
