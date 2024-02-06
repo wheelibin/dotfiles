@@ -57,6 +57,12 @@ return {
 
       -- vim.cmd('colorscheme everforest')
     end
+  },
+  {
+    "HoNamDuong/hybrid.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
   }
 
 }
