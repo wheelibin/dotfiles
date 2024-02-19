@@ -111,8 +111,8 @@ return {
       {
         "<leader>ft",
         mode = "n",
-        function() require('fzf-lua').tabs() end,
-        desc = "Find tabs"
+        function() require('fzf-lua').colorschemes() end,
+        desc = "Find themes (colorschemes)"
       },
       {
         "<leader>ca",
@@ -150,7 +150,7 @@ return {
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
-    lazy = true,
+    lazy = false,
     branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -187,11 +187,11 @@ return {
           },
         },
         filesystem = {
-          follow_current_file = true,
+          follow_current_file = { enabled = true },
           use_libuv_file_watcher = true,
         },
         buffers = {
-          follow_current_file = true
+          follow_current_file = { enabled = true }
         },
         window = {
           mappings = {
@@ -227,7 +227,7 @@ return {
     'Bekaboo/dropbar.nvim',
     -- optional, but required for fuzzy finder support
     dependencies = {
-      'nvim-telescope/telescope-fzf-native.nvim'
+      -- 'nvim-telescope/telescope-fzf-native.nvim'
     },
     config = function()
       map("n", "<leader>d", require('dropbar.api').pick, { desc = 'Dropbar pick mode' })

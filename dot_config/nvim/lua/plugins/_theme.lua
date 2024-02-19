@@ -6,7 +6,7 @@ return {
     priority = 1000,
     config = function()
       -- vim.g.melange_enable_font_variants = 0
-      vim.cmd('colorscheme nordfox')
+      -- vim.cmd('colorscheme nordfox')
     end
   },
 
@@ -24,7 +24,7 @@ return {
     name = 'theme: kanagawa',
     priority = 1000,
     config = function()
-      -- vim.cmd('colorscheme kanagawa')
+      vim.cmd('colorscheme kanagawa')
     end
   },
   {
