@@ -52,7 +52,7 @@ return {
               cond = git_blame.is_blame_text_available
             }
           },
-          lualine_x = { 'filetype', 'tabnine' },
+          lualine_x = { 'filetype', 'filename' },
         }
       }
 

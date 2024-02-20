@@ -83,7 +83,6 @@ return {
     lazy = true,
     event = "BufRead",
     dependencies = {
-      -- 'nvim-telescope/telescope.nvim', -- for popups,
       -- LSP Support
       {
         'williamboman/mason.nvim',
@@ -92,10 +91,9 @@ return {
         end,
       },
       { 'williamboman/mason-lspconfig.nvim' },
-      { 'jose-elias-alvarez/null-ls.nvim' },
 
-      { 'lvimuser/lsp-inlayhints.nvim' },
-      { 'j-hui/fidget.nvim',                  tag = 'legacy' },
+      -- { 'lvimuser/lsp-inlayhints.nvim' },
+      { 'j-hui/fidget.nvim' },
       -- Autocompletion
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-buffer' },
@@ -263,40 +261,68 @@ return {
       vim.lsp.handlers['textDocument/signatureHelp'] =
           vim.lsp.with(vim.lsp.handlers.signature_help,
             { focusable = false, border = 'rounded' })
-
-
-      local null_ls = require('null-ls')
-      local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
-
-      null_ls.setup({
-        sources = {
-          -- null_ls.builtins.code_actions.eslint_d,
-          null_ls.builtins.diagnostics.eslint_d,
-          null_ls.builtins.diagnostics.golangci_lint,
-          -- null_ls.builtins.diagnostics.tsc,
-          null_ls.builtins.formatting.prettierd,
-          -- null_ls.builtins.code_actions.gitsigns,
-          null_ls.builtins.formatting.gofmt,
-          null_ls.builtins.formatting.lua_format.with({
-            extra_args = {
-              "-i", "--no-keep-simple-function-one-line",
-              "--no-keep-simple-control-block-one-line", "--tab_width=2",
-              "--column_limit=120"
-            }
-          }),
+    end
+  },
+  {
+    "stevearc/conform.nvim",
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
+    keys = {
+      {
+        -- Customize or remove this keymap to your liking
+        "<leader>f",
+        function()
+          require("conform").format({ async = true, lsp_fallback = true })
+        end,
+        mode = "",
+        desc = "Format buffer",
+      },
+    },
+    -- Everything in opts will be passed to setup()
+    opts = {
+      -- Define your formatters
+      formatters_by_ft = {
+        lua = { "stylua" },
+        python = { "isort", "black" },
+        javascript = { { "prettierd", "prettier" } },
+        typescript = { { "prettierd", "prettier" } },
+        go = { "goimports", "gofumpt" },
+      },
+      -- Set up format-on-save
+      format_on_save = { timeout_ms = 500, lsp_fallback = true },
+      -- Customize formatters
+      formatters = {
+        shfmt = {
+          prepend_args = { "-i", "2" },
         },
-        on_attach = function(client, bufnr)
-          if client.supports_method('textDocument/formatting') then
-            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-            vim.api.nvim_create_autocmd('BufWritePre', {
-              group = augroup,
-              buffer = bufnr,
-              callback = function()
-                vim.lsp.buf.format({ bufnr = bufnr })
-              end
-            })
-          end
-        end
+      },
+    },
+    init = function()
+      -- If you want the formatexpr, here is the place to set it
+      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+    end,
+  },
+
+  {
+    'mfussenegger/nvim-lint',
+    event = "BufRead",
+    config = function()
+      local lint = require("lint")
+      lint.linters_by_ft = {
+        go = { "golangcilint" },
+        javascript = { "eslint_d" },
+        typescript = { "eslint_d" },
+        -- Use the "*" filetype to run linters on all filetypes.
+        -- ['*'] = { 'global linter' },
+        -- Use the "_" filetype to run linters on filetypes that don't have other linters configured.
+        -- ['_'] = { 'fallback linter' },
+      }
+
+      local events = { "BufWritePost", "BufReadPost", "InsertLeave" }
+      vim.api.nvim_create_autocmd(events, {
+        callback = function()
+          lint.try_lint()
+        end,
       })
     end
   },
