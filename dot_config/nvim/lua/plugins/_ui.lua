@@ -20,7 +20,7 @@ return {
     'nvim-lualine/lualine.nvim',
     lazy = true,
     event = "BufEnter",
-    dependencies = { 'f-person/git-blame.nvim', 'arkav/lualine-lsp-progress' },
+    dependencies = { 'f-person/git-blame.nvim' },
     config = function()
       -- set up git blame to work with lualine
       local git_blame = require('gitblame')
@@ -36,7 +36,7 @@ return {
         sections = {
           lualine_a = { 'mode' },
           lualine_b = {
-            { 'FugitiveHead', icon = '' }, {
+            { 'branch', icon = '' }, {
             'diff',
             diff_color = {
               -- Same color values as the general color option can be used here.

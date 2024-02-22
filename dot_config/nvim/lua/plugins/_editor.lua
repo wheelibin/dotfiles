@@ -151,7 +151,6 @@ return {
   {
     "nvim-neo-tree/neo-tree.nvim",
     lazy = false,
-    branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
@@ -271,7 +270,6 @@ return {
 
   {
     'echasnovski/mini.nvim',
-    version = '*',
     config = function()
       -- code commenting
       require('mini.comment').setup()
@@ -316,7 +314,6 @@ return {
   {
     'akinsho/toggleterm.nvim',
     lazy = true,
-    version = "*",
     keys = {
       {
         "<leader>lg",
@@ -343,15 +340,18 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
-      "nvim-treesitter/nvim-treesitter-context",
-      config = function()
-        require('treesitter-context').setup({
-          separator = "┈",
-        })
-        map('n', '<leader>c', require("treesitter-context").go_to_context)
-        -- vim.cmd [[ hi! def link TreesitterContext LspInlayHint ]]
-        -- vim.cmd [[ hi TreesitterContext gui=italic ]]
-      end
+      {
+        "nvim-treesitter/nvim-treesitter-context",
+        config = function()
+          require('treesitter-context').setup({
+            separator = "┈",
+          })
+          map('n', '<leader>c', require("treesitter-context").go_to_context)
+          -- vim.cmd [[ hi! def link TreesitterContext LspInlayHint ]]
+          -- vim.cmd [[ hi TreesitterContext gui=italic ]]
+        end
+      },
+      { "andymass/vim-matchup" },
     },
     build = ':TSUpdate',
     config = function()
