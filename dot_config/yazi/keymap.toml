@@ -1,0 +1,9 @@
+[manager]
+prepend_keymap = [
+	{ on = [ "m" ], exec = 'leave', desc = "Go back to the parent directory" },
+	{ on = [ "n" ], exec = 'arrow 1', desc = "Move cursor down" },
+	{ on = [ "e" ], exec = 'arrow -1', desc = "Move cursor up" },
+	{ on = [ "i" ], exec = 'enter', desc = "Enter the child directory" },
+]
+append_keymap = [
+]
