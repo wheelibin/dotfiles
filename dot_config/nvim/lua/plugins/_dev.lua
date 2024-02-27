@@ -286,7 +286,7 @@ return {
         python = { "isort", "black" },
         javascript = { { "prettierd", "prettier" } },
         typescript = { { "prettierd", "prettier" } },
-        go = { "goimports", "gofumpt" },
+        go = { "goimports", "gofmt" },
       },
       -- Set up format-on-save
       format_on_save = { timeout_ms = 500, lsp_fallback = true },
