@@ -42,6 +42,8 @@ return {
 
   {
     'codota/tabnine-nvim',
+    lazy = true,
+    event = "BufEnter",
     build = "./dl_binaries.sh",
     config = function()
       require('tabnine').setup({
@@ -58,6 +60,8 @@ return {
 
   {
     'tzachar/cmp-tabnine',
+    lazy = true,
+    event = "BufEnter",
     build = './install.sh',
     dependencies = 'hrsh7th/nvim-cmp',
     config = function()
