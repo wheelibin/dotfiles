@@ -321,7 +321,6 @@ return {
         -- Use the "_" filetype to run linters on filetypes that don't have other linters configured.
         -- ['_'] = { 'fallback linter' },
       }
-
       local events = { "BufWritePost", "BufReadPost", "InsertLeave" }
       vim.api.nvim_create_autocmd(events, {
         callback = function()

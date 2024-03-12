@@ -33,8 +33,8 @@ map('n', ':', ';')
 --map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
 
 --- center in page nav
--- map("n", "<C-d>", "<C-d>zz")
--- map("n", "<C-u>", "<C-u>zz")
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
 
 -- exit insert mode
 map('i', 'hh', '<Esc>')
@@ -63,7 +63,6 @@ map('', 'i', 'l', {})
 -- move insert at cursor to o
 map('', 'o', 'i', {})
 map('', 'O', 'I', {})
-
 -- now we need to move o, so h seems good as it's "below" so is fairly logical
 map('', 'h', 'o', {})
 map('', 'H', 'O', {})
