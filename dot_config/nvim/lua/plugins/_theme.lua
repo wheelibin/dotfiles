@@ -59,10 +59,25 @@ return {
     end
   },
   {
-    "HoNamDuong/hybrid.nvim",
-    lazy = false,
+    'rose-pine/neovim',
+    name = 'theme: rose-pine',
     priority = 1000,
-    opts = {},
-  }
+    config = function()
+    end
+  },
+  {
+    'sainnhe/gruvbox-material',
+    name = 'theme: gruvbox-material',
+    priority = 1000,
+    config = function()
+    end
+  },
+  {
+    'Mofiqul/vscode.nvim',
+    name = 'theme: vscode',
+    priority = 1000,
+    config = function()
+    end
+  },
 
 }
