@@ -1,3 +1,5 @@
+gui:
+  nerdFontsVersion: "3" # nerd fonts version to use ("2" or "3"); empty means don't show nerd font icons
 git:
   commit:
     autoWrapCommitMessage: false # automatic WYSIWYG wrapping of the commit message as you type
