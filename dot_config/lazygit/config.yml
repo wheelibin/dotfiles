@@ -1,0 +1,4 @@
+git:
+  commit:
+    autoWrapCommitMessage: false # automatic WYSIWYG wrapping of the commit message as you type
+notARepository: 'skip' # one of: 'prompt' | 'create' | 'skip' | 'quit'
