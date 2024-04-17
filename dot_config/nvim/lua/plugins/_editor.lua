@@ -13,7 +13,7 @@ return {
     end,
     keys = {
       {
-        "<leader>fp",
+        "<leader>fd",
         mode = "n",
         function() require('fzf-lua').files({ path_shorten = 6 }) end,
         desc = "Find files"

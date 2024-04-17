@@ -24,7 +24,7 @@ return {
     name = 'theme: kanagawa',
     priority = 1000,
     config = function()
-      vim.cmd('colorscheme kanagawa')
+      -- vim.cmd('colorscheme kanagawa')
     end
   },
   {
@@ -63,6 +63,7 @@ return {
     name = 'theme: rose-pine',
     priority = 1000,
     config = function()
+      vim.cmd('colorscheme rose-pine-moon')
     end
   },
   {
