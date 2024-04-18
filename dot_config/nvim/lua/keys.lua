@@ -41,6 +41,8 @@ map('i', 'hh', '<Esc>')
 
 map('n', '<C-p>', '"0p')
 map('n', '<C-P>', '"0P')
+map('v', '<C-p>', '"0p')
+map('v', '<C-P>', '"0P')
 
 -- jump to next search (+centering)
 -- map('', 'n', 'nzzzv', {})

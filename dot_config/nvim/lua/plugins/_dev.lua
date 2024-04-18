@@ -291,6 +291,7 @@ return {
         javascript = { { "prettierd", "prettier" } },
         typescript = { { "prettierd", "prettier" } },
         go = { "goimports", "gofmt" },
+        -- sql = { "sql_formatter" }
       },
       -- Set up format-on-save
       format_on_save = { timeout_ms = 500, lsp_fallback = true },
