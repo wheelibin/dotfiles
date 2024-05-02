@@ -290,7 +290,7 @@ return {
         python = { "isort", "black" },
         javascript = { { "prettierd", "prettier" } },
         typescript = { { "prettierd", "prettier" } },
-        go = { "goimports", "gofmt" },
+        go = { { "goimports", "gofmt" } },
         -- sql = { "sql_formatter" }
       },
       -- Set up format-on-save
