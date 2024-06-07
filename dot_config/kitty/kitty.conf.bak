@@ -1,25 +1,36 @@
-font_size 18 
+# ----
+# font
+# ----
+font_size 20 
 # font_family MesloLGS NF
 # font_family Fira Code
-font_family JetBrains Mono
+# font_family JetBrains Mono Light
+# font_family Hack ExtraLight
+font_family GeistMono Nerd Font Mono Light
+adjust_line_height 120%
+# text_composition_strategy 1 0
 
+# misc
+# ----
 macos_option_as_alt yes
-macos_thicken_font 0.2
+mouse_hide_wait 3.0
 
-map ctrl+shift+enter launch --cwd=current
-map ctrl+shift+left previous_window
-map ctrl+shift+right next_window
+# allow controlling from nvim
+# For linux only:
+allow_remote_control yes
+listen_on unix:@mykitty
+# Other unix systems:
+allow_remote_control yes
+listen_on unix:/tmp/mykitty
+# -----------------
 
-tab_bar_style powerline
-
-enabled_layouts tall:bias=70;,stack,fat
-
-window_border_width 1
+# styling
+# -------
 hide_window_decorations titlebar-only
+background_opacity 0.93
+# -------
 
 # BEGIN_KITTY_THEME
-# Nord
-# include current-theme.conf
+# Rosé Pine Moon
+include current-theme.conf
 # END_KITTY_THEME
-
-# include melange_dark.conf
