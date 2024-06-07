@@ -15,7 +15,7 @@ return {
     name = 'theme: catppuccin',
     priority = 1000,
     config = function()
-      -- vim.cmd('colorscheme catppuccin-macchiato')
+      vim.cmd('colorscheme catppuccin-macchiato')
     end
     -- lazy = true,
   },
@@ -63,7 +63,7 @@ return {
     name = 'theme: rose-pine',
     priority = 1000,
     config = function()
-      vim.cmd('colorscheme rose-pine-moon')
+      -- vim.cmd('colorscheme rose-pine-moon')
     end
   },
   {

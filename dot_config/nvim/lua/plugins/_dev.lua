@@ -112,7 +112,8 @@ return {
       },
       { 'saadparwaiz1/cmp_luasnip' },
       -- typescript
-      { "pmizio/typescript-tools.nvim" }
+      { "pmizio/typescript-tools.nvim" },
+
     },
     config = function()
       local servers = {
@@ -315,8 +316,8 @@ return {
       local lint = require("lint")
       lint.linters_by_ft = {
         go = { "golangcilint" },
-        javascript = { "eslint_d" },
-        typescript = { "eslint_d" },
+        javascript = { "eslint" },
+        typescript = { "eslint" },
         -- Use the "*" filetype to run linters on all filetypes.
         -- ['*'] = { 'global linter' },
         -- Use the "_" filetype to run linters on filetypes that don't have other linters configured.
@@ -347,7 +348,8 @@ return {
         config = function()
           require('dap-go').setup()
         end
-      }
+      },
+      "nvim-neotest/nvim-nio"
     },
     keys = {
       { '<Leader>b',  function() require('dap').toggle_breakpoint() end, desc = "DAP continue" },

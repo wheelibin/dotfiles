@@ -120,12 +120,12 @@ return {
         function() require('fzf-lua').lsp_code_actions() end,
         desc = "Code Actions (LSP)"
       },
-      {
-        "<leader>d",
-        mode = "n",
-        function() require('fzf-lua').dap_commands() end,
-        desc = "Debug (DAP)"
-      },
+      -- {
+      --   "<leader>d",
+      --   mode = "n",
+      --   function() require('fzf-lua').dap_commands() end,
+      --   desc = "Debug (DAP)"
+      -- },
       {
         "<leader>/",
         mode = "n",
