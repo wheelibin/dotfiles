@@ -62,3 +62,5 @@ opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldenable = false
 -- opt.foldmethod = "indent"
+
+opt.conceallevel = 1
