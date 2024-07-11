@@ -126,7 +126,8 @@ return {
         'pylsp',
         -- 'tsserver',
         'bufls',
-        'sqlls'
+        'sqlls',
+        -- 'cucumber_language_server'
       }
 
       local lsp_on_attach = function(client, bufnr)
@@ -245,6 +246,16 @@ return {
         capabilities = capabilities
       })
 
+      -- lspconfig["cucumber_language_server"].setup({
+      --     on_attach = lsp_on_attach,
+      --     capabilities = capabilities,
+      --     settings = {
+      --         cucumber = {
+      --           features = { "internal/cmdhandler/features/*.feature" },
+      --           glue = { "internal/cmdhandler/features_test.go" }
+      --          },
+      --     }
+      -- })
 
       local sign = function(opts)
         vim.fn.sign_define(opts.name,
@@ -292,10 +303,11 @@ return {
         javascript = { { "prettierd", "prettier" } },
         typescript = { { "prettierd", "prettier" } },
         go = { { "goimports", "gofmt" } },
+        -- markdown = {  "mdformat"},
         -- sql = { "sleek" }
       },
       -- Set up format-on-save
-      format_on_save = { timeout_ms = 500, lsp_fallback = true },
+      format_on_save = { timeout_ms = 1500, lsp_fallback = true },
       -- Customize formatters
       formatters = {
         shfmt = {
@@ -375,21 +387,26 @@ return {
     end
   },
 
-  {
-    "rest-nvim/rest.nvim",
-    dependencies = { { "nvim-lua/plenary.nvim" } },
-    lazy = true,
-    keys = {
-      { "<leader>x", "<Plug>RestNvim", desc = "Execute request" }
-    },
-
-    config = function()
-      require("rest-nvim").setup({
-        --- Get the same options from Packer setup
-        result_split_in_place = true
-      })
-    end
-  },
+  -- {
+  --   "rest-nvim/rest.nvim",
+  --   dependencies = { { "nvim-lua/plenary.nvim" } },
+  --   lazy = true,
+  --   keys = {
+  --     { "<leader>x", "<Plug>RestNvim", desc = "Execute request" }
+  --   },
+  --   opts = {
+  --     rocks = {
+  --       hererocks = false,
+  --       enabled = false
+  --     },
+  --   },
+  --   config = function()
+  --     require("rest-nvim").setup({
+  --       --- Get the same options from Packer setup
+  --       result_split_in_place = true
+  --     })
+  --   end
+  -- },
 
   {
     "hedyhli/outline.nvim",

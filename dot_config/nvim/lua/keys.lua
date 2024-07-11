@@ -53,6 +53,7 @@ map('n', '<leader><bs>', ':noh<CR>', { desc = 'Clear search highlighting' })
 -- paste from reg 0 (pastes yanked content even after delete)
 map('', '<leader>p', '=0p')
 
+
 -- colemak specific mappings
 --------------------------
 -- remap hjkl to colemak homerow equivalents
