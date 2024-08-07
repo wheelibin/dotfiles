@@ -300,9 +300,9 @@ return {
       formatters_by_ft = {
         lua = { "stylua" },
         python = { "isort", "black" },
-        javascript = { { "prettierd", "prettier" } },
-        typescript = { { "prettierd", "prettier" } },
-        go = { { "goimports", "gofmt" } },
+        javascript = { "prettierd", "prettier", stop_after_first = true },
+        typescript = { "prettierd", "prettier", stop_after_first = true },
+        go = { "goimports", "gofmt" },
         -- markdown = {  "mdformat"},
         -- sql = { "sleek" }
       },
