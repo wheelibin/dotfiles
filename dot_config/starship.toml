@@ -13,7 +13,7 @@ $memory_usage\
 
 [memory_usage]
 disabled = false
-# threshold = 70
+threshold = 70
 symbol = ''
 style = 'bold dimmed blue'
 
