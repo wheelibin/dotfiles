@@ -6,7 +6,7 @@ return {
     'folke/trouble.nvim',
     lazy = true,
     keys = {
-      { "<leader>t", ":TroubleToggle workspace_diagnostics<cr>", desc = "toggle trouble" }
+      { "<leader>t", ":Trouble diagnostics toggle<cr>", desc = "toggle trouble" }
     },
     config = function()
       require("trouble").setup {}

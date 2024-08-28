@@ -191,15 +191,14 @@ return {
       }
     },
     config = function()
-
       vim.fn.sign_define("DiagnosticSignError",
-        {text = " ", texthl = "DiagnosticSignError"})
+        { text = " ", texthl = "DiagnosticSignError" })
       vim.fn.sign_define("DiagnosticSignWarn",
-        {text = " ", texthl = "DiagnosticSignWarn"})
+        { text = " ", texthl = "DiagnosticSignWarn" })
       vim.fn.sign_define("DiagnosticSignInfo",
-        {text = " ", texthl = "DiagnosticSignInfo"})
+        { text = " ", texthl = "DiagnosticSignInfo" })
       vim.fn.sign_define("DiagnosticSignHint",
-        {text = "󰌵", texthl = "DiagnosticSignHint"})
+        { text = "󰌵", texthl = "DiagnosticSignHint" })
 
       require("neo-tree").setup({
         -- source_selector = {
@@ -328,6 +327,9 @@ return {
       -- remove buffers retaining window layout
       require('mini.bufremove').setup()
       map("n", "<M-x>", "<cmd>lua require('mini.bufremove').delete()<cr>", { desc = 'Delete Buffer' })
+
+
+      require('mini.align').setup()
     end
   },
 
@@ -416,7 +418,9 @@ return {
           'javascript',
           'json',
           'lua',
+          'proto',
           'python',
+          'sql',
           'typescript',
           'tsx',
           'vim',
@@ -497,4 +501,13 @@ return {
       },
     }
   },
+  {
+    "nvim-pack/nvim-spectre",
+    keys = {
+      { "<leader>s", "<cmd>lua require('spectre').toggle()<CR>", mode = { 'n' } },
+    },
+    config = function()
+      require('spectre').setup({ is_block_ui_break = true })
+    end,
+  }
 }
