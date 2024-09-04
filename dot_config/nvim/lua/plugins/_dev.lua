@@ -112,7 +112,7 @@ return {
       },
       { 'saadparwaiz1/cmp_luasnip' },
       -- typescript
-      { "pmizio/typescript-tools.nvim" },
+      { "yioneko/nvim-vtsls" },
 
     },
     config = function()
@@ -124,9 +124,9 @@ return {
         'graphql',
         'lua_ls',
         'pylsp',
-        -- 'tsserver',
         'bufls',
         'sqlls',
+        'vtsls'
         -- 'cucumber_language_server'
       }
 
@@ -241,10 +241,6 @@ return {
           capabilities = capabilities
         })
       end
-      require("typescript-tools").setup({
-        on_attach = lsp_on_attach,
-        capabilities = capabilities
-      })
 
       -- lspconfig["cucumber_language_server"].setup({
       --     on_attach = lsp_on_attach,
@@ -307,7 +303,7 @@ return {
         -- sql = { "sleek" }
       },
       -- Set up format-on-save
-      format_on_save = { timeout_ms = 1500, lsp_fallback = true },
+      format_on_save = { timeout_ms = 3000, lsp_fallback = true },
       -- Customize formatters
       formatters = {
         shfmt = {
