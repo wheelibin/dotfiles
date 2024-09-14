@@ -16,10 +16,6 @@ vim.api.nvim_create_autocmd("BufReadPost", { pattern = "*.gql.tmpl", command = [
 vim.api.nvim_create_autocmd("BufReadPost", { pattern = "*.http", command = [[set filetype=http]] })
 
 
--- -- Run goimport on save
--- local format_sync_grp = vim.api.nvim_create_augroup("GoImport", {})
--- vim.api.nvim_create_autocmd("BufWritePost", {
---   pattern = "*.go",
---   command = [[%!goimports %]],
---   group = format_sync_grp,
--- })
+vim.api.nvim_create_autocmd(
+  { "FocusLost", "ModeChanged", "TextChanged", "BufEnter" },
+  { pattern = "*", command = "silent! update" })

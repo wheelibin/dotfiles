@@ -6,7 +6,7 @@ return {
     priority = 1000,
     config = function()
       -- vim.g.melange_enable_font_variants = 0
-      -- vim.cmd('colorscheme nordfox')
+      vim.cmd('colorscheme duskfox')
     end
   },
 
@@ -15,7 +15,7 @@ return {
     name = 'theme: catppuccin',
     priority = 1000,
     config = function()
-      vim.cmd('colorscheme catppuccin-macchiato')
+      -- vim.cmd('colorscheme catppuccin-macchiato')
     end
     -- lazy = true,
   },

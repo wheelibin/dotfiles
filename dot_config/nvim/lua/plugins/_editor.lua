@@ -9,7 +9,17 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       -- calling `setup` is optional for customization
-      require("fzf-lua").setup({})
+      require("fzf-lua").setup({
+        oldfiles = {
+          prompt                  = 'History❯ ',
+          cwd_only                = true,
+          -- stat_file         = true,         -- verify files exist on disk
+          -- -- can also be a lua function, for example:
+          -- -- stat_file = require("fzf-lua").utils.file_is_readable,
+          -- -- stat_file = function() return true end,
+          include_current_session = true, -- include bufs from current session
+        },
+      })
     end,
     keys = {
       {
@@ -17,6 +27,12 @@ return {
         mode = "n",
         function() require('fzf-lua').files({ path_shorten = 6 }) end,
         desc = "Find files"
+      },
+      {
+        "<leader>fo",
+        mode = "n",
+        function() require('fzf-lua').oldfiles({ path_shorten = 6 }) end,
+        desc = "Find previously opened files"
       },
       {
         "<leader>fa",
@@ -509,5 +525,22 @@ return {
     config = function()
       require('spectre').setup({ is_block_ui_break = true })
     end,
+  },
+  {
+    "gbprod/substitute.nvim",
+    keys = {
+      { "s",  function() require('substitute').operator() end, mode = { 'n' } },
+      { "ss", function() require('substitute').line() end,     mode = { 'n' } },
+      -- { "S",  function() require('substitute').eol() end,      mode = { 'n' } },
+      { "s",  function() require('substitute').visual() end,   mode = { 'x' } },
+    },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  },
+  {
+    "mbbill/undotree"
   }
 }
