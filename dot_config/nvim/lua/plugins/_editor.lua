@@ -164,33 +164,33 @@ return {
       --
     }
   },
-  {
-    's1n7ax/nvim-window-picker',
-    name = 'window-picker',
-    event = 'VeryLazy',
-    config = function()
-      require 'window-picker'.setup({
-        -- type of hints you want to get
-        -- following types are supported
-        -- 'statusline-winbar' | 'floating-big-letter'
-        -- 'statusline-winbar' draw on 'statusline' if possible, if not 'winbar' will be
-        -- 'floating-big-letter' draw big letter on a floating window
-        -- used
-        hint = 'floating-big-letter',
-
-        -- when you go to window selection mode, status bar will show one of
-        -- following letters on them so you can use that letter to select the window
-        selection_chars = 'tnseriao',
-
-        -- whether to show 'Pick window:' prompt
-        show_prompt = false,
-
-        -- prompt message to show to get the user input
-        -- prompt_message = 'Pick window: ',
-
-      })
-    end,
-  },
+  -- {
+  --   's1n7ax/nvim-window-picker',
+  --   name = 'window-picker',
+  --   event = 'VeryLazy',
+  --   config = function()
+  --     require 'window-picker'.setup({
+  --       -- type of hints you want to get
+  --       -- following types are supported
+  --       -- 'statusline-winbar' | 'floating-big-letter'
+  --       -- 'statusline-winbar' draw on 'statusline' if possible, if not 'winbar' will be
+  --       -- 'floating-big-letter' draw big letter on a floating window
+  --       -- used
+  --       hint = 'floating-big-letter',
+  --
+  --       -- when you go to window selection mode, status bar will show one of
+  --       -- following letters on them so you can use that letter to select the window
+  --       selection_chars = 'tnseriao',
+  --
+  --       -- whether to show 'Pick window:' prompt
+  --       show_prompt = false,
+  --
+  --       -- prompt message to show to get the user input
+  --       -- prompt_message = 'Pick window: ',
+  --
+  --     })
+  --   end,
+  -- },
   {
     "nvim-neo-tree/neo-tree.nvim",
     lazy = false,
@@ -300,13 +300,13 @@ return {
       }
     },
     keys = {
-      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-      { "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-      { "r", mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
-      { "R", mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      {
-        "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search"
-      },
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
+      { "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+      -- { "r", mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+      -- { "R", mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      -- {
+      --   "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search"
+      -- },
     },
   },
 
@@ -482,41 +482,41 @@ return {
       }
     end
   },
-  {
-    "epwalsh/obsidian.nvim",
-    version = "*", -- recommended, use latest release instead of latest commit
-    lazy = true,
-    ft = "markdown",
-    -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-    -- event = {
-    --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-    --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
-    --   "BufReadPre path/to/my-vault/**.md",
-    --   "BufNewFile path/to/my-vault/**.md",
-    -- },
-    dependencies = {
-      -- Required.
-      "nvim-lua/plenary.nvim",
-
-      -- see below for full list of optional dependencies 👇
-    },
-    opts = {
-      workspaces = {
-        {
-          name = "personal",
-          path = "~/vaults/personal",
-        },
-        {
-          name = "work",
-          path = "~/vaults/work",
-        },
-      },
-      picker = {
-        -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', or 'mini.pick'.
-        name = "fzf-lua",
-      },
-    }
-  },
+  -- {
+  --   "epwalsh/obsidian.nvim",
+  --   version = "*", -- recommended, use latest release instead of latest commit
+  --   lazy = true,
+  --   ft = "markdown",
+  --   -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
+  --   -- event = {
+  --   --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+  --   --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
+  --   --   "BufReadPre path/to/my-vault/**.md",
+  --   --   "BufNewFile path/to/my-vault/**.md",
+  --   -- },
+  --   dependencies = {
+  --     -- Required.
+  --     "nvim-lua/plenary.nvim",
+  --
+  --     -- see below for full list of optional dependencies 👇
+  --   },
+  --   opts = {
+  --     workspaces = {
+  --       {
+  --         name = "personal",
+  --         path = "~/vaults/personal",
+  --       },
+  --       {
+  --         name = "work",
+  --         path = "~/vaults/work",
+  --       },
+  --     },
+  --     picker = {
+  --       -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', or 'mini.pick'.
+  --       name = "fzf-lua",
+  --     },
+  --   }
+  -- },
   {
     "nvim-pack/nvim-spectre",
     keys = {
@@ -526,20 +526,20 @@ return {
       require('spectre').setup({ is_block_ui_break = true })
     end,
   },
-  {
-    "gbprod/substitute.nvim",
-    keys = {
-      { "s",  function() require('substitute').operator() end, mode = { 'n' } },
-      { "ss", function() require('substitute').line() end,     mode = { 'n' } },
-      -- { "S",  function() require('substitute').eol() end,      mode = { 'n' } },
-      { "s",  function() require('substitute').visual() end,   mode = { 'x' } },
-    },
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
-  },
+  -- {
+  --   "gbprod/substitute.nvim",
+  --   keys = {
+  --     { "s",  function() require('substitute').operator() end, mode = { 'n' } },
+  --     { "ss", function() require('substitute').line() end,     mode = { 'n' } },
+  --     -- { "S",  function() require('substitute').eol() end,      mode = { 'n' } },
+  --     { "s",  function() require('substitute').visual() end,   mode = { 'x' } },
+  --   },
+  --   opts = {
+  --     -- your configuration comes here
+  --     -- or leave it empty to use the default settings
+  --     -- refer to the configuration section below
+  --   }
+  -- },
   {
     "mbbill/undotree"
   }
