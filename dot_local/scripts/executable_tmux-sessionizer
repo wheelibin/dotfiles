@@ -22,7 +22,7 @@ if ! tmux has-session -t=$selected_name 2> /dev/null; then
     # open editor
     tmux send-keys "nvim" C-m
     # add lower split with 20% height
-    tmux split-window -v -l 20
+    tmux split-window -v -l 20 -c $selected
     # select editor pane
     tmux select-pane -t 1
 fi
