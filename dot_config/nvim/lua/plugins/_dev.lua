@@ -121,6 +121,7 @@ return {
         'marksman',
         'jsonls',
         'gopls',
+        'golangci_lint_ls',
         'graphql',
         'lua_ls',
         'pylsp',
@@ -149,6 +150,10 @@ return {
 
         map("n", '<leader>f', function() vim.lsp.buf.format({ async = true }) end,
           { desc = 'Format buffer', buffer = bufnr })
+
+        pcall(function()
+          require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
+        end)
       end
 
       -- diag
@@ -284,7 +289,7 @@ return {
         -- Customize or remove this keymap to your liking
         "<leader>f",
         function()
-          require("conform").format({ async = true, lsp_fallback = true })
+          require("conform").format({ lsp_format = 'fallback' })
         end,
         mode = "",
         desc = "Format buffer",
@@ -303,7 +308,7 @@ return {
         -- sql = { "sleek" }
       },
       -- Set up format-on-save
-      format_on_save = { timeout_ms = 3000, lsp_fallback = true },
+      format_on_save = { timeout_ms = 3000, lsp_format = 'fallback' },
       -- Customize formatters
       formatters = {
         shfmt = {
@@ -323,7 +328,7 @@ return {
     config = function()
       local lint = require("lint")
       lint.linters_by_ft = {
-        go = { "golangcilint" },
+        -- go = { "golangcilint" },
         javascript = { "eslint" },
         typescript = { "eslint" },
         -- Use the "*" filetype to run linters on all filetypes.
@@ -418,5 +423,5 @@ return {
       -- }
     },
   },
-
+  { "artemave/workspace-diagnostics.nvim" }
 }

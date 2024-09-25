@@ -9,6 +9,7 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       -- calling `setup` is optional for customization
+      local actions = require "fzf-lua.actions"
       require("fzf-lua").setup({
         oldfiles = {
           prompt                  = 'History❯ ',
@@ -18,6 +19,16 @@ return {
           -- -- stat_file = require("fzf-lua").utils.file_is_readable,
           -- -- stat_file = function() return true end,
           include_current_session = true, -- include bufs from current session
+        },
+        grep = {
+          -- rg_opts = "--hidden --column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e",
+          actions = {
+            -- actions inherit from 'actions.files' and merge
+            -- this action toggles between 'grep' and 'live_grep'
+            ["ctrl-g"] = { actions.grep_lgrep },
+            ["ctrl-i"] = { actions.toggle_ignore },
+            ["ctrl-h"] = { actions.toggle_hidden },
+          },
         },
       })
     end,
@@ -207,14 +218,14 @@ return {
       }
     },
     config = function()
-      vim.fn.sign_define("DiagnosticSignError",
-        { text = " ", texthl = "DiagnosticSignError" })
-      vim.fn.sign_define("DiagnosticSignWarn",
-        { text = " ", texthl = "DiagnosticSignWarn" })
-      vim.fn.sign_define("DiagnosticSignInfo",
-        { text = " ", texthl = "DiagnosticSignInfo" })
-      vim.fn.sign_define("DiagnosticSignHint",
-        { text = "󰌵", texthl = "DiagnosticSignHint" })
+      -- vim.fn.sign_define("DiagnosticSignError",
+      --   { text = " ", texthl = "DiagnosticSignError" })
+      -- vim.fn.sign_define("DiagnosticSignWarn",
+      --   { text = " ", texthl = "DiagnosticSignWarn" })
+      -- vim.fn.sign_define("DiagnosticSignInfo",
+      --   { text = " ", texthl = "DiagnosticSignInfo" })
+      -- vim.fn.sign_define("DiagnosticSignHint",
+      --   { text = "󰌵", texthl = "DiagnosticSignHint" })
 
       require("neo-tree").setup({
         -- source_selector = {
@@ -235,6 +246,20 @@ return {
               staged    = "s",
               conflict  = "",
             }
+          },
+          diagnostics = {
+            symbols = {
+              hint = "⚑",
+              info = "",
+              warn = "▲",
+              error = "✘",
+            },
+            highlights = {
+              hint = "DiagnosticSignHint",
+              info = "DiagnosticSignInfo",
+              warn = "DiagnosticSignWarn",
+              error = "DiagnosticSignError",
+            },
           },
         },
         filesystem = {
@@ -361,15 +386,15 @@ return {
     }
   },
 
-  {
-    "iamcco/markdown-preview.nvim",
-    lazy = true,
-    build = "cd app && npm install",
-    ft = { "markdown" },
-    config = function()
-      vim.g.mkdp_filetypes = { "markdown" }
-    end
-  },
+  -- {
+  --   "iamcco/markdown-preview.nvim",
+  --   lazy = true,
+  --   build = "cd app && npm install",
+  --   ft = { "markdown" },
+  --   config = function()
+  --     vim.g.mkdp_filetypes = { "markdown" }
+  --   end
+  -- },
 
   {
     'akinsho/toggleterm.nvim',
@@ -542,5 +567,12 @@ return {
   -- },
   {
     "mbbill/undotree"
+  },
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    opts = {},
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
   }
 }

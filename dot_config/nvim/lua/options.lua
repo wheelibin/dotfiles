@@ -1,66 +1,64 @@
 vim.g.mapleader = ' '
 
-local opt = vim.opt
-
 -- disable word wrap
-opt.wrap = false
+vim.o.wrap = false
 
 -- Enable break indent
-opt.breakindent = true
+vim.o.breakindent = true
 
 -- persistent undo history
-opt.undofile = true
+vim.o.undofile = true
 
 -- line numbers
-opt.number = true
--- opt.relativenumber = true
+vim.o.number = true
+-- vim.o.relativenumber = true
 
 -- sync clipboard between nvim and OS
-opt.clipboard = 'unnamedplus'
+vim.o.clipboard = 'unnamedplus'
 
 -- search flags
-opt.ignorecase = true
-opt.smartcase = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
 
 -- whitespace
-opt.expandtab = true
-opt.shiftwidth = 2
-opt.softtabstop = 2
-opt.tabstop = 2
+vim.o.expandtab = true
+vim.o.shiftwidth = 2
+vim.o.softtabstop = 2
+vim.o.tabstop = 2
 
 -- Decrease update time
-opt.updatetime = 250
+vim.o.updatetime = 250
 
 -- show sign column
-opt.signcolumn = 'yes'
+vim.o.signcolumn = 'yes'
 
 -- Set completeopt to have a better completion experience
-opt.completeopt = { 'menu', 'menuone', 'noselect' }
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
 -- needed for colorizer
-opt.termguicolors = true
+vim.o.termguicolors = true
 
 -- enable the mouse in (a)ll modes
-opt.mouse = 'a'
+vim.o.mouse = 'a'
 
 -- scroll offset
-opt.scrolloff = 4
+vim.o.scrolloff = 4
 
 -- full line at cursor position
-opt.cursorline = true
+vim.o.cursorline = true
 
-opt.swapfile = false
+vim.o.swapfile = false
 
 -- cursor not allowed in whitespace
-opt.virtualedit = 'none'
+vim.o.virtualedit = 'none'
 
 -- hide the tildes showing end of buffer
-opt.fcs = "eob: "
+vim.o.fcs = "eob: "
 
 
-opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
-opt.foldenable = false
--- opt.foldmethod = "indent"
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+vim.o.foldenable = false
+-- vim.o.foldmethod = "indent"
 
--- opt.conceallevel = 1
+-- vim.o.conceallevel = 1
