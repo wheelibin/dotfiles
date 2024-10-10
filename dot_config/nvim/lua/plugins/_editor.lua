@@ -574,5 +574,11 @@ return {
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+  },
+  {
+    'eandrju/cellular-automaton.nvim',
+    keys = {
+      { "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>", mode = { 'n' } },
+    }
   }
 }

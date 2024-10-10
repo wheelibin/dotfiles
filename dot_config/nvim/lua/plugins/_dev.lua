@@ -127,7 +127,8 @@ return {
         'pylsp',
         'bufls',
         'sqlls',
-        'vtsls'
+        'vtsls',
+        'yamlls'
         -- 'cucumber_language_server'
       }
 
@@ -423,5 +424,31 @@ return {
       -- }
     },
   },
-  { "artemave/workspace-diagnostics.nvim" }
+  -- { "artemave/workspace-diagnostics.nvim" }
+  {
+    "kndndrj/nvim-dbee",
+    lazy = true,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+    keys = { -- Example mapping to toggle outline
+      { "<leader>db", function() require("dbee").toggle() end, desc = "Toggle outline" },
+    },
+    build = function()
+      -- Install tries to automatically detect the install method.
+      -- if it fails, try calling it with one of these parameters:
+      --    "curl", "wget", "bitsadmin", "go"
+      require("dbee").install()
+    end,
+    config = function()
+      require("dbee").setup({
+        sources = {
+          -- require("dbee.sources").EnvSource:new("DBEE_CONNECTIONS"),
+          -- require("dbee.sources").FileSource:new("~/.config/dbee/connections.json"),
+          require("dbee.sources").FileSource:new(vim.fn.stdpath("cache") .. "/dbee/persistence.json"),
+        }
+      }
+      )
+    end,
+  },
 }
