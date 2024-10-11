@@ -8,12 +8,4 @@ $character\
 right_format = """
 $cmd_duration\
 $hostname\
-$memory_usage\
 """
-
-[memory_usage]
-disabled = false
-threshold = 70
-symbol = ''
-style = 'bold dimmed blue'
-
