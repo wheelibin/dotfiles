@@ -27,7 +27,7 @@ vim.o.softtabstop = 2
 vim.o.tabstop = 2
 
 -- Decrease update time
-vim.o.updatetime = 250
+-- vim.o.updatetime = 250
 
 -- show sign column
 vim.o.signcolumn = 'yes'
@@ -54,7 +54,6 @@ vim.o.virtualedit = 'none'
 
 -- hide the tildes showing end of buffer
 vim.o.fcs = "eob: "
-
 
 vim.o.foldmethod = "expr"
 vim.o.foldexpr = "nvim_treesitter#foldexpr()"
