@@ -10,8 +10,8 @@ vim.keymap.set("n", '<M-S-e>', ':wincmd s<CR>:wincmd k<CR>', { desc = 'New windo
 vim.keymap.set("n", '<M-S-i>', ':wincmd v<CR>', { desc = 'New window right' })
 
 -- resize windows
-vim.keymap.set("n", '<C-M-S-m>', ':5wincmd ><CR>', { desc = 'Make window narrower' })
-vim.keymap.set("n", '<C-M-S-k>', ':5wincmd <<CR>', { desc = 'Make window wider' })
+vim.keymap.set("n", '<M-S-m>', ':5wincmd ><CR>', { desc = 'Make window narrower' })
+vim.keymap.set("n", '<M-S-k>', ':5wincmd <<CR>', { desc = 'Make window wider' })
 
 -- move lines
 vim.keymap.set("n", '<C-up>', ':m .-2<CR>==', { desc = 'Move line up' })
@@ -20,6 +20,8 @@ vim.keymap.set("v", '<C-up>', ':m \'<-2<CR>gv=gv', { desc = 'Move line up' })
 vim.keymap.set("n", '<C-down>', ':m .+1<CR>==', { desc = 'Move line up' })
 vim.keymap.set("i", '<C-down>', '<Esc>:m .+1<CR>==gi', { desc = 'Move line up' })
 vim.keymap.set("v", '<C-down>', ':m \'>+1<CR>gv=gv', { desc = 'Move line up' })
+
+vim.keymap.set("n", "<leader>tn", ":tabnext<CR>", { desc = "Tab next" })
 
 vim.keymap.set('n', ';', ':')
 vim.keymap.set('n', ':', ';')
@@ -49,6 +51,7 @@ vim.keymap.set('n', '<leader><bs>', ':noh<CR>', { desc = 'Clear search highlight
 -- paste from reg 0 (pastes yanked content even after delete)
 vim.keymap.set('', '<leader>p', '=0p')
 
+vim.keymap.set('v', '<leader>jq', ':!jq<CR>')
 
 -- colemak specific mappings
 --------------------------
