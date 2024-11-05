@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
-tmux list-sessions -F '#S' \
-| awk 'BEGIN {ORS=" "} {print $1, NR, "\"switch-client -t", $1 "\""}' \
-| xargs tmux display-menu -T "Switch session"
+# tmux list-sessions -F '#S' \
+# | awk 'BEGIN {ORS=" "} {print $1, NR, "\"switch-client -t", $1 "\""}' \
+# | xargs tmux display-menu -T "Switch session"
+
+tmux list-sessions \
+  | sed -E 's/:.*$//' \
+  | grep -v \"^$(tmux display-message -p '#S')\$\" \
+  | fzf --reverse --bind 'alt-x:execute(tmux kill-session -t {})' \
+  | xargs tmux switch-client -t
