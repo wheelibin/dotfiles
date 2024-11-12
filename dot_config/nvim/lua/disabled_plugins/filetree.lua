@@ -1,7 +1,6 @@
 return {
   {
     "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
     lazy = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -65,8 +64,7 @@ return {
           -- remove "e"
           ["e"] = "none",
           -- open split on right
-          ["s"] = "open_rightbelow_vs",
-          ["C-m"] = "none"
+          ["s"] = "open_rightbelow_vs"
         }
       }
     }

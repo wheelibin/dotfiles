@@ -1,7 +1,6 @@
 return {
   {
     'neovim/nvim-lspconfig',
-    tag = "v1.0.0",
     lazy = true,
     event = "BufRead",
     dependencies = {
@@ -52,7 +51,7 @@ return {
 
       local lsp_on_attach = function(client, bufnr)
         -- Enable completion triggered by <c-x><c-o>
-        vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+        -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
         vim.keymap.set("n", 'gD', vim.lsp.buf.declaration, { desc = 'Goto declaration (LSP)', buffer = bufnr })
 
@@ -75,14 +74,12 @@ return {
         end)
       end
 
-      vim.lsp.inlay_hint.enable(true)
-
       -- diag
       vim.keymap.set("n", '<M-C-S-n>', vim.diagnostic.goto_next, { desc = 'Next Diagnostics message' })
       vim.keymap.set("n", '<M-C-n>', vim.diagnostic.goto_prev, { desc = 'Previous Diagnostics message' })
 
-      require("luasnip.loaders.from_vscode").lazy_load()
-      require("fidget").setup({})
+      -- require("luasnip.loaders.from_vscode").lazy_load()
+      -- require("fidget").setup({})
 
       local cmp = require 'cmp'
       -- If you want insert `(` after select function or method item
@@ -167,20 +164,6 @@ return {
           capabilities = capabilities
         })
       end
-      -- lspconfig.gopls.setup({
-      --   on_attach = lsp_on_attach,
-      --   capabilities = capabilities,
-      --   settings = {
-      --     gopls = {
-      --       analyses = {
-      --         unusedparams = true,
-      --         infertypeargs = true
-      --       },
-      --       staticcheck = true,
-      --       gofumpt = true,
-      --     },
-      --   },
-      -- })
 
       local sign = function(opts)
         vim.fn.sign_define(opts.name,

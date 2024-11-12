@@ -22,7 +22,7 @@ return {
         python = { "isort", "black" },
         javascript = { "prettierd", "prettier", stop_after_first = true },
         typescript = { "prettierd", "prettier", stop_after_first = true },
-        go = { "goimports", "gofmt", "gofumpt" },
+        go = { "goimports", "gofmt" },
         -- markdown = {  "mdformat"},
         -- sql = { "sleek" }
       },

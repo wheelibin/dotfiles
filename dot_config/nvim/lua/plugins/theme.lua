@@ -4,8 +4,15 @@ return {
     name = 'theme: nightfox',
     priority = 1000,
     config = function()
-      -- vim.g.melange_enable_font_variants = 0
-      vim.cmd('colorscheme duskfox')
+      -- vim.cmd('colorscheme duskfox')
+    end
+  },
+  {
+    "rose-pine/neovim",
+    name = "theme: rose-pine",
+    config = function()
+      require("rose-pine").setup({ variant = "moon" })
+      vim.cmd('colorscheme rose-pine')
     end
   }
 }
