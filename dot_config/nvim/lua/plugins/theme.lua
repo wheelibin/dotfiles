@@ -37,5 +37,13 @@ return {
       -- vim.g.gruvbox_material_better_performance = 1
       -- vim.cmd.colorscheme('gruvbox-material')
     end
+  },
+  {
+    "catppuccin/nvim",
+    name = "theme: catppuccin",
+    priority = 1000,
+    config = function()
+      -- vim.cmd('colorscheme catppuccin')
+    end
   }
 }
