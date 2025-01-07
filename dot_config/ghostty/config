@@ -1,5 +1,6 @@
 # theme
 theme = rose-pine-moon
+cursor-color = #e0def4
 
 # fonts
 font-family = JetBrainsMonoNL Nerd Font
