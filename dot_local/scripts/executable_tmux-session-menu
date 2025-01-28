@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-tmux list-sessions \
-  | sed -E 's/:.*$//' \
+tmux list-sessions -F\#S \
   | grep -v "^$(tmux display-message -p '#S')\$" \
-  | fzf --reverse --bind 'alt-x:execute(tmux kill-session -t {})' --bind 'alt-x:+reload(tmux list-sessions | sed -E "s/:.*$//" | grep -v "^$(tmux display-message -p "#S")\$" )' \
+  | fzf --reverse --bind 'alt-x:execute(tmux kill-session -t {})' --bind 'alt-x:+reload(tmux list-sessions -F\#S | grep -v "^$(tmux display-message -p "#S")\$" )' \
   | xargs tmux switch-client -t
