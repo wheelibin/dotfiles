@@ -2,5 +2,9 @@
 
 tmux list-sessions -F\#S \
   | grep -v "^$(tmux display-message -p '#S')\$" \
-  | fzf --reverse --bind 'alt-x:execute(tmux kill-session -t {})' --bind 'alt-x:+reload(tmux list-sessions -F\#S | grep -v "^$(tmux display-message -p "#S")\$" )' \
+  | fzf --reverse \
+        --bind 'alt-x:execute(tmux kill-session -t {})' \
+        --bind 'alt-x:+reload(tmux list-sessions -F\#S | grep -v "^$(tmux display-message -p "#S")\$" )' \
+        --preview 'tmux list-panes -t {} -F "#{pane_id} #{pane_active}" | awk "NR==1{print $1}" | cut -d" " -f1 | xargs -I{} tmux capture-pane -ep -t {}' \
+        --preview-window=right:60% \
   | xargs tmux switch-client -t
