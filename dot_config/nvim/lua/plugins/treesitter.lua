@@ -43,6 +43,7 @@ return {
           'gotmpl',
           'gowork',
           'graphql',
+          'hcl',
           'html',
           'http',
           'javascript',

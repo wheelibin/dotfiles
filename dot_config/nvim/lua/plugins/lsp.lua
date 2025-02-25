@@ -17,34 +17,36 @@ return {
       -- { 'lvimuser/lsp-inlayhints.nvim' },
       { 'j-hui/fidget.nvim' },
       -- Autocompletion
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'hrsh7th/cmp-buffer' },
-      { 'hrsh7th/cmp-path' },
-      { 'hrsh7th/cmp-cmdline' },
-      { 'hrsh7th/nvim-cmp' },
-      { 'hrsh7th/cmp-nvim-lsp-signature-help' },
+      { 'saghen/blink.cmp' },
+      -- { 'hrsh7th/cmp-nvim-lsp' },
+      -- { 'hrsh7th/cmp-buffer' },
+      -- { 'hrsh7th/cmp-path' },
+      -- { 'hrsh7th/cmp-cmdline' },
+      -- { 'hrsh7th/nvim-cmp' },
+      -- { 'hrsh7th/cmp-nvim-lsp-signature-help' },
       -- snippets
-      {
-        'L3MON4D3/LuaSnip',
-        dependencies = { "rafamadriz/friendly-snippets" },
-      },
-      { 'saadparwaiz1/cmp_luasnip' },
+      -- {
+      --   'L3MON4D3/LuaSnip',
+      --   dependencies = { "rafamadriz/friendly-snippets" },
+      -- },
+      -- { 'saadparwaiz1/cmp_luasnip' },
       -- typescript
       { "yioneko/nvim-vtsls" },
 
     },
     config = function()
       local servers = {
-        'html',
-        'marksman',
-        'jsonls',
-        'gopls',
-        'golangci_lint_ls',
-        'graphql',
-        'lua_ls',
-        'pylsp',
         'bufls',
+        'golangci_lint_ls',
+        'gopls',
+        'graphql',
+        'html',
+        'jsonls',
+        'lua_ls',
+        'marksman',
+        'pylsp',
         'sqlls',
+        'terraformls',
         'vtsls',
         'yamlls'
         -- 'cucumber_language_server'
@@ -81,10 +83,10 @@ return {
       vim.keymap.set("n", '<M-C-n>', vim.diagnostic.goto_next, { desc = 'Next Diagnostics message' })
       vim.keymap.set("n", '<M-C-e>', vim.diagnostic.goto_prev, { desc = 'Previous Diagnostics message' })
 
-      require("luasnip.loaders.from_vscode").lazy_load()
+      -- require("luasnip.loaders.from_vscode").lazy_load()
       require("fidget").setup({})
 
-      local cmp = require 'cmp'
+      -- local cmp = require 'cmp'
       -- If you want insert `(` after select function or method item
       -- local cmp_autopairs = require('nvim-autopairs.completion.cmp')
       -- cmp.event:on(
@@ -92,77 +94,77 @@ return {
       --   cmp_autopairs.on_confirm_done()
       -- )
 
-      cmp.setup({
-        snippet = {
-          expand = function(args)
-            require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-          end,
-        },
-        window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
-        },
-        mapping = cmp.mapping.preset.insert({
-          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
-          ['<C-Space>'] = cmp.mapping.complete(),
-          ['<C-e>'] = cmp.mapping.abort(),
-          ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-        }),
-        sources = cmp.config.sources({
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' }, -- For luasnip users.
-          { name = 'nvim_lsp_signature_help' },
-          { name = 'cmp_tabnine' },
-        }, {
-          {
-            name = 'buffer',
-            option = {
-              get_bufnrs = function()
-                return vim.api.nvim_list_bufs()
-              end
-            }
-          },
-        })
-      })
+      -- cmp.setup({
+      --   snippet = {
+      --     expand = function(args)
+      --       require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      --     end,
+      --   },
+      --   window = {
+      --     completion = cmp.config.window.bordered(),
+      --     documentation = cmp.config.window.bordered(),
+      --   },
+      --   mapping = cmp.mapping.preset.insert({
+      --     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      --     ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      --     ['<C-Space>'] = cmp.mapping.complete(),
+      --     ['<C-e>'] = cmp.mapping.abort(),
+      --     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      --   }),
+      --   sources = cmp.config.sources({
+      --     { name = 'nvim_lsp' },
+      --     { name = 'luasnip' }, -- For luasnip users.
+      --     { name = 'nvim_lsp_signature_help' },
+      --     { name = 'cmp_tabnine' },
+      --   }, {
+      --     {
+      --       name = 'buffer',
+      --       option = {
+      --         get_bufnrs = function()
+      --           return vim.api.nvim_list_bufs()
+      --         end
+      --       }
+      --     },
+      --   })
+      -- })
 
-      -- Set configuration for specific filetype.
-      cmp.setup.filetype('gitcommit', {
-        sources = cmp.config.sources({
-          { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
-        }, {
-          { name = 'buffer' },
-        })
-      })
-
-      -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-      cmp.setup.cmdline({ '/', '?' }, {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-          { name = 'buffer' }
-        }
-      })
-
-      -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-      cmp.setup.cmdline(':', {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({
-          { name = 'path' }
-        }, {
-          { name = 'cmdline' },
-        })
-      })
-
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
+      -- -- Set configuration for specific filetype.
+      -- cmp.setup.filetype('gitcommit', {
+      --   sources = cmp.config.sources({
+      --     { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+      --   }, {
+      --     { name = 'buffer' },
+      --   })
+      -- })
+      --
+      -- -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+      -- cmp.setup.cmdline({ '/', '?' }, {
+      --   mapping = cmp.mapping.preset.cmdline(),
+      --   sources = {
+      --     { name = 'buffer' }
+      --   }
+      -- })
+      --
+      -- -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+      -- cmp.setup.cmdline(':', {
+      --   mapping = cmp.mapping.preset.cmdline(),
+      --   sources = cmp.config.sources({
+      --     { name = 'path' }
+      --   }, {
+      --     { name = 'cmdline' },
+      --   })
+      -- })
+      --
+      -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
       local lspconfig = require('lspconfig')
 
       require("mason").setup()
       require("mason-lspconfig").setup({ automatic_installation = true })
 
       -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-      for _, lsp in ipairs(servers) do
-        lspconfig[lsp].setup({
+      for _, server in ipairs(servers) do
+        local capabilities = require('blink.cmp').get_lsp_capabilities()
+        lspconfig[server].setup({
           on_attach = lsp_on_attach,
           capabilities = capabilities
         })

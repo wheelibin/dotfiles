@@ -2,7 +2,11 @@ return {
   {
     'rebelot/kanagawa.nvim',
     config = function()
-      -- vim.cmd.colorscheme('kanagawa-dragon')
+      require('kanagawa').setup({
+        theme = 'wave',
+        transparent = true,
+      })
+      -- vim.cmd.colorscheme('kanagawa')
     end
   },
   {
@@ -10,14 +14,26 @@ return {
     name = 'theme: nightfox',
     priority = 1000,
     config = function()
-      vim.cmd('colorscheme duskfox')
+      require('nightfox').setup({
+        options = {
+          transparent = true
+        }
+      })
+      -- vim.cmd('colorscheme duskfox')
     end
   },
   {
     "rose-pine/neovim",
     name = "theme: rose-pine",
     config = function()
-      require("rose-pine").setup({ variant = "moon" })
+      require("rose-pine").setup({
+        -- variant = "moon",
+        styles = {
+          bold = true,
+          -- italic = true,
+          transparency = true,
+        },
+      })
       -- vim.cmd('colorscheme rose-pine')
     end
   },
@@ -45,5 +61,15 @@ return {
     config = function()
       -- vim.cmd('colorscheme catppuccin')
     end
+  },
+  {
+    "catppuccin/nvim",
+    name = "theme: catppuccin",
+    priority = 1000,
+    config = function()
+      -- vim.cmd('colorscheme catppuccin')
+    end
   }
+
+
 }

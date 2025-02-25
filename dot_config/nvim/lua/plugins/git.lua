@@ -1,8 +1,7 @@
 return {
   {
     'lewis6991/gitsigns.nvim',
-    lazy = true,
-    event = "BufEnter",
+    lazy = false,
     config = function()
       require('gitsigns').setup({
         on_attach = function()

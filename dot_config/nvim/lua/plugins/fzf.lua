@@ -33,25 +33,25 @@ return {
       {
         "<leader>ff",
         mode = "n",
-        function() require('fzf-lua').files({ path_shorten = 6 }) end,
+        function() require('fzf-lua').files({ path_shorten = 8 }) end,
         desc = "Find files"
       },
       {
         "<leader>fo",
         mode = "n",
-        function() require('fzf-lua').oldfiles({ path_shorten = 6 }) end,
+        function() require('fzf-lua').oldfiles({ path_shorten = 8 }) end,
         desc = "Find previously opened files"
       },
       {
         "<leader>fa",
         mode = "n",
-        function() require('fzf-lua').live_grep_native({ path_shorten = 6 }) end,
+        function() require('fzf-lua').live_grep_native({ path_shorten = 8 }) end,
         desc = "Find text (grep)"
       },
       {
         "<leader><space>",
         mode = "n",
-        function() require('fzf-lua').buffers({ path_shorten = 6 }) end,
+        function() require('fzf-lua').buffers({ path_shorten = 8 }) end,
         desc = "Find buffers"
       },
       {
