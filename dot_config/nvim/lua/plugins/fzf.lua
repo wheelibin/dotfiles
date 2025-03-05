@@ -45,7 +45,7 @@ return {
       {
         "<leader>fa",
         mode = "n",
-        function() require('fzf-lua').live_grep_native({ path_shorten = 8 }) end,
+        function() require('fzf-lua').live_grep_glob({ path_shorten = 8 }) end,
         desc = "Find text (grep)"
       },
       {
