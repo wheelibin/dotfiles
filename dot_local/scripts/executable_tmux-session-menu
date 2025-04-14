@@ -12,11 +12,3 @@ selected=$(tmux list-sessions -F '#{session_last_attached} #{session_name}' -f '
 
 [ -n "$selected" ] && tmux switch-client -t "$selected"
 
-# tmux list-sessions -F\#S -f '#{?session_attached,0,1}' \
-#  | fzf --reverse \
-#     --bind 'alt-x:execute(tmux kill-session -t {})' \
-#     --bind 'alt-x:+reload(tmux list-sessions -F\#S -f "#{?session_attached,0,1}")' \
-#     --preview 'tmux list-panes -t {} -F\#D -f "#{pane_active}" | xargs tmux capture-pane -ep -t' \
-#     --preview-window=right:66% \
-#  | xargs tmux switch-client -t
-
