@@ -80,3 +80,9 @@ vim.keymap.set('', 'K', 'Nzzzv', {})
 -- move to end of next word
 vim.keymap.set('', 'l', 'e', {})
 --------------------------
+
+local oid = require("objectid")
+
+vim.keymap.set("n", "<leader>go", function()
+  vim.api.nvim_put({ oid.generate_object_id() }, 'c', true, true)
+end, { desc = "Insert MongoDB ObjectId" })

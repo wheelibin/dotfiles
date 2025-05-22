@@ -44,7 +44,7 @@ return {
         'jsonls',
         'lua_ls',
         'marksman',
-        'pylsp',
+        'pyright',
         'sqlls',
         'terraformls',
         'vtsls',
