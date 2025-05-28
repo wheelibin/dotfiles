@@ -85,9 +85,6 @@ return {
           request = 'launch',
           program = '${file}',
           env = {
-            ES_ANNOTATIONS_DB_URL =
-            "postgres://portal_annotations_0:ZHjOe5mzJ6P0LGcQSDA49WdvBoqnyt@es-platform-aurora-dev.img.astrazeneca.net:5432/portal_annotations_0",
-            ES_PLATFORM_CMD_API_HOST = "http://localhost:30504"
           }
         }
       }
