@@ -59,6 +59,38 @@ return {
           cwd = "${workspaceFolder}",
         },
       }
+      dap.adapters.go = {
+        type = 'server',
+        port = '${port}',
+        executable = {
+          command = 'dlv',
+          args = { 'dap', '-l', '127.0.0.1:${port}' },
+        },
+      }
+
+      dap.configurations.go = {
+        {
+          type = 'go',
+          name = 'Debug',
+          request = 'launch',
+          program = '${file}',
+        },
+      }
+
+
+      dap.configurations.go = {
+        {
+          type = 'go',
+          name = 'Debug with env',
+          request = 'launch',
+          program = '${file}',
+          env = {
+            ES_ANNOTATIONS_DB_URL =
+            "postgres://portal_annotations_0:ZHjOe5mzJ6P0LGcQSDA49WdvBoqnyt@es-platform-aurora-dev.img.astrazeneca.net:5432/portal_annotations_0",
+            ES_PLATFORM_CMD_API_HOST = "http://localhost:30504"
+          }
+        }
+      }
     end
   }
 }

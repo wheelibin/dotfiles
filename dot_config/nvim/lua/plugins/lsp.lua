@@ -80,7 +80,8 @@ return {
       vim.lsp.inlay_hint.enable(true)
 
       -- diag
-      vim.keymap.set("n", '<M-C-n>', vim.diagnostic.goto_next, { desc = 'Next Diagnostics message' })
+      vim.keymap.set("n", '<M-C-n>', function() vim.diagnostic.jump({ count = 1, float = true }) end,
+        { desc = 'Next Diagnostics message' })
       vim.keymap.set("n", '<M-C-e>', vim.diagnostic.goto_prev, { desc = 'Previous Diagnostics message' })
 
       -- require("luasnip.loaders.from_vscode").lazy_load()
