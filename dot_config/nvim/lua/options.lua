@@ -61,3 +61,5 @@ vim.o.foldenable = false
 -- vim.o.foldmethod = "indent"
 
 -- vim.o.conceallevel = 1
+
+vim.o.winborder = 'rounded'
