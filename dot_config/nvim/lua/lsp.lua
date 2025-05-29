@@ -29,6 +29,7 @@ vim.lsp.config("*", {
 
 -- Initialize lspconfig to add its configurations to the runtime path
 require("lspconfig")
+
 -- enable inlay hints
 vim.lsp.inlay_hint.enable(true)
 

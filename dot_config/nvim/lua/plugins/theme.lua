@@ -15,7 +15,7 @@ return {
           }
         }
       })
-      vim.cmd.colorscheme('kanagawa')
+      -- vim.cmd.colorscheme('kanagawa')
     end
   },
   {
@@ -28,7 +28,7 @@ return {
           transparent = true
         }
       })
-      -- vim.cmd('colorscheme duskfox')
+      vim.cmd('colorscheme duskfox')
     end
   },
   {
