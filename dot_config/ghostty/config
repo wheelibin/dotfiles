@@ -1,12 +1,21 @@
 # theme
-theme = rose-pine-moon
-cursor-color = #e0def4
+theme = duskfox
+# theme = Kanagawa Wave
+# cursor-color = #e0def4
 
 # fonts
 font-family = JetBrainsMonoNL Nerd Font
+# font-family = Hack Nerd Font Mono
+
+# font-family = GeistMono Nerd Font Mono
+# font-thicken = true
+# font-thicken-strength = 128 
+# adjust-cell-height = 8%
+
 font-size = 18
 
 # options
 macos-option-as-alt = true
 macos-titlebar-style = hidden
 window-save-state = always
+background-opacity = 0.98
