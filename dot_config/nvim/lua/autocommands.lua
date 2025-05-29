@@ -16,6 +16,27 @@ vim.api.nvim_create_autocmd("BufReadPost", { pattern = "*.gql.tmpl", command = [
 vim.api.nvim_create_autocmd("BufReadPost", { pattern = "*.http", command = [[set filetype=http]] })
 
 
+local function debounce(fn, delay)
+  local timer = vim.loop.new_timer()
+  local running = false
+  return function(...)
+    local args = { ... }
+    if running then timer:stop() end
+    timer:start(delay, 0, function()
+      running = false
+      vim.schedule(function() fn(unpack(args)) end)
+    end)
+    running = true
+  end
+end
+
+local save_after_delay = debounce(function()
+  vim.cmd("silent! update")
+end, 3000)
+
 vim.api.nvim_create_autocmd(
   { "FocusLost", "ModeChanged", "TextChanged", "BufEnter" },
-  { pattern = "*", command = "silent! update" })
+  {
+    pattern = "*",
+    callback = save_after_delay
+  })
