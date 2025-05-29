@@ -1,7 +1,7 @@
 return {
   {
     'neovim/nvim-lspconfig',
-    tag = "v1.0.0",
+    tag = "v2.2.0",
     lazy = true,
     event = "BufRead",
     dependencies = {
@@ -36,7 +36,7 @@ return {
     },
     config = function()
       local servers = {
-        'bufls',
+        'buf_ls',
         'golangci_lint_ls',
         'gopls',
         'graphql',

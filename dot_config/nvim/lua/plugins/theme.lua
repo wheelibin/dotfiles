@@ -5,8 +5,17 @@ return {
       require('kanagawa').setup({
         theme = 'wave',
         transparent = true,
+        colors = {
+          theme = {
+            all = {
+              ui = {
+                bg_gutter = "none"
+              }
+            }
+          }
+        }
       })
-      -- vim.cmd.colorscheme('kanagawa')
+      vim.cmd.colorscheme('kanagawa')
     end
   },
   {
@@ -19,7 +28,7 @@ return {
           transparent = true
         }
       })
-      vim.cmd('colorscheme duskfox')
+      -- vim.cmd('colorscheme duskfox')
     end
   },
   {
