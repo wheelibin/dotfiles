@@ -24,6 +24,8 @@ vim.lsp.config("*", {
 
     vim.keymap.set("n", '<leader>f', function() vim.lsp.buf.format({ async = true }) end,
       { desc = 'Format buffer', buffer = bufnr })
+
+    require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
   end
 })
 
@@ -35,9 +37,15 @@ vim.lsp.inlay_hint.enable(true)
 
 -- global keymaps
 -----------------
-vim.keymap.set("n", '<M-C-n>', function() vim.diagnostic.jump({ count = 1, float = true }) end,
-  { desc = 'Next Diagnostics message' })
-vim.keymap.set("n", '<M-C-e>', vim.diagnostic.goto_prev, { desc = 'Previous Diagnostics message' })
+vim.keymap.set("n", '<M-C-n>', function()
+  vim.diagnostic.jump({ count = 1, float = true })
+  vim.api.nvim_feedkeys("zz", "n", false)
+end, { desc = 'Next Diagnostics message' })
+
+vim.keymap.set("n", '<M-C-e>', function()
+  vim.diagnostic.goto_prev()
+  vim.api.nvim_feedkeys("zz", "n", false)
+end, { desc = 'Previous Diagnostics message' })
 
 -- visual tweaks
 ----------------
