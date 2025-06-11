@@ -19,23 +19,28 @@ return {
         sections = {
           lualine_a = { 'mode' },
           lualine_b = {
-            { 'branch', icon = '' }, {
-            'diff',
-            diff_color = {
-              -- Same color values as the general color option can be used here.
-              added = 'GitSignsAdd',     -- Changes the diff's added color
-              modified = 'GitSignsChange', -- Changes the diff's modified color
-              removed = 'GitSignsDelete' -- Changes the diff's removed color you
-            }
-          }
+            { 'branch', icon = '' },
+            {
+              'diff',
+              diff_color = {
+                -- Same color values as the general color option can be used here.
+                added = 'GitSignsAdd',       -- Changes the diff's added color
+                modified = 'GitSignsChange', -- Changes the diff's modified color
+                removed = 'GitSignsDelete'   -- Changes the diff's removed color you
+              }
+            },
           },
           lualine_c = {
             {
               git_blame.get_current_blame_text,
               cond = git_blame.is_blame_text_available
-            }
+            },
           },
-          lualine_x = { 'filetype', 'filename' },
+          lualine_x = {
+            { "aerial" },
+            { 'filetype', 'filename' }
+          }
+
         }
       }
 

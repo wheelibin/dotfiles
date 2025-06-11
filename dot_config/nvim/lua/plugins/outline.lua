@@ -25,7 +25,7 @@ return {
       disable_max_lines = 0,
       layout = {
         resize_to_content = false,
-      }
+      },
     },
     keys = { -- Example mapping to toggle outline
       { "<leader>o", "<cmd>AerialToggle!<CR>", desc = "Toggle outline" },
