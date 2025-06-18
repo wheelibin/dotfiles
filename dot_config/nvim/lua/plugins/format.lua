@@ -23,7 +23,7 @@ return {
         javascript = { "prettierd", "prettier", stop_after_first = true },
         typescript = { "prettierd", "prettier", stop_after_first = true },
         go = { "goimports", "gofmt", "gofumpt" },
-        -- markdown = {  "mdformat"},
+        markdown = { "mdformat" },
         -- sql = { "sleek" }
       },
       -- Set up format-on-save
