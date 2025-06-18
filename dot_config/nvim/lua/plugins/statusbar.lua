@@ -37,8 +37,7 @@ return {
             },
           },
           lualine_x = {
-            { "aerial" },
-            { 'filetype', 'filename' }
+            'filename', 'filetype'
           }
 
         }
