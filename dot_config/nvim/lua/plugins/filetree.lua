@@ -66,7 +66,16 @@ return {
           ["e"] = "none",
           -- open split on right
           ["s"] = "open_rightbelow_vs",
-          ["C-m"] = "none"
+          ["C-m"] = "none",
+          ["O"] = function(state)
+            local node = state.tree:get_node()
+            local path = node:get_id()
+            if node.type == "directory" then
+              vim.cmd("edit " .. path)
+            else
+              print("Not a directory")
+            end
+          end,
         }
       }
     }
