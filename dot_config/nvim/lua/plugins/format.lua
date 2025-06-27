@@ -24,14 +24,25 @@ return {
         typescript = { "prettierd", "prettier", stop_after_first = true },
         go = { "goimports", "gofmt", "gofumpt" },
         markdown = { "mdformat" },
-        -- sql = { "sleek" }
+        sql = { "pg_format" }
       },
       -- Set up format-on-save
-      format_on_save = { timeout_ms = 3000, lsp_format = 'fallback' },
+      format_on_save = function(bufnr)
+        -- Disable autoformat on certain filetypes
+        local ignore_filetypes = { "sql" }
+        if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
+          return
+        end
+        -- ...additional logic...
+        return { timeout_ms = 3000, lsp_format = "fallback" }
+      end,
       -- Customize formatters
       formatters = {
         shfmt = {
           prepend_args = { "-i", "2" },
+        },
+        pg_format = {
+          args = { "--keyword-case=1", "--no-space-function", "--wrap-limit=80", "--spaces=2" },
         },
       },
     },

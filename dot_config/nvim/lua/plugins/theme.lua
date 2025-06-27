@@ -15,7 +15,7 @@ return {
           }
         }
       })
-      vim.cmd.colorscheme('kanagawa')
+      -- vim.cmd.colorscheme('kanagawa')
     end
   },
   {
@@ -36,14 +36,14 @@ return {
     name = "theme: rose-pine",
     config = function()
       require("rose-pine").setup({
-        -- variant = "moon",
+        variant = "moon",
         styles = {
           bold = true,
-          -- italic = true,
+          italic = true,
           transparency = true,
         },
       })
-      -- vim.cmd('colorscheme rose-pine')
+      vim.cmd('colorscheme rose-pine')
     end
   },
   {
