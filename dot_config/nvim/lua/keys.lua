@@ -37,6 +37,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 -- exit insert mode
 vim.keymap.set('i', 'hh', '<Esc>')
 
+
 vim.keymap.set('n', '<C-p>', '"0p')
 vim.keymap.set('n', '<C-P>', '"0P')
 vim.keymap.set('v', '<C-p>', '"0p')
@@ -48,9 +49,7 @@ vim.keymap.set('v', '<C-P>', '"0P')
 
 vim.keymap.set('n', '<leader><bs>', ':noh<CR>', { desc = 'Clear search highlighting' })
 
--- paste from reg 0 (pastes yanked content even after delete)
-vim.keymap.set('', '<leader>p', '=0p')
-
+-- format json with jq
 vim.keymap.set('v', '<leader>jq', ':!jq<CR>')
 
 -- colemak specific mappings

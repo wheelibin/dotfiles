@@ -39,12 +39,12 @@ vim.lsp.inlay_hint.enable(true)
 -----------------
 vim.keymap.set("n", '<M-C-n>', function()
   vim.diagnostic.jump({ count = 1, float = true })
-  vim.api.nvim_feedkeys("zz", "n", false)
+  -- vim.api.nvim_feedkeys("zz", "n", false)
 end, { desc = 'Next Diagnostics message' })
 
 vim.keymap.set("n", '<M-C-e>', function()
   vim.diagnostic.goto_prev()
-  vim.api.nvim_feedkeys("zz", "n", false)
+  -- vim.api.nvim_feedkeys("zz", "n", false)
 end, { desc = 'Previous Diagnostics message' })
 
 -- visual tweaks

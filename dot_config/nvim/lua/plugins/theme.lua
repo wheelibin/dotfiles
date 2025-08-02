@@ -36,7 +36,7 @@ return {
     name = "theme: rose-pine",
     config = function()
       require("rose-pine").setup({
-        variant = "moon",
+        -- variant = "moon",
         styles = {
           bold = true,
           italic = true,
