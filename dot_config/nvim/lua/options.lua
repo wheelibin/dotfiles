@@ -1,4 +1,5 @@
 vim.g.mapleader = ' '
+vim.g.maplocalleader = "\\"
 
 -- disable word wrap
 vim.o.wrap = false

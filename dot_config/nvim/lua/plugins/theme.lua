@@ -1,5 +1,35 @@
 return {
   {
+    "mcauley-penney/techbase.nvim",
+    opts = {
+      italic_comments = true,
+
+      -- set to true to make the background, floating windows, statusline,
+      -- signcolumn, foldcolumn, and tabline transparent
+      transparent = true,
+
+      -- plugin_support = {
+      --   aerial = false,
+      --   blink = false,
+      --   edgy = false,
+      --   gitsigns = true,
+      --   hl_match_area = false,
+      --   lazy = true,
+      --   lualine = true,
+      --   mason = false,
+      --   mini_cursorword = false,
+      --   nvim_cmp = false,
+      --   vim_illuminate = false,
+      --   visual_whitespace = false,
+      -- },
+
+      -- allows you to override any highlight group for finer-grained control
+      hl_overrides = {},
+    },
+    init = function() vim.cmd.colorscheme("techbase") end,
+    priority = 1000
+  },
+  {
     'rebelot/kanagawa.nvim',
     config = function()
       require('kanagawa').setup({
@@ -43,7 +73,7 @@ return {
           transparency = true,
         },
       })
-      vim.cmd('colorscheme rose-pine')
+      -- vim.cmd('colorscheme rose-pine')
     end
   },
   {

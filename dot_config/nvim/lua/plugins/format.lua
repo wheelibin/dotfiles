@@ -22,6 +22,8 @@ return {
         python = { "isort", "black" },
         javascript = { "prettierd", "prettier", stop_after_first = true },
         typescript = { "prettierd", "prettier", stop_after_first = true },
+        css = { "prettierd", "prettier", stop_after_first = true },
+        html = { "prettierd", "prettier", stop_after_first = true },
         go = { "goimports", "gofmt", "gofumpt", "golines" },
         markdown = { "mdformat" },
         sql = { "pg_format" }
