@@ -6,7 +6,7 @@ return {
     dependencies = {
       { "mason-org/mason.nvim",               opts = {} },
       "neovim/nvim-lspconfig",
-      { "artemave/workspace-diagnostics.nvim" },
+      -- { "artemave/workspace-diagnostics.nvim" },
       { "j-hui/fidget.nvim",                  opts = {} }
     },
   }
