@@ -25,7 +25,7 @@ vim.lsp.config("*", {
     vim.keymap.set("n", '<leader>f', function() vim.lsp.buf.format({ async = true }) end,
       { desc = 'Format buffer', buffer = bufnr })
 
-    require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
+    -- require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
   end
 })
 
