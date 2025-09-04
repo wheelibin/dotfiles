@@ -17,7 +17,7 @@ return {
         lazy = true,
         lualine = true,
         mason = true,
-        mini_cursorword = true,
+        mini_cursorword = false,
         nvim_cmp = true,
         vim_illuminate = false,
         visual_whitespace = false,
