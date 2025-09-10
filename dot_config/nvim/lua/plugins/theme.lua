@@ -27,10 +27,22 @@ return {
       hl_overrides = {},
     },
     init = function()
-      vim.cmd.colorscheme("techbase")
-      vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#474b65", fg = "#ccd5e5", bold = true })
+      -- vim.cmd.colorscheme("techbase")
+      -- vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#474b65", fg = "#ccd5e5", bold = true })
     end,
     priority = 1000,
+  },
+  {
+    "vague2k/vague.nvim",
+    lazy = false,  -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other plugins
+    config = function()
+      -- NOTE: you do not need to call setup if you don't want to.
+      require("vague").setup({
+        -- optional configuration here
+      })
+      vim.cmd("colorscheme vague")
+    end
   },
   {
     "rebelot/kanagawa.nvim",
