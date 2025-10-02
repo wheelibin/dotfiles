@@ -19,12 +19,12 @@ return {
   --     })
   --   end,
   -- },
-  {
-    'github/copilot.vim',
-    lazy = true,
-    event = "BufEnter",
-    -- opts = {} -- this is equalent to setup({}) function
-  },
+  -- {
+  --   'github/copilot.vim',
+  --   lazy = true,
+  --   event = "BufEnter",
+  --   -- opts = {} -- this is equalent to setup({}) function
+  -- },
   -- {
   --   "CopilotC-Nvim/CopilotChat.nvim",
   --   dependencies = {
