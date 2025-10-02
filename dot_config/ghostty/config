@@ -68,7 +68,7 @@ selection-foreground = #cdcdcd
 
 # font-family = GeistMono Nerd Font Mono
 # adjust-cell-height = 10%
-font-thicken = true
+# font-thicken = true
 font-thicken-strength = 90
 
 font-family = Terminess Nerd Font Mono
@@ -77,7 +77,9 @@ adjust-cell-height = 8%
 font-size = 24 
 
 # options
-# background-opacity = 0.98
+background-opacity = 0.90
+background-blur = true 
+
 macos-option-as-alt = true
 macos-titlebar-style = hidden
 mouse-hide-while-typing = true
