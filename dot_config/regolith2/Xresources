@@ -1,8 +1,0 @@
-i3-wm.gaps.inner.size: 10
-
-regolith.wallpaper.file: ~/.wallpaper/blue/25\ -\ vYOY2rd.jpg
-regolith.wallpaper.color.primary: 
-
-!regolith.look.path: /usr/share/regolith-look/default
-!regolith.look.path: /usr/share/regolith-look/gruvbox
-regolith.look.path: /usr/share/regolith-look/nord
