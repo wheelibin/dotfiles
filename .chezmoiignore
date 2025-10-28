@@ -1,0 +1,7 @@
+# ignore these on mac
+{{ if eq .chezmoi.os "darwin" }}
+dot_config/hypr/**
+dot_config/awesome/**
+dot_config/picom/**
+
+{{ end }}
