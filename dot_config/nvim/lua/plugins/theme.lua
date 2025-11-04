@@ -41,14 +41,14 @@ return {
       require("vague").setup({
         transparent = true
       })
-      vim.cmd("colorscheme vague")
+      -- vim.cmd("colorscheme vague")
     end
   },
   {
     "rebelot/kanagawa.nvim",
     config = function()
       require("kanagawa").setup({
-        theme = "wave",
+        theme = "dragon",
         transparent = true,
         colors = {
           theme = {
@@ -60,7 +60,7 @@ return {
           },
         },
       })
-      -- vim.cmd.colorscheme('kanagawa')
+      vim.cmd.colorscheme('kanagawa')
     end,
   },
   {
@@ -117,11 +117,16 @@ return {
     end,
   },
   {
-    "savq/melange-nvim",
-    name = "theme: melange",
+    'sainnhe/everforest',
+    lazy = false,
     priority = 1000,
     config = function()
-      -- vim.cmd('colorscheme melange')
-    end,
-  },
+      -- Optionally configure and load the colorscheme
+      -- directly inside the plugin declaration.
+      -- vim.g.everforest_enable_italic = true
+      -- vim.g.everforest_background = 'hard'
+      -- vim.g.everforest_better_performance = 1
+      -- vim.cmd.colorscheme('everforest')
+    end
+  }
 }

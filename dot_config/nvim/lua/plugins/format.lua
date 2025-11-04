@@ -20,10 +20,10 @@ return {
       formatters_by_ft = {
         lua = { "stylua" },
         python = { "isort", "black" },
-        javascript = { "prettierd", "prettier", stop_after_first = true },
-        typescript = { "prettierd", "prettier", stop_after_first = true },
-        css = { "prettierd", "prettier", stop_after_first = true },
-        html = { "prettierd", "prettier", stop_after_first = true },
+        javascript = { "prettier", "prettier", stop_after_first = true },
+        typescript = { "prettier", "prettier", stop_after_first = true },
+        css = { "prettier", "prettier", stop_after_first = true },
+        html = { "prettier", "prettier", stop_after_first = true },
         go = { "goimports", "gofmt", "gofumpt", "golines" },
         markdown = { "mdformat" },
         sql = { "pg_format" }

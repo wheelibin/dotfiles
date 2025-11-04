@@ -6,7 +6,7 @@ return {
       local lint = require("lint")
       lint.linters_by_ft = {
         -- handled by an lsp
-        -- go = { "golangcilint" },
+        go = { "golangcilint" },
         javascript = { "eslint_d" },
         typescript = { "eslint_d" },
         -- Use the "*" filetype to run linters on all filetypes.
