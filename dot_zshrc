@@ -109,9 +109,6 @@ source $ZSH/oh-my-zsh.sh
 
 alias l='eza -lha --group-directories-first --icons=auto --no-user'
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 export EDITOR=nvim
 export VISUAL="$EDITOR"
 
@@ -120,5 +117,8 @@ source <(fzf --zsh)
 
 # node version manager
 eval "$(fnm env --use-on-cd --shell zsh)"
+
+# starship prompt
+eval "$(starship init zsh)"
 
 export PATH=$PATH:/usr/local/go/bin:/$HOME/go/bin
