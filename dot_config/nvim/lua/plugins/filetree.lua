@@ -64,8 +64,6 @@ return {
           ["mv"] = "move",
           -- remove "e"
           ["e"] = "none",
-          -- open split on right
-          ["s"] = "open_rightbelow_vs",
           ["C-m"] = "none",
           ["O"] = function(state)
             local node = state.tree:get_node()
