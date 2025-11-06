@@ -75,3 +75,4 @@ opt.winborder = 'rounded'
 -- sane split options
 opt.splitbelow = true
 opt.splitright = true
+opt.splitkeep = "screen"

@@ -1,5 +1,13 @@
 return {
   {
+    "savq/melange-nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      -- vim.cmd.colorscheme("melange")
+    end
+  },
+  {
     "mcauley-penney/techbase.nvim",
     opts = {
       italic_comments = true,

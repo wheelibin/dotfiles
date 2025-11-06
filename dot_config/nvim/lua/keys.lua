@@ -34,10 +34,6 @@ vim.keymap.set('n', ':', ';')
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
--- exit insert mode
-vim.keymap.set('i', 'hh', '<Esc>')
-
-
 vim.keymap.set('n', '<C-p>', '"0p')
 vim.keymap.set('n', '<C-P>', '"0P')
 vim.keymap.set('v', '<C-p>', '"0p')
@@ -52,7 +48,16 @@ vim.keymap.set('n', '<leader><bs>', ':noh<CR>', { desc = 'Clear search highlight
 -- format json with jq
 vim.keymap.set('v', '<leader>jq', ':!jq<CR>')
 
--- colemak specific mappings
+-- misc / utils
+---------------
+local oid = require("objectid")
+
+vim.keymap.set("n", "<leader>go", function()
+  vim.api.nvim_put({ oid.generate_object_id() }, 'c', true, true)
+end, { desc = "Insert MongoDB ObjectId" })
+---------------
+
+-- Overrides for Colemak-DH
 --------------------------
 -- remap hjkl to colemak homerow equivalents
 vim.keymap.set('', 'm', 'h', {})
@@ -68,10 +73,6 @@ vim.keymap.set('', 'O', 'I', {})
 vim.keymap.set('', 'h', 'o', {})
 vim.keymap.set('', 'H', 'O', {})
 
--- jump to next search
--- vim.keymap.set('', 'k', 'n', {})
--- vim.keymap.set('', 'K', 'N', {})
-
 -- jump to next search (+centering)
 vim.keymap.set('', 'k', 'nzzzv', {})
 vim.keymap.set('', 'K', 'Nzzzv', {})
@@ -79,9 +80,3 @@ vim.keymap.set('', 'K', 'Nzzzv', {})
 -- move to end of next word
 vim.keymap.set('', 'l', 'e', {})
 --------------------------
-
-local oid = require("objectid")
-
-vim.keymap.set("n", "<leader>go", function()
-  vim.api.nvim_put({ oid.generate_object_id() }, 'c', true, true)
-end, { desc = "Insert MongoDB ObjectId" })

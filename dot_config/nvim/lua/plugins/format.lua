@@ -24,7 +24,7 @@ return {
         typescript = { "prettier", "prettier", stop_after_first = true },
         css = { "prettier", "prettier", stop_after_first = true },
         html = { "prettier", "prettier", stop_after_first = true },
-        go = { "goimports", "gofmt", "gofumpt", "golines" },
+        go = { "goimports", "gofumpt", "golines" },
         markdown = { "mdformat" },
         sql = { "pg_format" }
       },
@@ -36,7 +36,7 @@ return {
           return
         end
         -- ...additional logic...
-        return { timeout_ms = 3000, lsp_format = "fallback" }
+        return { timeout_ms = 5000, lsp_format = "fallback" }
       end,
       -- Customize formatters
       formatters = {
