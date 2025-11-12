@@ -34,7 +34,7 @@ opt.tabstop = 2
 
 -- Decrease update time
 opt.updatetime = 200
-opt.timeoutlen = 300
+opt.timeoutlen = 500
 
 -- show sign column
 opt.signcolumn = 'yes'
@@ -49,7 +49,7 @@ opt.termguicolors = true
 opt.mouse = 'a'
 
 -- scroll offset
-opt.scrolloff = 4
+opt.scrolloff = 8
 
 -- full line at cursor position
 opt.cursorline = true
