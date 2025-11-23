@@ -1,4 +1,3 @@
-# theme
 # theme = duskfox
 # theme = Everforest Dark Hard
 # theme = nightfox
@@ -62,7 +61,8 @@ theme = Kanagawa Dragon
 # selection-foreground = #ccd5e5
 
 # fonts
-# font-family = JetBrainsMonoNL NFM Light
+font-family = JetBrainsMonoNL NFM ExtraLight
+adjust-cell-height = -8%
 
 # font-family = Hack Nerd Font Mono
 # adjust-cell-height = 12%
@@ -74,8 +74,8 @@ theme = Kanagawa Dragon
 
 # font-family = Terminess Nerd Font Mono
 
-font-family = CaskaydiaMono NFM Light
-adjust-cell-height = 8%
+# font-family = CaskaydiaMono NFM Light
+# adjust-cell-height = 8%
 
 font-size = 24 
 
